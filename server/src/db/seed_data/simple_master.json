@@ -1,0 +1,200 @@
+[
+  {
+    "Department": "Genset Power Back Up",
+    "Item / Parameter": "Genset (GG) - Cost price (Rs.)",
+    "Value": 27500000,
+    "Unit / Notes": "Capacity 1000 KVA"
+  },
+  {
+    "Department": "Genset Power Back Up",
+    "Item / Parameter": "Genset (GG) - Average life (years)",
+    "Value": 15,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Genset Power Back Up",
+    "Item / Parameter": "DG Set - Cost price (Rs.)",
+    "Value": 8700000,
+    "Unit / Notes": "Capacity 1000 KVA"
+  },
+  {
+    "Department": "Genset Power Back Up",
+    "Item / Parameter": "AMC of GG (Rs./yr)",
+    "Value": 1100000,
+    "Unit / Notes": "4% of cost"
+  },
+  {
+    "Department": "Genset Power Back Up",
+    "Item / Parameter": "AMC of DG (Rs./yr)",
+    "Value": 348000,
+    "Unit / Notes": "4% of cost"
+  },
+  {
+    "Department": "Genset Power Back Up",
+    "Item / Parameter": "Utilization (hrs/month)",
+    "Value": "70Hrs/month",
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Genset Power Back Up",
+    "Item / Parameter": "Diesel utilized (litre/hr)",
+    "Value": "50ltr/hr",
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Genset Power Back Up",
+    "Item / Parameter": "Cost per litre diesel (Rs.)",
+    "Value": 62,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Genset Power Back Up",
+    "Item / Parameter": "Hours utilized per day",
+    "Value": 2.33,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "UPS",
+    "Item / Parameter": "Stabilizer 1 - Capacity",
+    "Value": "80 Kva",
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "UPS",
+    "Item / Parameter": "Stabilizer 1 - Cost price (Rs.)",
+    "Value": 700000,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "UPS",
+    "Item / Parameter": "Stabilizer 1 - Life (years)",
+    "Value": 20,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "UPS",
+    "Item / Parameter": "Stabilizer 2 - Cost price (Rs.)",
+    "Value": 700000,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "UPS",
+    "Item / Parameter": "Stabilizer 2 - Life (years)",
+    "Value": 20,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "UPS",
+    "Item / Parameter": "Assumed daily utilization (hrs)",
+    "Value": 24,
+    "Unit / Notes": "assumption"
+  },
+  {
+    "Department": "UPS",
+    "Item / Parameter": "No. of beds used to derive per-bed cost",
+    "Value": 351,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Solar Heating",
+    "Item / Parameter": "Solar System - Cost price (Rs.)",
+    "Value": 0,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Solar Heating",
+    "Item / Parameter": "Solar System - No. of panels",
+    "Value": 2,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Solar Heating",
+    "Item / Parameter": "Solar System - Life (years)",
+    "Value": 10,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Solar Heating",
+    "Item / Parameter": "No. of beds used to derive per-bed cost",
+    "Value": 91,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Water Facilitization",
+    "Item / Parameter": "Water Treatment Plant - Capital cost (Rs.)",
+    "Value": 3500000,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Water Facilitization",
+    "Item / Parameter": "AMC charges (Rs./yr)",
+    "Value": 140000,
+    "Unit / Notes": "4% of capital cost"
+  },
+  {
+    "Department": "Water Facilitization",
+    "Item / Parameter": "Life (years)",
+    "Value": 10,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Water Facilitization",
+    "Item / Parameter": "Consumable - Chemical cost per month (Rs.)",
+    "Value": 20833.333333333332,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Water Facilitization",
+    "Item / Parameter": "No. of beds used to derive per-bed cost",
+    "Value": 351,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Biometric",
+    "Item / Parameter": "Cost of installation (Rs.)",
+    "Value": 85000,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Biometric",
+    "Item / Parameter": "Maintenance & Repair (Rs./yr)",
+    "Value": 4250,
+    "Unit / Notes": "5% of cost"
+  },
+  {
+    "Department": "Biometric",
+    "Item / Parameter": "Life (years)",
+    "Value": 10,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Biometric",
+    "Item / Parameter": "AMC charges (Rs./yr)",
+    "Value": 3500,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Biometric",
+    "Item / Parameter": "No. of beds used to derive per-bed cost",
+    "Value": 351,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Biomedical Waste (Outsourced)",
+    "Item / Parameter": "Bio-medical waste cost per day per bed (Rs.)",
+    "Value": 5,
+    "Unit / Notes": "per agreement terms"
+  },
+  {
+    "Department": "Biomedical Waste (Outsourced)",
+    "Item / Parameter": "Consumables cost per day per bed (Rs.)",
+    "Value": 3,
+    "Unit / Notes": ""
+  },
+  {
+    "Department": "Dietics",
+    "Item / Parameter": "Cost per meal per day per bed (Rs., incl. 18% GST)",
+    "Value": 499.14,
+    "Unit / Notes": "Base Rs.423 + 18% GST"
+  }
+]

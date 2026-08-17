@@ -1,0 +1,342 @@
+[
+  {
+    "department": "OT",
+    "file": "1-OT.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Total cost of the building (in Rs. )": 1610807000,
+      "Total Area square feet": 220574.7276,
+      "Specific areas": 15942.508324194072,
+      "Area for OT": 15942.508324194072,
+      "Cost per square feet (in Rs. )": 7302.772251049127,
+      "Cost of OT": 116424507.40204418,
+      "Total OT Building Cost": 116424507.40204418,
+      "Life of the asset (in years)": 30,
+      "Cost per year": 3880816.9134014724,
+      "Cost per month": 323401.4094501227,
+      "Number of days in the month": 22,
+      "Cost Per day": 14700.064065914667,
+      "Standard Hours per day": 12,
+      "Cost per hour": 1225.0053388262222,
+      "Hours per Surgery": "Cost Per Surgery",
+      "O.T Building cost for CABG On pump": 7350.032032957333
+    }
+  },
+  {
+    "department": "IT",
+    "file": "10-IT.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Area square feet": 374.93195353070786,
+      "Total area to specific dept": 374.93195353070786,
+      "Cost per square feet (in Rs. )": 7302.772251049127,
+      "Cost of building for IT (in Rs. )": 2738042.666275694,
+      "Life of the asset (in years)": 30,
+      "Cost per year": 91268.08887585647,
+      "Cost per month": 7605.674072988039,
+      "Cost Per Day": 253.52246909960132,
+      "Per Bed": 0.7222862367510009,
+      "Sl. No": "Total Cost",
+      "Cost for CABG on-pump": 5.056003657257007
+    }
+  },
+  {
+    "department": "Operations & Admin",
+    "file": "13- Operations & Admin.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Area square feet": 22029.852301621693,
+      "Total area to specific dept": 22029.852301621693,
+      "Cost per square feet (in Rs. )": 7302.772251049127,
+      "Cost of Operations & Admin (in Rs. )": 160878994.08299363,
+      "Life of the asset (in years)": 30,
+      "Building cost per year": 5362633.136099787,
+      "Building cost per month": 446886.0946749823,
+      "Building cost per day": 20313.00430340829,
+      "Building cost per day/bed": 57.87180713221735,
+      "Particulars": "Cost per surgery",
+      "Building cost CABG On pump": 405.10264992552146
+    }
+  },
+  {
+    "department": "Finance & Accounts",
+    "file": "14 -Finance & Accounts.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Area square feet": 220.44893458593924,
+      "Total area to specific dept": 220.44893458593924,
+      "Cost per square feet (in Rs. )": 7302.772251049127,
+      "Cost of Finance (in Rs. )": 1609888.3622675412,
+      "Life of the asset (in years)": 30,
+      "Cost per year (in Rs. )": 53662.94540891804,
+      "Cost per month (in Rs. )": 4471.912117409837,
+      "Cost Per Day (in Rs. )": 203.26873260953806,
+      "Building cost per Day/Bed": 0.5791131983177723,
+      "Particulars": "Total Cost",
+      "Building cost CABG On pump": 4.053792388224406
+    }
+  },
+  {
+    "department": "Purchase & Stores",
+    "file": "15-Purchase & Stores.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Area square feet": 1727.7289705826242,
+      "Total area to specific dept": 1727.7289705826242,
+      "Cost per square feet (in Rs. )": 7302.772251049127,
+      "Cost of Purchase & Stores (in Rs. )": 12617211.183704462,
+      "Life of the asset (in Years)": 30,
+      "Cost of building per year": 420573.7061234821,
+      "Cost of building per month": 35047.808843623505,
+      "Cost of building per day": 1593.0822201647047,
+      "Building cost per day": 1593.0822201647047,
+      "Total no of Beds": 351,
+      "Building cost per day/bed": 17.506398023787963,
+      "Particulars": "Cost per Surgery",
+      "Building cost CABG On pump": 122.54478616651573
+    }
+  },
+  {
+    "department": "HR",
+    "file": "16-HR.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Area square feet": 1772.029713418076,
+      "Total area to specific dept": 1772.029713418076,
+      "Cost per square feet (in Rs. )": 7302.772251049127,
+      "Cost of Finance (in Rs. )": 12940729.41918406,
+      "Life of the asset (in years)": 30,
+      "Cost per year (in Rs. )": 431357.64730613533,
+      "Cost per month (in Rs. )": 35946.47060884461,
+      "Cost Per Day (in Rs. )": 1633.9304822202096,
+      "Building cost per Day/Bed": 4.655072598917976,
+      "Particulars": "Total Cost",
+      "Building cost CABG On pump": 32.585508192425834
+    }
+  },
+  {
+    "department": "MRD",
+    "file": "18-MRD.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Area square feet": 1210.8869708356851,
+      "Total area to specific dept": 1210.8869708356851,
+      "Cost per square feet (in Rs. )": 7302.772251049127,
+      "Cost of MRD (in Rs. )": 8842831.769775774,
+      "Life of the asset (in years)": 30,
+      "Building cost per year (in Rs. )": 294761.0589925258,
+      "Building cost per month (in Rs. )": 24563.42158271048,
+      "Building cost per day (in Rs. )": 1116.5191628504765,
+      "Building cost per day": 1116.5191628504765,
+      "Building cost per day/bed": 3.1809662759272834,
+      "Particulars": "Building  cost per Surgery",
+      "Building cost CABG On pump": 22.266763931490985
+    }
+  },
+  {
+    "department": "ICU",
+    "file": "2-ICU.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Total cost of the building (in Rs. )": 1610807000,
+      "Total Area square feet": 220574.72759999998,
+      "Specific areas": 6502.315364244845,
+      "Area for ICU": 6502.315364244845,
+      "Cost per square feet (in Rs. )": 7302.772251049128,
+      "Cost of ICU (in Rs. )": 47484928.20957766,
+      "Other specific cost": 0,
+      "Total ICU Building Cost (in Rs. )": 47484928.20957766,
+      "Life of the asset (in Years)": 30,
+      "Cost per year": 1582830.9403192552,
+      "Cost per month": 131902.57835993794,
+      "Cost per day": 4396.752611997931,
+      "No of days stay in ICU": "Cost Per Surgery",
+      "ICU Building cost for CABG On-pump": 1884.3225479991133
+    }
+  },
+  {
+    "department": "Housekeeping",
+    "file": "22-Housekeeping.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Area square feet": 1772.029713418076,
+      "Total area to specific dept": 1772.029713418076,
+      "Cost per square feet (in Rs. )": 7302.772251049127,
+      "Cost of Hosekeeping (in Rs. )": 12940729.41918406,
+      "Life of the asset (in years)": 30,
+      "Building cost per year (in Rs. )": 431357.64730613533,
+      "Building cost per month (Rs. )": 35946.47060884461,
+      "Building cost per day (Rs. )": 1633.9304822202096,
+      "Building cost per day/bed": 4.655072598917976,
+      "Particulars": "Building cost per surgery",
+      "Building cost CABG On pump": 32.585508192425834
+    }
+  },
+  {
+    "department": "Building cost",
+    "file": "24- Building cost.xlsx",
+    "sheet": "Building",
+    "fields": {
+      "Area square feet": 72885.17483006832,
+      "Total area to specific dept": 220574.72759999998,
+      "Cost per square feet": 7302.772251049127,
+      "Cost of Common Building": 1610806999.9999998,
+      "Life of the asset": "years",
+      "Cost per year": 53693566.66666666,
+      "Cost per month": 4474463.888888888,
+      "Cost Per Day": 203384.7222222222,
+      "Per Day": 203384.7222222222,
+      "Total no of Beds": 351,
+      "Per Day Per Bed": 579.4436530547641,
+      "No of Stay": "Total cost",
+      "Building cost CABG On pump": 4056.105571383349
+    }
+  },
+  {
+    "department": "Laboratory",
+    "file": "3- Laboratory.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Total cost of the building (in Rs. )": 1610807000,
+      "Total Area square feet": 220574.72759999998,
+      "Specific areas": 3616.786479657685,
+      "Area for Lab": 3616.786479657685,
+      "Cost per square feet (in Rs. )": 7302.772251049128,
+      "Cost of Lab (in Rs. )": 26412567.9416138,
+      "Other specific cost": 0,
+      "Total Lab Building Cost (in Rs. )": 26412567.9416138,
+      "Life of the asset (in Years)": 30,
+      "Cost per year": 880418.9313871267,
+      "Cost per month": 73368.24428226055,
+      "No. of Test done Monthly": "Total No. of Test Done in CABG",
+      "Lab Building cost for CABG On-pump": 28
+    }
+  },
+  {
+    "department": "Radiology",
+    "file": "4-Radiology.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Total cost of the building (in Rs. )": 0,
+      "Total Area square feet": 0,
+      "Specific areas": 0,
+      "Common area specific to depts": 0,
+      "Area": 0,
+      "Cost per square feet (in Rs. )": "#DIV/0!",
+      "Cost of OT": "#DIV/0!",
+      "other specific cost": 0,
+      "Total Lab Building Cost": "#DIV/0!",
+      "Life of the asset (in years)": 30,
+      "Cost per year": "#DIV/0!",
+      "Cost per month": "#DIV/0!",
+      "Average tests per annum": 0
+    }
+  },
+  {
+    "department": "Physiotherapy",
+    "file": "5-Physiotherapy.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Total cost of the building (in Rs. )": 1610807000,
+      "Total Area square feet": 220574.72759999998,
+      "Specific areas": 974.6163423799417,
+      "Area for Physiotherapy": 974.6163423799417,
+      "Cost per square feet (in Rs.)": 7302.772251049128,
+      "Cost of Physiotherapy (in Rs. )": 7117401.180551234,
+      "other specific cost": 0,
+      "Total Physiotherapy Building Cost": 7117401.180551234,
+      "Life of the asset (in years)": 30,
+      "Cost per year": 237246.70601837445,
+      "No of days in a year": 300,
+      "Cost per day": 790.8223533945815,
+      "No of hrs per day": 7,
+      "Cost per hr": 112.97462191351164,
+      "Particulars": "Cost Per hr",
+      "Building cost CABG On pump": 451.89848765404656
+    }
+  },
+  {
+    "department": "Blood Bank",
+    "file": "6-Blood Bank.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Total cost of the building (in Rs. )": 1610807000,
+      "Total Area square feet": 220574.72759999998,
+      "Specific areas": 4576.635907759142,
+      "Area for ICU": 4576.635907759142,
+      "Cost per square feet (in Rs. )": 7302.772251049128,
+      "Cost of ICU (in Rs. )": 33422129.7103385,
+      "Other specific cost": 0,
+      "Total ICU Building Cost (in Rs. )": 33422129.7103385,
+      "Life of the asset (in Years)": 30,
+      "Cost per year": 1114070.9903446166,
+      "Cost per month": 92839.24919538472,
+      "No of days per month": 22,
+      "Cost per day": 4219.965872517488,
+      "No of units used per day": "Cost Per unit",
+      "POW Building cost for CABG On-pump": 84.39931745034976
+    }
+  },
+  {
+    "department": "Pharmacy",
+    "file": "7-Pharmacy.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Total cost of the building (in Rs. )": 1610807000,
+      "Total Area square feet": 220574.72759999998,
+      "Specific areas": 1018.9170852153936,
+      "Area for Pharmacy": 1018.9170852153936,
+      "Cost per square feet (in Rs.)": 7302.772251049128,
+      "Cost of Pharmacy (in Rs. )": 7440919.416030836,
+      "other specific cost": 0,
+      "Total Pharmacy Building Cost": 7440919.416030836,
+      "Life of the asset (in years)": 30,
+      "Cost per year": 248030.64720102787,
+      "Cost per day": 826.7688240034262,
+      "No of Beds in ECB": 351,
+      "Cost per day/Bed": 2.355466735052496,
+      "Particulars": "Cost Per Surgery",
+      "Building cost CABG On pump": 16.488267145367473
+    }
+  },
+  {
+    "department": "Ward",
+    "file": "8-Ward.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Total cost of the building (in Rs. )": 1610807000,
+      "Total Area square feet": 220574.72759999998,
+      "Specific areas": 37987.8869814,
+      "Area for General Ward": 37987.8869814,
+      "Cost per square feet (in Rs.)": 7302.772251049128,
+      "Cost of General Ward (in Rs.)": 277416886.9237583,
+      "other specific cost": 0,
+      "Total Ward Building Cost (in Rs. )": 277416886.9237583,
+      "Life of the asset (in Years)": 30,
+      "Cost per year (in Rs. )": 9247229.564125277,
+      "Cost per day (in Rs. )": 30824.098547084257,
+      "No of Beds in Ward": 195,
+      "Cost per day/Bed": 158.07230024145773,
+      "Particulars": "Cost Per Surgery",
+      "Building cost CABG On pump": 1106.506101690204
+    }
+  },
+  {
+    "department": "CSSD",
+    "file": "9-CSSD.xlsx",
+    "sheet": "Building cost",
+    "fields": {
+      "Area square feet": 2934.850378277296,
+      "Total area to specific dept": 2934.850378277296,
+      "Cost per square feet (in Rs. )": 7302.772251049127,
+      "Cost of CSSD (in Rs.)": 21432543.90346447,
+      "Life of the asset (in years)": 30,
+      "Cost per year": 714418.1301154824,
+      "Cost per month": 59534.8441762902,
+      "Cost Per Day (in 12 Hrs)": 2706.129280740464,
+      "Per Hour": 225.51077339503865,
+      "Particulars": "Building Cost",
+      "Building cost CABG On pump": 1353.064640370232
+    }
+  }
+]

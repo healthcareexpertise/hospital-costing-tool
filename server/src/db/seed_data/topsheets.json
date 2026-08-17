@@ -1,0 +1,4496 @@
+{
+  "CARDIO": {
+    "Angioplasty": {
+      "procedure": "Angioplasty",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 23302.91901260504,
+          "MATERIAL": 28420.806131555553,
+          "MACHINERY": 2774.636690294567,
+          "EXPENSES": null,
+          "UTILITIES": 287.0549986333393,
+          "TOTAL": 54785.4168330885
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 2308.4250457516337,
+          "MATERIAL": 125.63001866392719,
+          "MACHINERY": 193.74687765166345,
+          "EXPENSES": null,
+          "UTILITIES": 284.34239958216625,
+          "TOTAL": 2912.1443416493908
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 252.80223561643828,
+          "MATERIAL": 12.143445333884724,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 16.85674478729419,
+          "TOTAL": 281.80242573761717
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 2234.963499999999,
+          "MATERIAL": 12.071852614481408,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 796.6363803962455,
+          "TOTAL": 3043.671733010726
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 0
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 37.193019178082196,
+          "MATERIAL": 9.059937345092887,
+          "MACHINERY": 94.26841977857009,
+          "EXPENSES": null,
+          "UTILITIES": 4.359093378272966,
+          "TOTAL": 144.88046968001817
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 6.332581272283731,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 6.332581272283731
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 0.6081463564860736,
+          "EXPENSES": null,
+          "UTILITIES": 1.021921861820833,
+          "TOTAL": 1.6300682183069066
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 411.0569095890411,
+          "MATERIAL": 5.136619012664771,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 7.795405789850809,
+          "TOTAL": 423.98893439155665
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 94.1134684931507,
+          "MATERIAL": 0.549489205479452,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 5.833284667340491,
+          "TOTAL": 100.49624236597064
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 61.70736438356165,
+          "MATERIAL": 1.0130013304150944,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 29.80795899158322,
+          "TOTAL": 92.52832470555995
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 37.19148493150685,
+          "MATERIAL": 1.8970803868493153,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.093436797077528,
+          "TOTAL": 41.1820021154337
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 37.25473972602741,
+          "MATERIAL": 0.2499251779788059,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 6.127377452559813,
+          "TOTAL": 43.632042356566025
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 306.65802739726024,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 9.294572998757257,
+          "TOTAL": 315.9526003960175
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 187.9685480953275,
+          "MATERIAL": 0.926008317890928,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 188.89455641321842
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 140.62575691199987,
+          "UTILITIES": null,
+          "TOTAL": 140.62575691199987
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 281.294325479452,
+          "MATERIAL": 69.59116333420906,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1.3323561643835615,
+          "TOTAL": 352.21784497804464
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 38.92042739726028,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 13.899649714993437,
+          "UTILITIES": null,
+          "TOTAL": 52.82007711225372
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 239.73888219178087,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 189.09157490410962,
+          "UTILITIES": 52.359874510249746,
+          "TOTAL": 481.19033160614026
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 82.0534037735849,
+          "MATERIAL": 187.38160584130267,
+          "MACHINERY": 1.9741906680427852,
+          "EXPENSES": null,
+          "UTILITIES": 9.618911608338237,
+          "TOTAL": 281.0281118912686
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 71.57262010855518,
+          "TOTAL": 71.57262010855518
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 20.434002627134547,
+          "UTILITIES": null,
+          "TOTAL": 20.434002627134547
+        }
+      ],
+      "total_cost": 63782.441900636564
+    },
+    "CORONARY ANGIOGRAM": {
+      "procedure": "CORONARY ANGIOGRAM",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 2517.6396708683474,
+          "MATERIAL": 1452.5491198947989,
+          "MACHINERY": 920.8320614570616,
+          "EXPENSES": 0.022209074074074072,
+          "UTILITIES": 95.68499954444646,
+          "TOTAL": 4986.728060838729
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 1014.8083485838779,
+          "MATERIAL": 5587.147278887976,
+          "MACHINERY": 64.58229255055448,
+          "EXPENSES": null,
+          "UTILITIES": 94.78079986072208,
+          "TOTAL": 6761.318719883131
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 84.2674118721461,
+          "MATERIAL": 4.047815111294908,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 5.618914929098063,
+          "TOTAL": 93.93414191253908
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 0
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 0
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 12.39767305936073,
+          "MATERIAL": 3.0199791150309627,
+          "MACHINERY": 31.422806592856695,
+          "EXPENSES": null,
+          "UTILITIES": 1.4530311260909887,
+          "TOTAL": 48.293489893339384
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 2.110860424094577,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 2.110860424094577
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 0.20271545216202452,
+          "EXPENSES": null,
+          "UTILITIES": 0.34064062060694433,
+          "TOTAL": 0.5433560727689688
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 137.0189698630137,
+          "MATERIAL": 1.7122063375549237,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.5984685966169367,
+          "TOTAL": 141.32964479718555
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 31.371156164383567,
+          "MATERIAL": 0.18316306849315067,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1.9444282224468306,
+          "TOTAL": 33.498747455323546
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 20.569121461187216,
+          "MATERIAL": 0.3376671101383648,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 9.93598633052774,
+          "TOTAL": 30.84277490185332
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 12.397161643835616,
+          "MATERIAL": 0.6323601289497718,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.6978122656925093,
+          "TOTAL": 13.727334038477897
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 12.418246575342469,
+          "MATERIAL": 0.08330839265960197,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.042459150853271,
+          "TOTAL": 14.54401411885534
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 102.21934246575341,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 3.0981909995857526,
+          "TOTAL": 105.31753346533917
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 62.65618269844249,
+          "MATERIAL": 0.308669439296976,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 62.96485213773947
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 46.87525230399996,
+          "UTILITIES": null,
+          "TOTAL": 46.87525230399996
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 0,
+          "MATERIAL": 23.197054444736352,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.4441187214611872,
+          "TOTAL": 23.64117316619754
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 12.97347579908676,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 4.633216571664479,
+          "UTILITIES": null,
+          "TOTAL": 17.60669237075124
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 79.91296073059362,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 63.03052496803654,
+          "UTILITIES": 17.45329150341658,
+          "TOTAL": 160.39677720204674
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 27.35113459119497,
+          "MATERIAL": 62.46053528043422,
+          "MACHINERY": 0.6580635560142617,
+          "EXPENSES": null,
+          "UTILITIES": 3.2063038694460793,
+          "TOTAL": 93.67603729708952
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 23.857540036185064,
+          "TOTAL": 23.857540036185064
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 6.8113342090448485,
+          "UTILITIES": null,
+          "TOTAL": 6.8113342090448485
+        }
+      ],
+      "total_cost": 12668.018336524692
+    },
+    "DEVICE CLOSURE": {
+      "procedure": "DEVICE CLOSURE",
+      "rows": [
+        {
+          "department": "PROCEDURE ROOM",
+          "MANPOWER": 14166.32592997199,
+          "MATERIAL": 6209.099026666667,
+          "MACHINERY": 5549.273380589134,
+          "EXPENSES": null,
+          "UTILITIES": 574.1099972666786,
+          "TOTAL": 26498.808334494468
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 2327.322008714597,
+          "MATERIAL": 125.63001866392719,
+          "MACHINERY": 193.74687765166345,
+          "EXPENSES": null,
+          "UTILITIES": 284.34239958216625,
+          "TOTAL": 2931.041304612354
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 252.80223561643828,
+          "MATERIAL": 12.143445333884724,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 16.85674478729419,
+          "TOTAL": 281.80242573761717
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 2592.763499999999,
+          "MATERIAL": 12.071852614481408,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 796.6363803962455,
+          "TOTAL": 3401.471733010726
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 0
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 37.193019178082196,
+          "MATERIAL": 9.059937345092887,
+          "MACHINERY": 94.26841977857009,
+          "EXPENSES": null,
+          "UTILITIES": 4.359093378272966,
+          "TOTAL": 144.88046968001817
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 6.332581272283731,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 6.332581272283731
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 0.6081463564860736,
+          "EXPENSES": null,
+          "UTILITIES": 1.021921861820833,
+          "TOTAL": 1.6300682183069066
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 411.0569095890411,
+          "MATERIAL": 5.136619012664771,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 7.795405789850809,
+          "TOTAL": 423.98893439155665
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 94.1134684931507,
+          "MATERIAL": 0.549489205479452,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 5.833284667340491,
+          "TOTAL": 100.49624236597064
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 61.70736438356165,
+          "MATERIAL": 1.0130013304150944,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 29.80795899158322,
+          "TOTAL": 92.52832470555995
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 37.19148493150685,
+          "MATERIAL": 1.8970803868493153,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.093436797077528,
+          "TOTAL": 41.1820021154337
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 37.25473972602741,
+          "MATERIAL": 0.2499251779788059,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 6.127377452559813,
+          "TOTAL": 43.632042356566025
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 306.65802739726024,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 9.294572998757257,
+          "TOTAL": 315.9526003960175
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 187.9685480953275,
+          "MATERIAL": 0.926008317890928,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 188.89455641321842
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 140.62575691199987,
+          "UTILITIES": null,
+          "TOTAL": 140.62575691199987
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 281.294325479452,
+          "MATERIAL": 69.59116333420906,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1.3323561643835615,
+          "TOTAL": 352.21784497804464
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 38.92042739726028,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 13.899649714993437,
+          "UTILITIES": null,
+          "TOTAL": 52.82007711225372
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 239.73888219178087,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 189.09157490410962,
+          "UTILITIES": 52.359874510249746,
+          "TOTAL": 481.19033160614026
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 82.0534037735849,
+          "MATERIAL": 187.38160584130267,
+          "MACHINERY": 1.9741906680427852,
+          "EXPENSES": null,
+          "UTILITIES": 9.618911608338237,
+          "TOTAL": 281.0281118912686
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 71.57262010855518,
+          "TOTAL": 71.57262010855518
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 20.434002627134547,
+          "UTILITIES": null,
+          "TOTAL": 20.434002627134547
+        }
+      ],
+      "total_cost": 35872.53036500549
+    },
+    "ECHO": {
+      "procedure": "ECHO",
+      "rows": [
+        {
+          "department": "Procedure room",
+          "MANPOWER": 555.2929861111111,
+          "MATERIAL": 21.6872708,
+          "MACHINERY": 27.187188663766793,
+          "EXPENSES": null,
+          "UTILITIES": 4.053064903440177,
+          "TOTAL": 608.220510478318
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 0
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 2.6333566210045674,
+          "MATERIAL": 0.00025109217542279095,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.14047287322745156,
+          "TOTAL": 2.774080586407442
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 0,
+          "MATERIAL": 0,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0,
+          "TOTAL": 0
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 0
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 0.3202131193474977,
+          "MATERIAL": 0.09437434734471759,
+          "MACHINERY": 0.32732090200892394,
+          "EXPENSES": null,
+          "UTILITIES": 0.03632577815227472,
+          "TOTAL": 0.7782341468534139
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 0.021988129417651842,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 0.021988129417651842
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 0.002111619293354422,
+          "EXPENSES": null,
+          "UTILITIES": 0.008516015515173607,
+          "TOTAL": 0.01062763480852803
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 4.281842808219179,
+          "MATERIAL": 0.053506448048591365,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.03320038734483829,
+          "TOTAL": 4.368549643612608
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 0.9803486301369863,
+          "MATERIAL": 0.005723848173515981,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.04861070556117076,
+          "TOTAL": 1.034683183871673
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 0.6427850456621006,
+          "MATERIAL": 2.5484310199121877e-05,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.24839965826319346,
+          "TOTAL": 0.8912101882354931
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 0.38741130136986307,
+          "MATERIAL": 3.4649870079439554e-05,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.01744530664231273,
+          "TOTAL": 0.4048912578822553
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 0.38807020547945204,
+          "MATERIAL": 5.167747283097563e-06,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.021770873478331485,
+          "TOTAL": 0.40984624670506664
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 3.194354452054794,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.07745477498964383,
+          "TOTAL": 3.271809227044438
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 1.958005709326328,
+          "MATERIAL": 1.9147238415940614e-05,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 1.9580248565647438
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 0.4882838781666662,
+          "UTILITIES": null,
+          "TOTAL": 0.4882838781666662
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 4.395223835616438,
+          "MATERIAL": 0.0010447162819922546,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.009858849020521927,
+          "TOTAL": 4.406127400918952
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 0.40542111872146125,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 0.048262672621504916,
+          "UTILITIES": null,
+          "TOTAL": 0.45368379134296616
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 2.4972800228310494,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 1.5757631242009134,
+          "UTILITIES": 0.43633228758541454,
+          "TOTAL": 4.509375434617377
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 0.8547229559748429,
+          "MATERIAL": 1.9518917275135697,
+          "MACHINERY": 0.02056448612544567,
+          "EXPENSES": null,
+          "UTILITIES": 0.08015759673615198,
+          "TOTAL": 2.90733676635001
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.2485160420435944,
+          "TOTAL": 0.2485160420435944
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 0.07095139801088383,
+          "UTILITIES": null,
+          "TOTAL": 0.07095139801088383
+        }
+      ],
+      "total_cost": 637.2287302911717
+    },
+    "PERMANENT PACEMAKER IMPLANTATION": {
+      "procedure": "PERMANENT PACEMAKER IMPLANTATION",
+      "rows": [
+        {
+          "department": "PROCEDURE ROOM",
+          "MANPOWER": 24459.998818860877,
+          "MATERIAL": 2995.9629600000003,
+          "MACHINERY": 5566.391722512211,
+          "EXPENSES": null,
+          "UTILITIES": 574.1099972666786,
+          "TOTAL": 33596.463498639765
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 1062.808348583878,
+          "MATERIAL": 7516.691289663926,
+          "MACHINERY": 193.74687765166345,
+          "EXPENSES": null,
+          "UTILITIES": 284.34239958216625,
+          "TOTAL": 9057.588915481634
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 421.3370593607305,
+          "MATERIAL": 20.239075556474543,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 28.09457464549031,
+          "TOTAL": 469.6707095626953
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 5109.926999999998,
+          "MATERIAL": 24.143705228962816,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1593.272760792491,
+          "TOTAL": 6727.343466021452
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 0
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 61.98836529680365,
+          "MATERIAL": 15.099895575154815,
+          "MACHINERY": 157.11403296428347,
+          "EXPENSES": null,
+          "UTILITIES": 7.265155630454943,
+          "TOTAL": 241.4674494666969
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 10.554302120472885,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 10.554302120472885
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 1.0135772608101226,
+          "EXPENSES": null,
+          "UTILITIES": 1.7032031030347214,
+          "TOTAL": 2.716780363844844
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 685.0948493150685,
+          "MATERIAL": 8.56103168777462,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 12.992342983084683,
+          "TOTAL": 706.6482239859278
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 156.85578082191785,
+          "MATERIAL": 0.9158153424657534,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 9.722141112234153,
+          "TOTAL": 167.49373727661774
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 102.84560730593608,
+          "MATERIAL": 1.688335550691824,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 49.6799316526387,
+          "TOTAL": 154.2138745092666
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 61.98580821917808,
+          "MATERIAL": 3.161800644748859,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 3.4890613284625465,
+          "TOTAL": 68.63667019238949
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 62.09123287671234,
+          "MATERIAL": 0.41654196329800985,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 10.212295754266353,
+          "TOTAL": 72.7200705942767
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 511.09671232876707,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 15.490954997928764,
+          "TOTAL": 526.5876673266959
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 313.28091349221245,
+          "MATERIAL": 1.54334719648488,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 314.82426068869734
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 234.3762615199998,
+          "UTILITIES": null,
+          "TOTAL": 234.3762615199998
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 703.2358136986301,
+          "MATERIAL": 115.98527222368176,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.2205936073059362,
+          "TOTAL": 821.4416795296178
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 64.8673789954338,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 23.166082858322397,
+          "UTILITIES": null,
+          "TOTAL": 88.0334618537562
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 399.5648036529681,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 315.1526248401827,
+          "UTILITIES": 87.2664575170829,
+          "TOTAL": 801.9838860102337
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 136.75567295597486,
+          "MATERIAL": 312.30267640217113,
+          "MACHINERY": 3.2903177800713084,
+          "EXPENSES": null,
+          "UTILITIES": 16.031519347230397,
+          "TOTAL": 468.38018648544767
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 119.28770018092533,
+          "TOTAL": 119.28770018092533
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 34.05667104522424,
+          "UTILITIES": null,
+          "TOTAL": 34.05667104522424
+        }
+      ],
+      "total_cost": 54684.48947285563
+    },
+    "TMT": {
+      "procedure": "TMT",
+      "rows": [
+        {
+          "department": "Procedure room",
+          "MANPOWER": 585.9022222222222,
+          "MATERIAL": 46.475125999999996,
+          "MACHINERY": 87.57101449938949,
+          "EXPENSES": null,
+          "UTILITIES": 53.245785385710384,
+          "TOTAL": 773.1941481073222
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 0,
+          "MATERIAL": 0,
+          "MACHINERY": 0,
+          "EXPENSES": null,
+          "UTILITIES": 0,
+          "TOTAL": 0
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 10.53342648401827,
+          "MATERIAL": 0.0010043687016911638,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.5618914929098062,
+          "TOTAL": 11.096322345629767
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 0,
+          "MATERIAL": 0,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0,
+          "TOTAL": 0
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 0
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 0.3202131193474977,
+          "MATERIAL": 0.37749738937887034,
+          "MACHINERY": 1.3092836080356958,
+          "EXPENSES": null,
+          "UTILITIES": 0.14530311260909887,
+          "TOTAL": 2.1522972293711624
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 0.08795251767060737,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 0.08795251767060737
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 0.008446477173417687,
+          "EXPENSES": null,
+          "UTILITIES": 0.03406406206069443,
+          "TOTAL": 0.04251053923411212
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 17.127371232876715,
+          "MATERIAL": 0.21402579219436546,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.12298226300342627,
+          "TOTAL": 17.464379288074507
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 3.921394520547945,
+          "MATERIAL": 0.022895392694063925,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.19444282224468304,
+          "TOTAL": 4.138732735486692
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 2.5711401826484024,
+          "MATERIAL": 0.00010193724079648751,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.9935986330527738,
+          "TOTAL": 3.5648407529419726
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 1.5496452054794523,
+          "MATERIAL": 0.00013859948031775822,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.06978122656925093,
+          "TOTAL": 1.619565031529021
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 1.5522808219178081,
+          "MATERIAL": 2.0670989132390253e-05,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.07887835503786784,
+          "TOTAL": 1.6311798479448083
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 12.777417808219177,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.3098190999585753,
+          "TOTAL": 13.087236908177752
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 7.832022837305312,
+          "MATERIAL": 7.658895366376245e-05,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 7.832099426258975
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 1.9531355126666647,
+          "UTILITIES": null,
+          "TOTAL": 1.9531355126666647
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 17.58089534246575,
+          "MATERIAL": 0.0041788651279690186,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.03943539608208771,
+          "TOTAL": 17.624509603675808
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 1.621684474885845,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 0.19305069048601967,
+          "UTILITIES": null,
+          "TOTAL": 1.8147351653718646
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 9.989120091324198,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 6.303052496803653,
+          "UTILITIES": 1.7453291503416581,
+          "TOTAL": 18.03750173846951
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 3.4188918238993717,
+          "MATERIAL": 7.807566910054279,
+          "MACHINERY": 0.08225794450178268,
+          "EXPENSES": null,
+          "UTILITIES": 0.32063038694460794,
+          "TOTAL": 11.62934706540004
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.9940641681743776,
+          "TOTAL": 0.9940641681743776
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 0.28380559204353534,
+          "UTILITIES": null,
+          "TOTAL": 0.28380559204353534
+        }
+      ],
+      "total_cost": 888.2483635754435
+    }
+  },
+  "NEUROSURG": {
+    "BURR HOLE EVACUATION OF SDH": {
+      "procedure": "BURR HOLE EVACUATION OF SDH",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 39521.02271895425,
+          "MATERIAL": 4007.2620087247783,
+          "MACHINERY": 1068.6004976597476,
+          "EXPENSES": 377.2692322618555,
+          "UTILITIES": 212.97236169938012,
+          "TOTAL": 45187.12681930001
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 3003.03477124183,
+          "MATERIAL": 2516.2795889199397,
+          "MACHINERY": 65.55047984344421,
+          "EXPENSES": null,
+          "UTILITIES": 189.53089113651674,
+          "TOTAL": 5774.395731141731
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 421.3370593607305,
+          "MATERIAL": 20.239075556474543,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 28.09457464549031,
+          "TOTAL": 469.6707095626953
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 5429.926999999998,
+          "MATERIAL": 4684.625401228963,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1593.272760792491,
+          "TOTAL": 11707.825162021452
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.5129708776463,
+          "MATERIAL": 527.1467185369248,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.42992880389623,
+          "TOTAL": 978.4796182184674
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 61.98836529680365,
+          "MATERIAL": 15.099895575154815,
+          "MACHINERY": 157.11403296428347,
+          "EXPENSES": null,
+          "UTILITIES": 7.265155630454943,
+          "TOTAL": 241.4674494666969
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 10.554302120472885,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 10.554302120472885
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 1.0135772608101226,
+          "EXPENSES": null,
+          "UTILITIES": 1.7032031030347214,
+          "TOTAL": 2.716780363844844
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 685.0948493150685,
+          "MATERIAL": 8.56103168777462,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 12.992342983084683,
+          "TOTAL": 706.6482239859278
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 156.85578082191785,
+          "MATERIAL": 0.9158153424657534,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 9.722141112234153,
+          "TOTAL": 167.49373727661774
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 102.84560730593608,
+          "MATERIAL": 1.688335550691824,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 49.6799316526387,
+          "TOTAL": 154.2138745092666
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 61.98580821917808,
+          "MATERIAL": 3.161800644748859,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 3.4890613284625465,
+          "TOTAL": 68.63667019238949
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 62.09123287671234,
+          "MATERIAL": 0.41654196329800985,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 10.212295754266353,
+          "TOTAL": 72.7200705942767
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 511.09671232876707,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 15.490954997928764,
+          "TOTAL": 526.5876673266959
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 313.28091349221245,
+          "MATERIAL": 1.54334719648488,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 314.82426068869734
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 234.3762615199998,
+          "UTILITIES": null,
+          "TOTAL": 234.3762615199998
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 703.2358136986301,
+          "MATERIAL": 115.98527222368176,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.2205936073059362,
+          "TOTAL": 821.4416795296178
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 64.8673789954338,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 23.166082858322387,
+          "UTILITIES": null,
+          "TOTAL": 88.03346185375618
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 399.5648036529681,
+          "MATERIAL": 315.1526248401827,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 87.2664575170829,
+          "TOTAL": 801.9838860102337
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 136.75567295597486,
+          "MATERIAL": 312.30267640217113,
+          "MACHINERY": 3.2903177800713084,
+          "EXPENSES": null,
+          "UTILITIES": 16.031519347230397,
+          "TOTAL": 468.38018648544767
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 119.28770018092533,
+          "TOTAL": 119.28770018092533
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 34.05667104522424,
+          "UTILITIES": null,
+          "TOTAL": 34.05667104522424
+        }
+      ],
+      "total_cost": 68950.92092339443
+    },
+    "CRANIOPLASTY": {
+      "procedure": "CRANIOPLASTY",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 30911.789758169933,
+          "MATERIAL": 5052.00520872478,
+          "MACHINERY": 1870.0508709045585,
+          "EXPENSES": 388.7966093986075,
+          "UTILITIES": 388.7966093986075,
+          "TOTAL": 38611.43905659649
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 3003.0347712418334,
+          "MATERIAL": 1522.7416309199393,
+          "MACHINERY": 65.55047984344421,
+          "EXPENSES": null,
+          "UTILITIES": 189.5308911365166,
+          "TOTAL": 4780.857773141734
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 168.534823744292,
+          "MATERIAL": 8.09563022258982,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 11.2378298581961,
+          "TOTAL": 187.86828382507792
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 1357.4817499999995,
+          "MATERIAL": 807.7122593072407,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 398.31819019812275,
+          "TOTAL": 2563.5121995053632
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.512970877646,
+          "MATERIAL": 527.146718536925,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.4299288038962,
+          "TOTAL": 978.4796182184673
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 24.7953461187215,
+          "MATERIAL": 6.03995823006193,
+          "MACHINERY": 62.8456131857134,
+          "EXPENSES": null,
+          "UTILITIES": 2.90606225218198,
+          "TOTAL": 96.58697978667881
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 4.22172084818915,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 4.22172084818915
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 0.405430904324049,
+          "EXPENSES": null,
+          "UTILITIES": 0.681281241213889,
+          "TOTAL": 1.086712145537938
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 274.037939726027,
+          "MATERIAL": 3.42441267510985,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 5.19693719323387,
+          "TOTAL": 282.6592895943707
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 62.7423123287671,
+          "MATERIAL": 0.366326136986301,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 3.88885644489366,
+          "TOTAL": 66.99749491064706
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 41.1382429223744,
+          "MATERIAL": 0.67533422027673,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 19.8719726610555,
+          "TOTAL": 61.685549803706635
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 24.7943232876712,
+          "MATERIAL": 1.26472025789954,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1.39562453138502,
+          "TOTAL": 27.454668076955763
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 24.8364931506849,
+          "MATERIAL": 0.166616785319204,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 4.08491830170654,
+          "TOTAL": 29.088028237710642
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 204.438684931507,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 6.19638199917151,
+          "TOTAL": 210.6350669306785
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 125.312365396885,
+          "MATERIAL": 0.617338878593952,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 125.92970427547895
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 93.7505046079999,
+          "UTILITIES": null,
+          "TOTAL": 93.7505046079999
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 281.294325479452,
+          "MATERIAL": 46.3941088894727,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.888237442922374,
+          "TOTAL": 328.5766718118471
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 25.9469515981735,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 9.26643314332896,
+          "UTILITIES": null,
+          "TOTAL": 35.21338474150246
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 159.825921461187,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 126.061049936073,
+          "UTILITIES": 34.9065830068332,
+          "TOTAL": 320.79355440409324
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 54.7022691823899,
+          "MATERIAL": 124.921070560868,
+          "MACHINERY": 1.31612711202852,
+          "EXPENSES": null,
+          "UTILITIES": 6.41260773889216,
+          "TOTAL": 187.35207459417856
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 47.7150800723701,
+          "TOTAL": 47.7150800723701
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 13.6226684180897,
+          "UTILITIES": null,
+          "TOTAL": 13.6226684180897
+        }
+      ],
+      "total_cost": 49055.52608454715
+    },
+    "CRANIOTOMY FOR TRAUMA": {
+      "procedure": "CRANIOTOMY FOR TRAUMA",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 46096.661918300655,
+          "MATERIAL": 23036.12504072478,
+          "MACHINERY": 1736.4758086970899,
+          "EXPENSES": 411.85136367211175,
+          "UTILITIES": 692.1601755229854,
+          "TOTAL": 71973.2743069176
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 9009.1043137255,
+          "MATERIAL": 24762.915158759817,
+          "MACHINERY": 196.65143953033262,
+          "EXPENSES": null,
+          "UTILITIES": 568.5926734095499,
+          "TOTAL": 34537.2635854252
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 589.8718831050227,
+          "MATERIAL": 28.334705779064358,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 39.33240450368644,
+          "TOTAL": 657.5389933877735
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 5429.926999999998,
+          "MATERIAL": 4508.698741228963,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1593.272760792491,
+          "TOTAL": 11531.898502021451
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.5129708776463,
+          "MATERIAL": 527.1467185369248,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.42992880389623,
+          "TOTAL": 978.4796182184674
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 86.78371141552512,
+          "MATERIAL": 21.139853805216738,
+          "MACHINERY": 219.95964614999687,
+          "EXPENSES": null,
+          "UTILITIES": 10.17121788263692,
+          "TOTAL": 338.0544292533757
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 14.776022968662039,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 14.776022968662039
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 1.4190081651341717,
+          "EXPENSES": null,
+          "UTILITIES": 2.38448434424861,
+          "TOTAL": 3.8034925093827816
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 959.1327890410959,
+          "MATERIAL": 11.985444362884465,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 18.189280176318555,
+          "TOTAL": 989.3075135802989
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 219.59809315068497,
+          "MATERIAL": 1.2821414794520547,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 13.610997557127813,
+          "TOTAL": 234.49123218726484
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 143.9838502283105,
+          "MATERIAL": 2.3636697709685537,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 69.55190431369417,
+          "TOTAL": 215.89942431297322
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 86.78013150684932,
+          "MATERIAL": 4.426520902648402,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 4.884685859847565,
+          "TOTAL": 96.09133826934529
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 86.92772602739728,
+          "MATERIAL": 0.5831587486172137,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 14.297214055972896,
+          "TOTAL": 101.8080988319874
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 715.5353972602738,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 21.687336997100267,
+          "TOTAL": 737.2227342573741
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 438.59327888909746,
+          "MATERIAL": 2.160686075078832,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 440.7539649641763
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 328.1267661279997,
+          "UTILITIES": null,
+          "TOTAL": 328.1267661279997
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 984.5301391780821,
+          "MATERIAL": 162.37938111315447,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 3.1088310502283103,
+          "TOTAL": 1150.0183513414647
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 90.81433059360732,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 32.43251600165136,
+          "UTILITIES": null,
+          "TOTAL": 123.24684659525869
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 559.3907251141554,
+          "MATERIAL": 441.2136694063927,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 122.17304052391607,
+          "TOTAL": 1122.7774350444643
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 191.45794213836479,
+          "MATERIAL": 437.22374696303956,
+          "MACHINERY": 4.606444892099832,
+          "EXPENSES": null,
+          "UTILITIES": 22.444127086122556,
+          "TOTAL": 655.7322610796267
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 167.00278025329544,
+          "TOTAL": 167.00278025329544
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 47.67933946331394,
+          "UTILITIES": null,
+          "TOTAL": 47.67933946331394
+        }
+      ],
+      "total_cost": 126445.24703701075
+    },
+    "CRANIOTOMY FOR TUMOURS": {
+      "procedure": "CRANIOTOMY FOR TUMOURS",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 65193.3238366013,
+          "MATERIAL": 12631.111974724781,
+          "MACHINERY": 3472.9516173941797,
+          "EXPENSES": 411.85136367211175,
+          "UTILITIES": 692.1601755229854,
+          "TOTAL": 82401.39896791536
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 9009.1043137255,
+          "MATERIAL": 24762.915158759817,
+          "MACHINERY": 196.65143953033262,
+          "EXPENSES": null,
+          "UTILITIES": 568.5926734095499,
+          "TOTAL": 34537.2635854252
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 589.871883105023,
+          "MATERIAL": 28.3347057790644,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 39.3324045036864,
+          "TOTAL": 657.5389933877738
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 5429.926999999998,
+          "MATERIAL": 3497.5304252289634,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1593.272760792491,
+          "TOTAL": 10520.730186021452
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.512970877646,
+          "MATERIAL": 527.146718536925,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.4299288038962,
+          "TOTAL": 978.4796182184673
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 86.7837114155249,
+          "MATERIAL": 21.1398538052167,
+          "MACHINERY": 219.959646149997,
+          "EXPENSES": null,
+          "UTILITIES": 10.1712178826369,
+          "TOTAL": 338.05442925337553
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 14.776022968662,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 14.776022968662
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 1.41900816513417,
+          "EXPENSES": null,
+          "UTILITIES": 2.38448434424861,
+          "TOTAL": 3.80349250938278
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 959.132789041096,
+          "MATERIAL": 11.9854443628845,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 18.1892801763186,
+          "TOTAL": 989.3075135802991
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 219.598093150685,
+          "MATERIAL": 1.28214147945205,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 13.6109975571278,
+          "TOTAL": 234.49123218726484
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 143.983850228311,
+          "MATERIAL": 2.36366977096855,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 69.5519043136942,
+          "TOTAL": 215.89942431297376
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 86.7801315068493,
+          "MATERIAL": 4.4265209026484,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 4.88468585984756,
+          "TOTAL": 96.09133826934527
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 86.9277260273973,
+          "MATERIAL": 0.583158748617214,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 14.2972140559729,
+          "TOTAL": 101.80809883198741
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 715.535397260274,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 21.6873369971003,
+          "TOTAL": 737.2227342573742
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 438.593278889097,
+          "MATERIAL": 2.16068607507883,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 440.75396496417585
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 328.126766128,
+          "UTILITIES": null,
+          "TOTAL": 328.126766128
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 984.530139178082,
+          "MATERIAL": 162.379381113154,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 3.10883105022831,
+          "TOTAL": 1150.0183513414643
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 90.8143305936073,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 32.4325160016513,
+          "UTILITIES": null,
+          "TOTAL": 123.2468465952586
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 559.390725114155,
+          "MATERIAL": 441.213674776256,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 122.173040523916,
+          "TOTAL": 1122.777440414327
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 191.457942138365,
+          "MATERIAL": 437.22374696304,
+          "MACHINERY": 4.60644489209983,
+          "EXPENSES": null,
+          "UTILITIES": 22.4441270861226,
+          "TOTAL": 655.7322610796275
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 167.002780253295,
+          "TOTAL": 167.002780253295
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 47.6793394633139,
+          "UTILITIES": null,
+          "TOTAL": 47.6793394633139
+        }
+      ],
+      "total_cost": 135862.2033873784
+    },
+    "DECOMPRESSION CRANIECTOMY + DUROPLASTY": {
+      "procedure": "DECOMPRESSION CRANIECTOMY + DUROPLASTY",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 50042.04543790849,
+          "MATERIAL": 11109.935974724782,
+          "MACHINERY": 2137.200995319495,
+          "EXPENSES": 392.6390684441915,
+          "UTILITIES": 425.94472339876023,
+          "TOTAL": 64107.76619979572
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 9009.1043137255,
+          "MATERIAL": 16570.549199759815,
+          "MACHINERY": 196.65143953033262,
+          "EXPENSES": null,
+          "UTILITIES": 568.5926734095499,
+          "TOTAL": 26344.897626425194
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 758.406706849315,
+          "MATERIAL": 36.4303360016542,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 50.5702343618825,
+          "TOTAL": 845.4072772128517
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 8144.890499999998,
+          "MATERIAL": 9123.041701843445,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2389.9091411887366,
+          "TOTAL": 19657.84134303218
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.512970877646,
+          "MATERIAL": 527.146718536925,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.4299288038962,
+          "TOTAL": 978.4796182184673
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 111.579057534246,
+          "MATERIAL": 27.1798120352786,
+          "MACHINERY": 282.80525933571,
+          "EXPENSES": null,
+          "UTILITIES": 13.0772801348189,
+          "TOTAL": 434.64140904005353
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 18.9977438168512,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 18.9977438168512
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 1.82443906945822,
+          "EXPENSES": null,
+          "UTILITIES": 3.0657655854625,
+          "TOTAL": 4.89020465492072
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 1233.17072876713,
+          "MATERIAL": 15.4098570379943,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 23.3862173695525,
+          "TOTAL": 1271.9668031746767
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 282.340405479452,
+          "MATERIAL": 1.64846761643836,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 17.4998540020215,
+          "TOTAL": 301.48872709791186
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 185.122093150685,
+          "MATERIAL": 3.03900399124528,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 89.4238769747497,
+          "TOTAL": 277.58497411668
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 111.57445479452,
+          "MATERIAL": 5.69124116054795,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 6.28031039123259,
+          "TOTAL": 123.54600634630053
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 111.764219178082,
+          "MATERIAL": 0.749775533936418,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 18.3821323576795,
+          "TOTAL": 130.8961270696979
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 919.974082191777,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 27.8837189962718,
+          "TOTAL": 947.8578011880488
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 563.905644285982,
+          "MATERIAL": 2.77802495367278,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 566.6836692396548
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 421.877270736,
+          "UTILITIES": null,
+          "TOTAL": 421.877270736
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 1265.82446465753,
+          "MATERIAL": 208.773490002628,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 3.99706849315068,
+          "TOTAL": 1478.5950231533086
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 116.761282191781,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 41.6989491449803,
+          "UTILITIES": null,
+          "TOTAL": 158.4602313367613
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 719.216646575342,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 567.274724712329,
+          "UTILITIES": 157.079623530749,
+          "TOTAL": 1443.5709948184199
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 246.160211320755,
+          "MATERIAL": 562.144817523908,
+          "MACHINERY": 5.92257200412836,
+          "EXPENSES": null,
+          "UTILITIES": 28.8567348250147,
+          "TOTAL": 843.0843356738061
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 214.717860325666,
+          "TOTAL": 214.717860325666
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 61.3020078814037,
+          "UTILITIES": null,
+          "TOTAL": 61.3020078814037
+        }
+      ],
+      "total_cost": 120634.55325435457
+    },
+    "VP SHUNT": {
+      "procedure": "VP SHUNT",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 39336.15055882353,
+          "MATERIAL": 7973.13687572478,
+          "MACHINERY": 1202.1755598672162,
+          "EXPENSES": 379.19046178464737,
+          "UTILITIES": 239.5939069118026,
+          "TOTAL": 49130.24736311198
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 3003.0347712418334,
+          "MATERIAL": 1713.7644839199395,
+          "MACHINERY": 65.55047984344421,
+          "EXPENSES": null,
+          "UTILITIES": 189.5308911365166,
+          "TOTAL": 4971.880626141733
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 168.534823744292,
+          "MATERIAL": 8.09563022258982,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 11.2378298581961,
+          "TOTAL": 187.86828382507792
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 1357.4817499999995,
+          "MATERIAL": 1363.6298703072407,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 398.31819019812275,
+          "TOTAL": 3119.429810505363
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.512970877646,
+          "MATERIAL": 527.146718536925,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.4299288038962,
+          "TOTAL": 978.4796182184673
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 24.7953461187215,
+          "MATERIAL": 6.03995823006193,
+          "MACHINERY": 62.8456131857134,
+          "EXPENSES": null,
+          "UTILITIES": 2.90606225218198,
+          "TOTAL": 96.58697978667881
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 4.22172084818915,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 4.22172084818915
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 0.405430904324049,
+          "EXPENSES": null,
+          "UTILITIES": 0.681281241213889,
+          "TOTAL": 1.086712145537938
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 274.037939726027,
+          "MATERIAL": 3.42441267510985,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 5.19693719323387,
+          "TOTAL": 282.6592895943707
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 62.7423123287671,
+          "MATERIAL": 0.366326136986301,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 3.88885644489366,
+          "TOTAL": 66.99749491064706
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 41.1382429223744,
+          "MATERIAL": 0.67533422027673,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 19.8719726610555,
+          "TOTAL": 61.685549803706635
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 24.7943232876712,
+          "MATERIAL": 1.26472025789954,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1.39562453138502,
+          "TOTAL": 27.454668076955763
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 24.8364931506849,
+          "MATERIAL": 0.166616785319204,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 4.08491830170654,
+          "TOTAL": 29.088028237710642
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 204.438684931507,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 6.19638199917151,
+          "TOTAL": 210.6350669306785
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 125.312365396885,
+          "MATERIAL": 0.617338878593952,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 125.92970427547895
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 93.7505046079999,
+          "UTILITIES": null,
+          "TOTAL": 93.7505046079999
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 281.294325479452,
+          "MATERIAL": 46.3941088894727,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.888237442922374,
+          "TOTAL": 328.5766718118471
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 25.9469515981735,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 9.26643314332896,
+          "UTILITIES": null,
+          "TOTAL": 35.21338474150246
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 159.825921461187,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 126.061049936073,
+          "UTILITIES": 34.9065830068332,
+          "TOTAL": 320.79355440409324
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 54.7022691823899,
+          "MATERIAL": 124.921070560868,
+          "MACHINERY": 1.31612711202852,
+          "EXPENSES": null,
+          "UTILITIES": 6.41260773889216,
+          "TOTAL": 187.35207459417856
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 47.7150800723701,
+          "TOTAL": 47.7150800723701
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 13.6226684180897,
+          "UTILITIES": null,
+          "TOTAL": 13.6226684180897
+        }
+      ],
+      "total_cost": 60321.274855062635
+    }
+  },
+  "URO": {
+    "AV FISTULA": {
+      "procedure": "AV FISTULA",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 7428.988366013072,
+          "MATERIAL": 2193.2643617247786,
+          "MACHINERY": 20.122391349969476,
+          "EXPENSES": 372.3788298402031,
+          "UTILITIES": 169.02608531440754,
+          "TOTAL": 10183.78003424243
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 0,
+          "MATERIAL": 0,
+          "MACHINERY": 0,
+          "EXPENSES": null,
+          "UTILITIES": 0,
+          "TOTAL": 0
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 84.2674118721461,
+          "MATERIAL": 4.047815111294908,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 5.618914929098063,
+          "TOTAL": 93.93414191253908
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 1277.4817499999995,
+          "MATERIAL": 6.035926307240704,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 398.31819019812275,
+          "TOTAL": 1681.835866505363
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.5129708776463,
+          "MATERIAL": 527.1467185369248,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.42992880389623,
+          "TOTAL": 978.4796182184674
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 12.39767305936073,
+          "MATERIAL": 3.0199791150309627,
+          "MACHINERY": 31.422806592856695,
+          "EXPENSES": null,
+          "UTILITIES": 1.4530311260909887,
+          "TOTAL": 48.293489893339384
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 2.110860424094577,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 2.110860424094577
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 0.20271545216202452,
+          "EXPENSES": null,
+          "UTILITIES": 0.34064062060694433,
+          "TOTAL": 0.5433560727689688
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 137.0189698630137,
+          "MATERIAL": 1.7122063375549237,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.5984685966169367,
+          "TOTAL": 141.32964479718555
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 31.371156164383567,
+          "MATERIAL": 0.18316306849315067,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1.9444282224468306,
+          "TOTAL": 33.498747455323546
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 20.569121461187216,
+          "MATERIAL": 0.3376671101383648,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 9.93598633052774,
+          "TOTAL": 30.84277490185332
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 12.397161643835616,
+          "MATERIAL": 0.6323601289497718,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.6978122656925093,
+          "TOTAL": 13.727334038477897
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 12.418246575342469,
+          "MATERIAL": 0.08330839265960197,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.042459150853271,
+          "TOTAL": 14.54401411885534
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 102.21934246575341,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 3.0981909995857526,
+          "TOTAL": 105.31753346533917
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 62.65618269844249,
+          "MATERIAL": 0.308669439296976,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 62.96485213773947
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 46.87525230399996,
+          "UTILITIES": null,
+          "TOTAL": 46.87525230399996
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 140.647162739726,
+          "MATERIAL": 23.197054444736352,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.4441187214611872,
+          "TOTAL": 164.28833590592356
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 12.97347579908676,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 4.6332165716644775,
+          "UTILITIES": null,
+          "TOTAL": 17.606692370751237
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 79.91296073059362,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 63.03052496803654,
+          "UTILITIES": 17.45329150341658,
+          "TOTAL": 160.39677720204674
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 27.35113459119497,
+          "MATERIAL": 62.46053528043422,
+          "MACHINERY": 0.6580635560142617,
+          "EXPENSES": null,
+          "UTILITIES": 3.2063038694460793,
+          "TOTAL": 93.67603729708952
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 23.857540036185064,
+          "TOTAL": 23.857540036185064
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 6.8113342090448485,
+          "UTILITIES": null,
+          "TOTAL": 6.8113342090448485
+        }
+      ],
+      "total_cost": null
+    },
+    "LAP. NEPHRECTOMY - Partial": {
+      "procedure": "LAP. NEPHRECTOMY - Partial",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 33605.46815686274,
+          "MATERIAL": 15685.898207724778,
+          "MACHINERY": 64.39165231990232,
+          "EXPENSES": 395.43358411370735,
+          "UTILITIES": 540.8834730061042,
+          "TOTAL": 50292.075074027234
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 2856.6643660130717,
+          "MATERIAL": 1290.8251658119634,
+          "MACHINERY": 44.39902576647096,
+          "EXPENSES": null,
+          "UTILITIES": 183.12069174199146,
+          "TOTAL": 4375.009249333497
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 505.60447123287656,
+          "MATERIAL": 24.28689066776945,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 33.71348957458838,
+          "TOTAL": 563.6048514752343
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 6387.408749999998,
+          "MATERIAL": 4023.629951536203,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1991.590950990614,
+          "TOTAL": 12402.629652526815
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.5129708776463,
+          "MATERIAL": 527.1467185369248,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.42992880389623,
+          "TOTAL": 978.4796182184674
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 74.38603835616439,
+          "MATERIAL": 18.119874690185775,
+          "MACHINERY": 188.53683955714018,
+          "EXPENSES": null,
+          "UTILITIES": 8.718186756545933,
+          "TOTAL": 289.76093936003633
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 12.665162544567462,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 12.665162544567462
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 1.2162927129721472,
+          "EXPENSES": null,
+          "UTILITIES": 2.043843723641666,
+          "TOTAL": 3.2601364366138132
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 822.1138191780822,
+          "MATERIAL": 10.273238025329542,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 15.590811579701619,
+          "TOTAL": 847.9778687831133
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 188.2269369863014,
+          "MATERIAL": 1.098978410958904,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 11.666569334680982,
+          "TOTAL": 200.9924847319413
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 123.4147287671233,
+          "MATERIAL": 2.026002660830189,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 59.61591798316644,
+          "TOTAL": 185.0566494111199
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 74.3829698630137,
+          "MATERIAL": 3.7941607736986307,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 4.186873594155056,
+          "TOTAL": 82.3640042308674
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 74.50947945205482,
+          "MATERIAL": 0.4998503559576118,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 12.254754905119626,
+          "TOTAL": 87.26408471313205
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 613.3160547945205,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 18.589145997514514,
+          "TOTAL": 631.905200792035
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 375.937096190655,
+          "MATERIAL": 1.852016635781856,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 377.78911282643685
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 281.25151382399974,
+          "UTILITIES": null,
+          "TOTAL": 281.25151382399974
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 703.2358136986301,
+          "MATERIAL": 139.1823266684181,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.664712328767123,
+          "TOTAL": 845.0828526958153
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 77.84085479452057,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 27.799299429986867,
+          "UTILITIES": null,
+          "TOTAL": 105.64015422450743
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 479.47776438356175,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 378.18314980821924,
+          "UTILITIES": 104.71974902049949,
+          "TOTAL": 962.3806632122805
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 164.1068075471698,
+          "MATERIAL": 374.76321168260534,
+          "MACHINERY": 3.9483813360855704,
+          "EXPENSES": null,
+          "UTILITIES": 19.237823216676475,
+          "TOTAL": 562.0562237825372
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 143.14524021711037,
+          "TOTAL": 143.14524021711037
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 40.86800525426909,
+          "UTILITIES": null,
+          "TOTAL": 40.86800525426909
+        }
+      ],
+      "total_cost": null
+    },
+    "LAP. NEPHRECTOMY - Radical": {
+      "procedure": "LAP. NEPHRECTOMY - Radical",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 33154.7846372549,
+          "MATERIAL": 15685.898207724778,
+          "MACHINERY": 56.342695779914536,
+          "EXPENSES": 391.24181060943386,
+          "UTILITIES": 473.2730388803411,
+          "TOTAL": 49761.54039024937
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 2856.6643660130717,
+          "MATERIAL": 1290.8251658119634,
+          "MACHINERY": 44.39902576647096,
+          "EXPENSES": null,
+          "UTILITIES": 183.12069174199146,
+          "TOTAL": 4375.009249333497
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 505.60447123287656,
+          "MATERIAL": 24.28689066776945,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 33.71348957458838,
+          "TOTAL": 563.6048514752343
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 6387.408749999998,
+          "MATERIAL": 4023.629951536203,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1991.590950990614,
+          "TOTAL": 12402.629652526815
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.5129708776463,
+          "MATERIAL": 527.1467185369248,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.42992880389623,
+          "TOTAL": 978.4796182184674
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 74.38603835616439,
+          "MATERIAL": 18.119874690185775,
+          "MACHINERY": 188.53683955714018,
+          "EXPENSES": null,
+          "UTILITIES": 8.718186756545933,
+          "TOTAL": 289.76093936003633
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 12.665162544567462,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 12.665162544567462
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 1.2162927129721472,
+          "EXPENSES": null,
+          "UTILITIES": 2.043843723641666,
+          "TOTAL": 3.2601364366138132
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 822.1138191780822,
+          "MATERIAL": 10.273238025329542,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 15.590811579701619,
+          "TOTAL": 847.9778687831133
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 188.2269369863014,
+          "MATERIAL": 1.098978410958904,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 11.666569334680982,
+          "TOTAL": 200.9924847319413
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 123.4147287671233,
+          "MATERIAL": 2.026002660830189,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 59.61591798316644,
+          "TOTAL": 185.0566494111199
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 74.3829698630137,
+          "MATERIAL": 3.7941607736986307,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 4.186873594155056,
+          "TOTAL": 82.3640042308674
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 74.50947945205482,
+          "MATERIAL": 0.4998503559576118,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 12.254754905119626,
+          "TOTAL": 87.26408471313205
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 613.3160547945205,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 18.589145997514514,
+          "TOTAL": 631.905200792035
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 375.937096190655,
+          "MATERIAL": 1.852016635781856,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 377.78911282643685
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 281.25151382399974,
+          "UTILITIES": null,
+          "TOTAL": 281.25151382399974
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 703.2358136986301,
+          "MATERIAL": 139.1823266684181,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.664712328767123,
+          "TOTAL": 845.0828526958153
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 77.84085479452057,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 27.799299429986867,
+          "UTILITIES": null,
+          "TOTAL": 105.64015422450743
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 479.47776438356175,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 378.18314980821924,
+          "UTILITIES": 104.71974902049949,
+          "TOTAL": 962.3806632122805
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 164.1068075471698,
+          "MATERIAL": 374.76321168260534,
+          "MACHINERY": 3.9483813360855704,
+          "EXPENSES": null,
+          "UTILITIES": 19.237823216676475,
+          "TOTAL": 562.0562237825372
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 143.14524021711037,
+          "TOTAL": 143.14524021711037
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 40.86800525426909,
+          "UTILITIES": null,
+          "TOTAL": 40.86800525426909
+        }
+      ],
+      "total_cost": null
+    },
+    "ORCHIDECTOMY": {
+      "procedure": "ORCHIDECTOMY",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 15428.752692810458,
+          "MATERIAL": 2402.622846724779,
+          "MACHINERY": 16.09791307997558,
+          "EXPENSES": 370.2829430880663,
+          "UTILITIES": 135.22086825152604,
+          "TOTAL": 18352.977263954806
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 2856.6643660130717,
+          "MATERIAL": 316.67556881196344,
+          "MACHINERY": 44.39902576647096,
+          "EXPENSES": null,
+          "UTILITIES": 183.12069174199146,
+          "TOTAL": 3400.8596523334973
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 252.80223561643828,
+          "MATERIAL": 12.143445333884724,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 16.85674478729419,
+          "TOTAL": 281.80242573761717
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 2554.963499999999,
+          "MATERIAL": 724.9346406144814,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 796.6363803962455,
+          "TOTAL": 4076.5345210107257
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.5129708776463,
+          "MATERIAL": 527.1467185369248,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.42992880389623,
+          "TOTAL": 978.4796182184674
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 37.193019178082196,
+          "MATERIAL": 9.059937345092887,
+          "MACHINERY": 94.26841977857009,
+          "EXPENSES": null,
+          "UTILITIES": 4.359093378272966,
+          "TOTAL": 144.88046968001817
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 6.332581272283731,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 6.332581272283731
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 0.6081463564860736,
+          "EXPENSES": null,
+          "UTILITIES": 1.021921861820833,
+          "TOTAL": 1.6300682183069066
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 411.0569095890411,
+          "MATERIAL": 5.136619012664771,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 7.795405789850809,
+          "TOTAL": 423.98893439155665
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 94.1134684931507,
+          "MATERIAL": 0.549489205479452,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 5.833284667340491,
+          "TOTAL": 100.49624236597064
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 61.70736438356165,
+          "MATERIAL": 1.0130013304150944,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 29.80795899158322,
+          "TOTAL": 92.52832470555995
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 37.19148493150685,
+          "MATERIAL": 1.8970803868493153,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.093436797077528,
+          "TOTAL": 41.1820021154337
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 37.25473972602741,
+          "MATERIAL": 0.2499251779788059,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 6.127377452559813,
+          "TOTAL": 43.632042356566025
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 306.65802739726024,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 9.294572998757257,
+          "TOTAL": 315.9526003960175
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 187.9685480953275,
+          "MATERIAL": 0.926008317890928,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 188.89455641321842
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 140.62575691199987,
+          "UTILITIES": null,
+          "TOTAL": 140.62575691199987
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 281.294325479452,
+          "MATERIAL": 69.59116333420906,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1.3323561643835615,
+          "TOTAL": 352.21784497804464
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 38.92042739726028,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 13.899649714993433,
+          "UTILITIES": null,
+          "TOTAL": 52.82007711225371
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 239.73888219178087,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 189.09157490410962,
+          "UTILITIES": 52.359874510249746,
+          "TOTAL": 481.19033160614026
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 82.0534037735849,
+          "MATERIAL": 187.38160584130267,
+          "MACHINERY": 1.9741906680427852,
+          "EXPENSES": null,
+          "UTILITIES": 9.618911608338237,
+          "TOTAL": 281.0281118912686
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 71.57262010855518,
+          "TOTAL": 71.57262010855518
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 20.434002627134547,
+          "UTILITIES": null,
+          "TOTAL": 20.434002627134547
+        }
+      ],
+      "total_cost": null
+    },
+    "P.C.N": {
+      "procedure": "P.C.N",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 9142.917564270152,
+          "MATERIAL": 2608.904361724779,
+          "MACHINERY": 5.365971026658527,
+          "EXPENSES": 364.69391174903495,
+          "UTILITIES": 45.073622750508676,
+          "TOTAL": 12166.955431521134
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 2856.6643660130717,
+          "MATERIAL": 5767.323574811964,
+          "MACHINERY": 44.39902576647096,
+          "EXPENSES": null,
+          "UTILITIES": 183.12069174199146,
+          "TOTAL": 8851.5076583335
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 168.5348237442922,
+          "MATERIAL": 8.095630222589817,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 11.237829858196125,
+          "TOTAL": 187.86828382507815
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 1277.4817499999995,
+          "MATERIAL": 881.1679263072407,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 398.31819019812275,
+          "TOTAL": 2556.967866505363
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.5129708776463,
+          "MATERIAL": 527.1467185369248,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.42992880389623,
+          "TOTAL": 978.4796182184674
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 24.79534611872146,
+          "MATERIAL": 6.0399582300619254,
+          "MACHINERY": 62.84561318571339,
+          "EXPENSES": null,
+          "UTILITIES": 2.9060622521819774,
+          "TOTAL": 96.58697978667877
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 4.221720848189154,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 4.221720848189154
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 0.40543090432404905,
+          "EXPENSES": null,
+          "UTILITIES": 0.6812812412138887,
+          "TOTAL": 1.0867121455379376
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 274.0379397260274,
+          "MATERIAL": 3.4244126751098474,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 5.1969371932338735,
+          "TOTAL": 282.6592895943711
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 62.742312328767134,
+          "MATERIAL": 0.36632613698630134,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 3.888856444893661,
+          "TOTAL": 66.99749491064709
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 41.13824292237443,
+          "MATERIAL": 0.6753342202767296,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 19.87197266105548,
+          "TOTAL": 61.68554980370664
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 24.794323287671233,
+          "MATERIAL": 1.2647202578995436,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1.3956245313850186,
+          "TOTAL": 27.454668076955794
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 24.836493150684937,
+          "MATERIAL": 0.16661678531920393,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 4.084918301706542,
+          "TOTAL": 29.08802823771068
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 204.43868493150683,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 6.196381999171505,
+          "TOTAL": 210.63506693067833
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 125.31236539688499,
+          "MATERIAL": 0.617338878593952,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 125.92970427547894
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 93.75050460799991,
+          "UTILITIES": null,
+          "TOTAL": 93.75050460799991
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 140.647162739726,
+          "MATERIAL": 46.394108889472705,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 0.8882374429223744,
+          "TOTAL": 187.92950907212108
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 25.94695159817352,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 9.266433143328955,
+          "UTILITIES": null,
+          "TOTAL": 35.21338474150247
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 159.82592146118725,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 126.06104993607308,
+          "UTILITIES": 34.90658300683316,
+          "TOTAL": 320.79355440409347
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 54.70226918238994,
+          "MATERIAL": 124.92107056086844,
+          "MACHINERY": 1.3161271120285234,
+          "EXPENSES": null,
+          "UTILITIES": 6.4126077388921585,
+          "TOTAL": 187.35207459417904
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 47.71508007237013,
+          "TOTAL": 47.71508007237013
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 13.622668418089697,
+          "UTILITIES": null,
+          "TOTAL": 13.622668418089697
+        }
+      ],
+      "total_cost": null
+    },
+    "P.C.N.L": {
+      "procedure": "P.C.N.L",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 21964.69355882353,
+          "MATERIAL": 3511.071311724779,
+          "MACHINERY": 24.146869619963372,
+          "EXPENSES": 374.4747165923398,
+          "UTILITIES": 202.83130237728903,
+          "TOTAL": 26077.2177591379
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 2856.6643660130717,
+          "MATERIAL": 3011.833564811963,
+          "MACHINERY": 44.39902576647096,
+          "EXPENSES": null,
+          "UTILITIES": 183.12069174199146,
+          "TOTAL": 6096.017648333497
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 421.3370593607305,
+          "MATERIAL": 20.239075556474543,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 28.09457464549031,
+          "TOTAL": 469.6707095626953
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 5109.926999999998,
+          "MATERIAL": 5475.830525228963,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1593.272760792491,
+          "TOTAL": 12179.030286021452
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.5129708776463,
+          "MATERIAL": 527.1467185369248,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.42992880389623,
+          "TOTAL": 978.4796182184674
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 61.98836529680365,
+          "MATERIAL": 15.099895575154815,
+          "MACHINERY": 157.11403296428347,
+          "EXPENSES": null,
+          "UTILITIES": 7.265155630454943,
+          "TOTAL": 241.4674494666969
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 10.554302120472885,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 10.554302120472885
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 1.0135772608101226,
+          "EXPENSES": null,
+          "UTILITIES": 1.7032031030347214,
+          "TOTAL": 2.716780363844844
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 685.0948493150685,
+          "MATERIAL": 8.56103168777462,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 12.992342983084683,
+          "TOTAL": 706.6482239859278
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 156.85578082191785,
+          "MATERIAL": 0.9158153424657534,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 9.722141112234153,
+          "TOTAL": 167.49373727661774
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 102.84560730593608,
+          "MATERIAL": 1.688335550691824,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 49.6799316526387,
+          "TOTAL": 154.2138745092666
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 61.98580821917808,
+          "MATERIAL": 3.161800644748859,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 3.4890613284625465,
+          "TOTAL": 68.63667019238949
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 62.09123287671234,
+          "MATERIAL": 0.41654196329800985,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 10.212295754266353,
+          "TOTAL": 72.7200705942767
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 511.09671232876707,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 15.490954997928764,
+          "TOTAL": 526.5876673266959
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 313.28091349221245,
+          "MATERIAL": 1.54334719648488,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 314.82426068869734
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 234.3762615199998,
+          "UTILITIES": null,
+          "TOTAL": 234.3762615199998
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 562.588650958904,
+          "MATERIAL": 115.98527222368176,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.2205936073059362,
+          "TOTAL": 680.7945167898916
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 64.8673789954338,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 23.166082858322387,
+          "UTILITIES": null,
+          "TOTAL": 88.03346185375618
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 399.5648036529681,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 315.1526248401827,
+          "UTILITIES": 87.2664575170829,
+          "TOTAL": 801.9838860102337
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 136.75567295597486,
+          "MATERIAL": 312.30267640217113,
+          "MACHINERY": 3.2903177800713084,
+          "EXPENSES": null,
+          "UTILITIES": 16.031519347230397,
+          "TOTAL": 468.38018648544767
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 119.28770018092533,
+          "TOTAL": 119.28770018092533
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 34.05667104522424,
+          "UTILITIES": null,
+          "TOTAL": 34.05667104522424
+        }
+      ],
+      "total_cost": null
+    },
+    "RENAL TRANSPLANTATION - donor": {
+      "procedure": "RENAL TRANSPLANTATION - donor",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 22726.193699346408,
+          "MATERIAL": 15019.898207724778,
+          "MACHINERY": 64.39165231990232,
+          "EXPENSES": 395.43358411370735,
+          "UTILITIES": 540.8834730061042,
+          "TOTAL": 38746.800616510896
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 2856.6643660130717,
+          "MATERIAL": 1290.8251658119634,
+          "MACHINERY": 44.39902576647096,
+          "EXPENSES": null,
+          "UTILITIES": 183.12069174199146,
+          "TOTAL": 4375.009249333497
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 505.60447123287656,
+          "MATERIAL": 24.28689066776945,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 33.71348957458838,
+          "TOTAL": 563.6048514752343
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 6387.408749999998,
+          "MATERIAL": 4023.629951536203,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1991.590950990614,
+          "TOTAL": 12402.629652526815
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.5129708776463,
+          "MATERIAL": 527.1467185369248,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.42992880389623,
+          "TOTAL": 978.4796182184674
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 74.38603835616439,
+          "MATERIAL": 18.119874690185775,
+          "MACHINERY": 188.53683955714018,
+          "EXPENSES": null,
+          "UTILITIES": 8.718186756545933,
+          "TOTAL": 289.76093936003633
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 12.665162544567462,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 12.665162544567462
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 1.2162927129721472,
+          "EXPENSES": null,
+          "UTILITIES": 2.043843723641666,
+          "TOTAL": 3.2601364366138132
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 822.1138191780822,
+          "MATERIAL": 10.273238025329542,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 15.590811579701619,
+          "TOTAL": 847.9778687831133
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 188.2269369863014,
+          "MATERIAL": 1.098978410958904,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 11.666569334680982,
+          "TOTAL": 200.9924847319413
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 123.4147287671233,
+          "MATERIAL": 2.026002660830189,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 59.61591798316644,
+          "TOTAL": 185.0566494111199
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 74.3829698630137,
+          "MATERIAL": 3.7941607736986307,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 4.186873594155056,
+          "TOTAL": 82.3640042308674
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 74.50947945205482,
+          "MATERIAL": 0.4998503559576118,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 12.254754905119626,
+          "TOTAL": 87.26408471313205
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 613.3160547945205,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 18.589145997514514,
+          "TOTAL": 631.905200792035
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 375.937096190655,
+          "MATERIAL": 1.852016635781856,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 377.78911282643685
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 281.25151382399974,
+          "UTILITIES": null,
+          "TOTAL": 281.25151382399974
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 703.2358136986301,
+          "MATERIAL": 139.1823266684181,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.664712328767123,
+          "TOTAL": 845.0828526958153
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 77.84085479452057,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 27.799299429986867,
+          "UTILITIES": null,
+          "TOTAL": 105.64015422450743
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 479.47776438356175,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 378.18314980821924,
+          "UTILITIES": 104.71974902049949,
+          "TOTAL": 962.3806632122805
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 164.1068075471698,
+          "MATERIAL": 374.76321168260534,
+          "MACHINERY": 3.9483813360855704,
+          "EXPENSES": null,
+          "UTILITIES": 19.237823216676475,
+          "TOTAL": 562.0562237825372
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 143.14524021711037,
+          "TOTAL": 143.14524021711037
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 40.86800525426909,
+          "UTILITIES": null,
+          "TOTAL": 40.86800525426909
+        }
+      ],
+      "total_cost": null
+    },
+    "RENAL TRANSPLANTATION - recepient": {
+      "procedure": "RENAL TRANSPLANTATION - recepient",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 47157.74212418301,
+          "MATERIAL": 29561.012541724776,
+          "MACHINERY": 80.4895653998779,
+          "EXPENSES": 403.81713112225435,
+          "UTILITIES": 676.1043412576302,
+          "TOTAL": 77879.16570368755
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 2856.6643660130717,
+          "MATERIAL": 1290.8251658119634,
+          "MACHINERY": 44.39902576647096,
+          "EXPENSES": null,
+          "UTILITIES": 183.12069174199146,
+          "TOTAL": 4375.009249333497
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 1095.4763543378992,
+          "MATERIAL": 52.621596446833806,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 73.04589407827481,
+          "TOTAL": 1221.1438448630079
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 10219.853999999996,
+          "MATERIAL": 44458.644210457926,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 3186.545521584982,
+          "TOTAL": 57865.043732042905
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.5129708776463,
+          "MATERIAL": 527.1467185369248,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.42992880389623,
+          "TOTAL": 978.4796182184674
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 161.1697497716895,
+          "MATERIAL": 39.25972849540251,
+          "MACHINERY": 408.496485707137,
+          "EXPENSES": null,
+          "UTILITIES": 18.889404639182853,
+          "TOTAL": 627.8153686134119
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 27.4411855132295,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 27.4411855132295
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 2.6353008781063187,
+          "EXPENSES": null,
+          "UTILITIES": 4.428328067890276,
+          "TOTAL": 7.063628945996594
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 1781.2466082191781,
+          "MATERIAL": 22.25868238821401,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 33.78009175602018,
+          "TOTAL": 1837.2853823634125
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 407.82503013698636,
+          "MATERIAL": 2.3811198904109587,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 25.277566891808796,
+          "TOTAL": 435.48371691920613
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 267.3985789954338,
+          "MATERIAL": 4.389672431798743,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 129.1678222968606,
+          "TOTAL": 400.95607372409313
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 161.163101369863,
+          "MATERIAL": 8.220681676347033,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 9.071559454002621,
+          "TOTAL": 178.45534250021265
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 161.4372054794521,
+          "MATERIAL": 1.0830091045748256,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 26.551968961092523,
+          "TOTAL": 189.07218354511943
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 1328.8514520547944,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 40.27648299461479,
+          "TOTAL": 1369.1279350494092
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 814.5303750797524,
+          "MATERIAL": 4.012702710860688,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 818.5430777906131
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 609.3782799519995,
+          "UTILITIES": null,
+          "TOTAL": 609.3782799519995
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 1125.177301917808,
+          "MATERIAL": 301.5617077815726,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 5.773543378995433,
+          "TOTAL": 1432.512553078376
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 168.65518538812788,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 60.23181543163821,
+          "UTILITIES": null,
+          "TOTAL": 228.8870008197661
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 1038.868489497717,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 819.396824584475,
+          "UTILITIES": 226.89278954441556,
+          "TOTAL": 2085.158103626608
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 355.5647496855346,
+          "MATERIAL": 811.9869586456449,
+          "MACHINERY": 8.554826228185402,
+          "EXPENSES": null,
+          "UTILITIES": 41.68195030279903,
+          "TOTAL": 1217.788484862164
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 310.1480204704058,
+          "TOTAL": 310.1480204704058
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 88.54734471758303,
+          "UTILITIES": null,
+          "TOTAL": 88.54734471758303
+        }
+      ],
+      "total_cost": null
+    },
+    "TURBT": {
+      "procedure": "TURBT",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 23035.940866013072,
+          "MATERIAL": 4531.558950058112,
+          "MACHINERY": 20.122391349969476,
+          "EXPENSES": 372.3788298402031,
+          "UTILITIES": 169.02608531440754,
+          "TOTAL": 28129.027122575764
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 2856.6643660130717,
+          "MATERIAL": 1386.8749628119633,
+          "MACHINERY": 44.39902576647096,
+          "EXPENSES": null,
+          "UTILITIES": 183.12069174199146,
+          "TOTAL": 4471.0590463334975
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 505.60447123287656,
+          "MATERIAL": 24.28689066776945,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 33.71348957458838,
+          "TOTAL": 563.6048514752343
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 6387.408749999998,
+          "MATERIAL": 6943.487796536204,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1991.590950990614,
+          "TOTAL": 15322.487497526816
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.5129708776463,
+          "MATERIAL": 527.1467185369248,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.42992880389623,
+          "TOTAL": 978.4796182184674
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 74.38603835616439,
+          "MATERIAL": 18.119874690185775,
+          "MACHINERY": 188.53683955714018,
+          "EXPENSES": null,
+          "UTILITIES": 8.718186756545933,
+          "TOTAL": 289.76093936003633
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 12.665162544567462,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 12.665162544567462
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 1.2162927129721472,
+          "EXPENSES": null,
+          "UTILITIES": 2.043843723641666,
+          "TOTAL": 3.2601364366138132
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 822.1138191780822,
+          "MATERIAL": 10.273238025329542,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 15.590811579701619,
+          "TOTAL": 847.9778687831133
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 188.2269369863014,
+          "MATERIAL": 1.098978410958904,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 11.666569334680982,
+          "TOTAL": 200.9924847319413
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 123.4147287671233,
+          "MATERIAL": 2.026002660830189,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 59.61591798316644,
+          "TOTAL": 185.0566494111199
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 74.3829698630137,
+          "MATERIAL": 3.7941607736986307,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 4.186873594155056,
+          "TOTAL": 82.3640042308674
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 74.50947945205482,
+          "MATERIAL": 0.4998503559576118,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 12.254754905119626,
+          "TOTAL": 87.26408471313205
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 613.3160547945205,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 18.589145997514514,
+          "TOTAL": 631.905200792035
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 375.937096190655,
+          "MATERIAL": 1.852016635781856,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 377.78911282643685
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 281.25151382399974,
+          "UTILITIES": null,
+          "TOTAL": 281.25151382399974
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 703.2358136986301,
+          "MATERIAL": 139.1823266684181,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.664712328767123,
+          "TOTAL": 845.0828526958153
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 77.84085479452057,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 27.799299429986867,
+          "UTILITIES": null,
+          "TOTAL": 105.64015422450743
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 479.47776438356175,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 378.18314980821924,
+          "UTILITIES": 104.71974902049949,
+          "TOTAL": 962.3806632122805
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 164.1068075471698,
+          "MATERIAL": 374.76321168260534,
+          "MACHINERY": 3.9483813360855704,
+          "EXPENSES": null,
+          "UTILITIES": 19.237823216676475,
+          "TOTAL": 562.0562237825372
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 143.14524021711037,
+          "TOTAL": 143.14524021711037
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 40.86800525426909,
+          "UTILITIES": null,
+          "TOTAL": 40.86800525426909
+        }
+      ],
+      "total_cost": null
+    },
+    "URS": {
+      "procedure": "URS",
+      "rows": [
+        {
+          "department": "OT",
+          "MANPOWER": 15642.893366013071,
+          "MATERIAL": 2192.729513724779,
+          "MACHINERY": 20.122391349969476,
+          "EXPENSES": 372.3788298402031,
+          "UTILITIES": 169.02608531440754,
+          "TOTAL": 18397.15018624243
+        },
+        {
+          "department": "ICU",
+          "MANPOWER": 2856.6643660130717,
+          "MATERIAL": 498.34216881196346,
+          "MACHINERY": 44.39902576647096,
+          "EXPENSES": null,
+          "UTILITIES": 183.12069174199146,
+          "TOTAL": 3582.5262523334973
+        },
+        {
+          "department": "PHARMACY",
+          "MANPOWER": 252.80223561643828,
+          "MATERIAL": 12.143445333884724,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 16.85674478729419,
+          "TOTAL": 281.80242573761717
+        },
+        {
+          "department": "WARD",
+          "MANPOWER": 2554.963499999999,
+          "MATERIAL": 337.8038526144814,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 796.6363803962455,
+          "TOTAL": 3689.403733010726
+        },
+        {
+          "department": "CSSD",
+          "MANPOWER": 403.5129708776463,
+          "MATERIAL": 527.1467185369248,
+          "MACHINERY": 10.39,
+          "EXPENSES": null,
+          "UTILITIES": 37.42992880389623,
+          "TOTAL": 978.4796182184674
+        },
+        {
+          "department": "IT",
+          "MANPOWER": 37.193019178082196,
+          "MATERIAL": 9.059937345092887,
+          "MACHINERY": 94.26841977857009,
+          "EXPENSES": null,
+          "UTILITIES": 4.359093378272966,
+          "TOTAL": 144.88046968001817
+        },
+        {
+          "department": "CCTV",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 6.332581272283731,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 6.332581272283731
+        },
+        {
+          "department": "FIRESAFETY",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": 0.6081463564860736,
+          "EXPENSES": null,
+          "UTILITIES": 1.021921861820833,
+          "TOTAL": 1.6300682183069066
+        },
+        {
+          "department": "OPERATIONS",
+          "MANPOWER": 411.0569095890411,
+          "MATERIAL": 5.136619012664771,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 7.795405789850809,
+          "TOTAL": 423.98893439155665
+        },
+        {
+          "department": "FINANCE & ACCOUNTS",
+          "MANPOWER": 94.1134684931507,
+          "MATERIAL": 0.549489205479452,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 5.833284667340491,
+          "TOTAL": 100.49624236597064
+        },
+        {
+          "department": "PURCHASE & STORES",
+          "MANPOWER": 61.70736438356165,
+          "MATERIAL": 1.0130013304150944,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 29.80795899158322,
+          "TOTAL": 92.52832470555995
+        },
+        {
+          "department": "HR",
+          "MANPOWER": 37.19148493150685,
+          "MATERIAL": 1.8970803868493153,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 2.093436797077528,
+          "TOTAL": 41.1820021154337
+        },
+        {
+          "department": "MRD",
+          "MANPOWER": 37.25473972602741,
+          "MATERIAL": 0.2499251779788059,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 6.127377452559813,
+          "TOTAL": 43.632042356566025
+        },
+        {
+          "department": "Hospital administration",
+          "MANPOWER": 306.65802739726024,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 9.294572998757257,
+          "TOTAL": 315.9526003960175
+        },
+        {
+          "department": "SECURITY",
+          "MANPOWER": 187.9685480953275,
+          "MATERIAL": 0.926008317890928,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": null,
+          "TOTAL": 188.89455641321842
+        },
+        {
+          "department": "Non medical asset",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 140.62575691199987,
+          "UTILITIES": null,
+          "TOTAL": 140.62575691199987
+        },
+        {
+          "department": "HOUSE KEEPING",
+          "MANPOWER": 281.294325479452,
+          "MATERIAL": 69.59116333420906,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 1.3323561643835615,
+          "TOTAL": 352.21784497804464
+        },
+        {
+          "department": "AC",
+          "MANPOWER": 38.92042739726028,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 13.899649714993433,
+          "UTILITIES": null,
+          "TOTAL": 52.82007711225371
+        },
+        {
+          "department": "Biomedical and maintenance",
+          "MANPOWER": 239.73888219178087,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 189.09157490410962,
+          "UTILITIES": 52.359874510249746,
+          "TOTAL": 481.19033160614026
+        },
+        {
+          "department": "LAUNDRY & LINEN",
+          "MANPOWER": 82.0534037735849,
+          "MATERIAL": 187.38160584130267,
+          "MACHINERY": 1.9741906680427852,
+          "EXPENSES": null,
+          "UTILITIES": 9.618911608338237,
+          "TOTAL": 281.0281118912686
+        },
+        {
+          "department": "Water consumption",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": null,
+          "UTILITIES": 71.57262010855518,
+          "TOTAL": 71.57262010855518
+        },
+        {
+          "department": "Bosch Cost",
+          "MANPOWER": null,
+          "MATERIAL": null,
+          "MACHINERY": null,
+          "EXPENSES": 20.434002627134547,
+          "UTILITIES": null,
+          "TOTAL": 20.434002627134547
+        }
+      ],
+      "total_cost": null
+    }
+  }
+}

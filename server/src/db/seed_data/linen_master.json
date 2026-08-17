@@ -1,0 +1,240 @@
+[
+  {
+    "Section": null,
+    "Particulars": "Particulars",
+    "Qty": "Qty",
+    "Rate": "Rate",
+    "Value": "Value"
+  },
+  {
+    "Section": "New Linen",
+    "Particulars": "Big sheet",
+    "Qty": 50,
+    "Rate": 190,
+    "Value": 9500
+  },
+  {
+    "Section": "New Linen",
+    "Particulars": "Long sheet",
+    "Qty": 20,
+    "Rate": 210,
+    "Value": 4200
+  },
+  {
+    "Section": "New Linen",
+    "Particulars": "Draw sheet",
+    "Qty": 50,
+    "Rate": 161.92,
+    "Value": 8096
+  },
+  {
+    "Section": "New Linen",
+    "Particulars": "Center hole towel",
+    "Qty": 10,
+    "Rate": 39.9,
+    "Value": 399
+  },
+  {
+    "Section": "New Linen",
+    "Particulars": "Skin towel",
+    "Qty": 15,
+    "Rate": 39.9,
+    "Value": 598.5
+  },
+  {
+    "Section": "New Linen",
+    "Particulars": "New Blue gown",
+    "Qty": 7,
+    "Rate": 3000,
+    "Value": 21000
+  },
+  {
+    "Section": "New Linen",
+    "Particulars": "Cotton gown",
+    "Qty": 1,
+    "Rate": 260,
+    "Value": 260
+  },
+  {
+    "Section": "Old Linen",
+    "Particulars": "Big sheet",
+    "Qty": 47,
+    "Rate": 255,
+    "Value": 11985
+  },
+  {
+    "Section": "Old Linen",
+    "Particulars": "Draw sheet",
+    "Qty": 27,
+    "Rate": 161.92,
+    "Value": 4371.84
+  },
+  {
+    "Section": "Old Linen",
+    "Particulars": "Skin towel",
+    "Qty": 28,
+    "Rate": 39.9,
+    "Value": 1117.2
+  },
+  {
+    "Section": "Old Linen",
+    "Particulars": "Center hole towel",
+    "Qty": 12,
+    "Rate": 39.9,
+    "Value": 478.8
+  },
+  {
+    "Section": "Old Linen",
+    "Particulars": "New Blue gown",
+    "Qty": 26,
+    "Rate": 3000,
+    "Value": 78000
+  },
+  {
+    "Section": "Old Linen",
+    "Particulars": "Cotton gown",
+    "Qty": 8,
+    "Rate": 260,
+    "Value": 2080
+  },
+  {
+    "Section": "Old Linen",
+    "Particulars": "Yellow Sheet",
+    "Qty": 40,
+    "Rate": 255,
+    "Value": 10200
+  },
+  {
+    "Section": "Old Linen",
+    "Particulars": "Yellow pillow cover",
+    "Qty": 40,
+    "Rate": 65,
+    "Value": 2600
+  },
+  {
+    "Section": "Old Linen",
+    "Particulars": "Violet sheet",
+    "Qty": 64,
+    "Rate": 290,
+    "Value": 18560
+  },
+  {
+    "Section": "Old Linen",
+    "Particulars": "Violet pillow cover",
+    "Qty": 64,
+    "Rate": 70,
+    "Value": 4480
+  },
+  {
+    "Section": "Old Linen",
+    "Particulars": "Rose Gown",
+    "Qty": 20,
+    "Rate": 273,
+    "Value": 5460
+  },
+  {
+    "Section": "Old Linen",
+    "Particulars": "Blanket",
+    "Qty": 14,
+    "Rate": 403.75,
+    "Value": 5652.5
+  },
+  {
+    "Section": "Old Linen",
+    "Particulars": "Towel",
+    "Qty": 10,
+    "Rate": 39.9,
+    "Value": 399
+  },
+  {
+    "Section": "HC POW",
+    "Particulars": "Bed Sheet",
+    "Qty": 45,
+    "Rate": 150,
+    "Value": 6750
+  },
+  {
+    "Section": "HC POW",
+    "Particulars": "Draw Sheet",
+    "Qty": 24,
+    "Rate": 161.92,
+    "Value": 3886.08
+  },
+  {
+    "Section": "HC POW",
+    "Particulars": "Pillow Cover",
+    "Qty": 45,
+    "Rate": 47,
+    "Value": 2115
+  },
+  {
+    "Section": "HC POW",
+    "Particulars": "PTS Gown",
+    "Qty": 20,
+    "Rate": 273,
+    "Value": 5460
+  },
+  {
+    "Section": "HC POW",
+    "Particulars": "Blanket",
+    "Qty": 10,
+    "Rate": 403.75,
+    "Value": 4037.5
+  },
+  {
+    "Section": "3rd floor",
+    "Particulars": "Yellow Sheet",
+    "Qty": 88,
+    "Rate": 255,
+    "Value": 22440
+  },
+  {
+    "Section": "3rd floor",
+    "Particulars": "Yellow pillow cover",
+    "Qty": 88,
+    "Rate": 65,
+    "Value": 5720
+  },
+  {
+    "Section": "3rd floor",
+    "Particulars": "Red Gown",
+    "Qty": 20,
+    "Rate": 273,
+    "Value": 5460
+  },
+  {
+    "Section": "Equipment",
+    "Particulars": "Hand washBag with trolly- old",
+    "Qty": 18,
+    "Rate": 6500,
+    "Value": 117000
+  },
+  {
+    "Section": "Equipment",
+    "Particulars": "new",
+    "Qty": 2,
+    "Rate": 6500,
+    "Value": 13000
+  },
+  {
+    "Section": "Equipment",
+    "Particulars": null,
+    "Qty": 20,
+    "Rate": 13000,
+    "Value": 130000
+  },
+  {
+    "Section": "Total cost per day/bed",
+    "Particulars": "Particulars",
+    "Qty": "No of days stay",
+    "Rate": "Machinery cost",
+    "Value": "Material cost"
+  },
+  {
+    "Section": "Total cost per day/bed",
+    "Particulars": "Linen Cost for CABG On Pump",
+    "Qty": 7,
+    "Rate": 0,
+    "Value": 1347.5
+  }
+]
