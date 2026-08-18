@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
@@ -10,6 +10,12 @@ export default function Sidebar() {
   const currentDeptCode = location.pathname.match(/^\/dept\/([^/]+)/)?.[1];
   const [openDept, setOpenDept] = useState(currentDeptCode || null);
   const [deptFilter, setDeptFilter] = useState("");
+
+  // Auto-expand whichever department the route navigates to, but afterwards let the
+  // user's own click toggle it open/closed freely (that's the part that was broken).
+  useEffect(() => {
+    if (currentDeptCode) setOpenDept(currentDeptCode);
+  }, [currentDeptCode]);
 
   const filteredDepartments = departments.filter((d) =>
     d.name.toLowerCase().includes(deptFilter.toLowerCase())
@@ -42,7 +48,7 @@ export default function Sidebar() {
         </>
       )}
       {filteredDepartments.map((d) => {
-        const isOpen = openDept === d.code || currentDeptCode === d.code;
+        const isOpen = openDept === d.code;
         return (
           <div key={d.code}>
             <div

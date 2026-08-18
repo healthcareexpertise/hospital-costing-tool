@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 /**
  * Generic editable table.
- * columns: [{ key, label, type: 'text'|'number'|'select', editable, options: [{value,label}], computed: (row) => value }]
+ * columns: [{ key, label, type: 'text'|'number'|'select', editable, options: [{value,label}],
+ *             computed: (row) => value, onSelect: (value, row) => partialPatch }]
  * rows: array of objects (must include id, unless singleRow)
  * onSave(rowId, patch) / onDelete(rowId) / onCreate(newRow) — omit to hide the action
  */
@@ -26,7 +27,7 @@ export default function DataTable({ columns, rows, canEdit, onSave, onDelete, on
   function startCreate() {
     const blank = {};
     columns.forEach((c) => {
-      if (c.computed) return;
+      if (c.computed || c.editable === false) return;
       blank[c.key] = c.type === "number" ? 0 : c.type === "select" ? (c.options?.[0]?.value ?? "") : "";
     });
     setNewRow(blank);
@@ -36,10 +37,21 @@ export default function DataTable({ columns, rows, canEdit, onSave, onDelete, on
     setNewRow(null);
   }
 
-  function renderInput(value, onChange, col) {
+  // row = current draft/newRow object, col = column def, mergeFn = (patch) => void to merge fields into that state
+  function renderInput(row, col, mergeFn) {
+    const value = row[col.key];
     if (col.type === "select") {
       return (
-        <select value={value ?? ""} onChange={(e) => onChange(e.target.value)} style={{ width: "100%" }}>
+        <select
+          value={value ?? ""}
+          onChange={(e) => {
+            const v = e.target.value;
+            let patch = { [col.key]: v };
+            if (col.onSelect) patch = { ...patch, ...col.onSelect(v, row) };
+            mergeFn(patch);
+          }}
+          style={{ width: "100%" }}
+        >
           {col.options.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
         </select>
       );
@@ -48,7 +60,7 @@ export default function DataTable({ columns, rows, canEdit, onSave, onDelete, on
       <input
         type={col.type === "number" ? "number" : "text"}
         value={value ?? ""}
-        onChange={(e) => onChange(col.type === "number" ? Number(e.target.value) : e.target.value)}
+        onChange={(e) => mergeFn({ [col.key]: col.type === "number" ? Number(e.target.value) : e.target.value })}
         style={{ width: "100%" }}
       />
     );
@@ -88,8 +100,10 @@ export default function DataTable({ columns, rows, canEdit, onSave, onDelete, on
                   <td key={c.key}>
                     {c.computed ? (
                       <span style={{ color: "var(--text-muted)" }}>{c.computed(newRow)}</span>
+                    ) : c.editable === false ? (
+                      <span style={{ color: "var(--text-muted)" }}>(auto)</span>
                     ) : (
-                      renderInput(newRow[c.key], (v) => setNewRow({ ...newRow, [c.key]: v }), c)
+                      renderInput(newRow, c, (patch) => setNewRow({ ...newRow, ...patch }))
                     )}
                   </td>
                 ))}
@@ -104,7 +118,7 @@ export default function DataTable({ columns, rows, canEdit, onSave, onDelete, on
                 {columns.map((c) => (
                   <td key={c.key}>
                     {editingId === row.id && c.editable !== false && !c.computed ? (
-                      renderInput(draft[c.key], (v) => setDraft({ ...draft, [c.key]: v }), c)
+                      renderInput(draft, c, (patch) => setDraft({ ...draft, ...patch }))
                     ) : (
                       displayValue(editingId === row.id ? draft : row, c)
                     )}

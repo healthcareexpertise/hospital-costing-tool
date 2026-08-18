@@ -5,50 +5,9 @@ import DataTable from "../../components/DataTable";
 import { useAuth } from "../../context/AuthContext";
 import { useProcedure } from "../../context/ProcedureContext";
 
-const STATIC_TABS = [
-  { key: "materials", label: "Materials", cols: [
-      { key: "sl_no", label: "Sl No", type: "number" },
-      { key: "item_name", label: "Item Name" },
-      { key: "cost_price_per_unit", label: "Cost/Unit (Rs.)", type: "number" },
-      { key: "qty_per_patient", label: "Qty per Patient", type: "number" },
-  ]},
-  { key: "equipment", label: "Equipment", cols: [
-      { key: "sl_no", label: "Sl No", type: "number" },
-      { key: "equipment_name", label: "Equipment Name" },
-      { key: "cost_price", label: "Cost Price (Rs.)", type: "number" },
-      { key: "useful_life_years", label: "Life (Yrs)", type: "number" },
-      { key: "no_of_units", label: "Units", type: "number" },
-      { key: "scrap_pct", label: "Scrap %", type: "number" },
-      { key: "insurance_pct", label: "Insurance %", type: "number" },
-      { key: "maintenance_pct", label: "Maintenance %", type: "number" },
-  ]},
-  { key: "nonmedical", label: "Non-Medical Assets", cols: [
-      { key: "sl_no", label: "Sl No", type: "number" },
-      { key: "asset_name", label: "Asset Name" },
-      { key: "no_of_units", label: "Units", type: "number" },
-      { key: "cost_price", label: "Cost Price (Rs.)", type: "number" },
-      { key: "useful_life_years", label: "Life (Yrs)", type: "number" },
-      { key: "scrap_pct", label: "Scrap %", type: "number" },
-  ]},
-  { key: "ac", label: "Air Conditioning", cols: [
-      { key: "sl_no", label: "Sl No", type: "number" },
-      { key: "floor", label: "Floor" },
-      { key: "room", label: "Room / Area" },
-      { key: "odu_capacity_tr", label: "ODU (TR)", type: "number" },
-      { key: "capital_cost", label: "Capital Cost (Rs.)", type: "number" },
-      { key: "useful_life_years", label: "Life (Yrs)", type: "number" },
-  ]},
-  { key: "power", label: "Power Consumption", cols: [
-      { key: "sl_no", label: "Sl No", type: "number" },
-      { key: "equipment_name", label: "Equipment Name" },
-      { key: "power_kw", label: "Power (kW/hr)", type: "number" },
-  ]},
-  { key: "simple", label: "Simple Assets", cols: [
-      { key: "item_name", label: "Item / Parameter" },
-      { key: "cost_price", label: "Value", type: "number" },
-      { key: "notes", label: "Notes / Unit" },
-  ]},
-];
+function money(v) {
+  return `₹${(Number(v) || 0).toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
+}
 
 export default function MasterPage() {
   const { deptCode } = useParams();
@@ -78,26 +37,71 @@ export default function MasterPage() {
       .finally(() => setLoading(false));
   }, [deptCode, activeTab, selectedCode]);
 
-  const manpowerTab = {
-    key: "manpower", label: "Manpower", cols: [
-      { key: "sl_no", label: "Sl No", type: "number" },
-      { key: "role", label: "Role / Designation" },
-      { key: "category", label: "Category" },
-      { key: "employee_id", label: "Employee (optional)", type: "select",
-        options: [{ value: "", label: "— Not linked —" }, ...employees.map((e) => ({ value: e.id, label: `${e.full_name}${e.emp_code ? ` (${e.emp_code})` : ""}` }))] },
-      { key: "no_of_persons", label: "No. of Persons", type: "number" },
-      { key: "rate_type", label: "Rate Type", type: "select",
-        options: rateTypes.length ? rateTypes.map((rt) => ({ value: rt.code, label: rt.name })) : [{ value: "SALARY_PER_MONTH", label: "Salary per month" }, { value: "FEE_PER_SURGERY", label: "Fee per surgery" }] },
-      { key: "rate_value", label: "Rate (Rs.)", type: "number" },
-      { key: "total_value", label: "Total (Rate × Persons)", computed: (row) => {
-          const rate = Number(row.rate_value) || 0;
-          const persons = Number(row.no_of_persons) || 1;
-          return `₹${(rate * persons).toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
-        } },
-    ],
-  };
+  const SL_NO_COL = { key: "sl_no", label: "Sl No", editable: false };
 
-  const MASTER_TABS = [manpowerTab, ...STATIC_TABS];
+  const MASTER_TABS = [
+    { key: "manpower", label: "Manpower", cols: [
+        SL_NO_COL,
+        { key: "role", label: "Role / Designation" },
+        { key: "category", label: "Category" },
+        { key: "employee_id", label: "Employee (optional)", type: "select",
+          options: [{ value: "", label: "— Not linked —" }, ...employees.map((e) => ({ value: e.id, label: `${e.full_name}${e.emp_code ? ` (${e.emp_code})` : ""}` }))],
+          onSelect: (value) => {
+            const emp = employees.find((e) => String(e.id) === String(value));
+            if (emp && emp.monthly_salary) return { rate_value: emp.monthly_salary, rate_type: "SALARY_PER_MONTH" };
+            return {};
+          } },
+        { key: "no_of_persons", label: "No. of Persons", type: "number" },
+        { key: "rate_type", label: "Rate Type", type: "select",
+          options: rateTypes.length ? rateTypes.map((rt) => ({ value: rt.code, label: rt.name })) : [{ value: "SALARY_PER_MONTH", label: "Salary per month" }, { value: "FEE_PER_SURGERY", label: "Fee per surgery" }] },
+        { key: "rate_value", label: "Rate (Rs.)", type: "number" },
+        { key: "total_value", label: "Total (Rate × Persons)", computed: (row) => money((Number(row.rate_value) || 0) * (Number(row.no_of_persons) || 1)) },
+    ]},
+    { key: "materials", label: "Materials", cols: [
+        SL_NO_COL,
+        { key: "item_name", label: "Item Name" },
+        { key: "cost_price_per_unit", label: "Cost/Unit (Rs.)", type: "number" },
+        { key: "qty_per_patient", label: "Qty per Patient", type: "number" },
+        { key: "total_value", label: "Total (Cost × Qty)", computed: (row) => money((Number(row.cost_price_per_unit) || 0) * (Number(row.qty_per_patient) || 0)) },
+    ]},
+    { key: "equipment", label: "Equipment", cols: [
+        SL_NO_COL,
+        { key: "equipment_name", label: "Equipment Name" },
+        { key: "cost_price", label: "Cost Price (Rs.)", type: "number" },
+        { key: "useful_life_years", label: "Life (Yrs)", type: "number" },
+        { key: "no_of_units", label: "Units", type: "number" },
+        { key: "scrap_pct", label: "Scrap %", type: "number" },
+        { key: "insurance_pct", label: "Insurance %", type: "number" },
+        { key: "maintenance_pct", label: "Maintenance %", type: "number" },
+    ]},
+    { key: "nonmedical", label: "Non-Medical Assets", cols: [
+        SL_NO_COL,
+        { key: "asset_name", label: "Asset Name" },
+        { key: "no_of_units", label: "Units", type: "number" },
+        { key: "cost_price", label: "Cost Price (Rs.)", type: "number" },
+        { key: "useful_life_years", label: "Life (Yrs)", type: "number" },
+        { key: "scrap_pct", label: "Scrap %", type: "number" },
+    ]},
+    { key: "ac", label: "Air Conditioning", cols: [
+        SL_NO_COL,
+        { key: "floor", label: "Floor" },
+        { key: "room", label: "Room / Area" },
+        { key: "odu_capacity_tr", label: "ODU (TR)", type: "number" },
+        { key: "capital_cost", label: "Capital Cost (Rs.)", type: "number" },
+        { key: "useful_life_years", label: "Life (Yrs)", type: "number" },
+    ]},
+    { key: "power", label: "Power Consumption", cols: [
+        SL_NO_COL,
+        { key: "equipment_name", label: "Equipment Name" },
+        { key: "power_kw", label: "Power (kW/hr)", type: "number" },
+    ]},
+    { key: "simple", label: "Simple Assets", cols: [
+        { key: "item_name", label: "Item / Parameter" },
+        { key: "cost_price", label: "Value", type: "number" },
+        { key: "notes", label: "Notes / Unit" },
+    ]},
+  ];
+
   const tab = MASTER_TABS.find((t) => t.key === activeTab);
 
   async function handleSave(id, patch) {
@@ -106,7 +110,7 @@ export default function MasterPage() {
     setRows(data);
   }
   async function handleDelete(id) {
-    if (!confirm("Delete this record?")) return;
+    if (!confirm("Delete this record? Remaining Sl. No values will renumber automatically.")) return;
     await api.del(`/master/${deptCode}/${activeTab}/${id}${q}`);
     const data = await api.get(`/master/${deptCode}/${activeTab}${q}`);
     setRows(data);

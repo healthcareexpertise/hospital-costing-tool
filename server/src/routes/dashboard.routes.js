@@ -84,4 +84,28 @@ router.get("/allocation-basis-master", requireModule("SYS_ALLOCATION_BASIS_MASTE
   res.json(db.prepare("SELECT * FROM allocation_basis_master ORDER BY id").all());
 });
 
+router.post("/allocation-basis-master", requireModule("SYS_ALLOCATION_BASIS_MASTER", "edit"), (req, res) => {
+  const { classification, department_name, cost_component, basis_of_allocation } = req.body;
+  if (!department_name || !cost_component || !basis_of_allocation) {
+    return res.status(400).json({ error: "department_name, cost_component and basis_of_allocation are required" });
+  }
+  const info = db.prepare(
+    `INSERT INTO allocation_basis_master (classification, department_name, cost_component, basis_of_allocation) VALUES (?,?,?,?)`
+  ).run(classification || "", department_name, cost_component, basis_of_allocation);
+  res.status(201).json({ id: info.lastInsertRowid });
+});
+
+router.put("/allocation-basis-master/:id", requireModule("SYS_ALLOCATION_BASIS_MASTER", "edit"), (req, res) => {
+  const { classification, department_name, cost_component, basis_of_allocation } = req.body;
+  db.prepare(
+    `UPDATE allocation_basis_master SET classification=?, department_name=?, cost_component=?, basis_of_allocation=? WHERE id=?`
+  ).run(classification || "", department_name, cost_component, basis_of_allocation, req.params.id);
+  res.json({ ok: true });
+});
+
+router.delete("/allocation-basis-master/:id", requireModule("SYS_ALLOCATION_BASIS_MASTER", "edit"), (req, res) => {
+  db.prepare("DELETE FROM allocation_basis_master WHERE id = ?").run(req.params.id);
+  res.json({ ok: true });
+});
+
 module.exports = router;
