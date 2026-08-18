@@ -23,7 +23,7 @@ body {
 
 a { color: var(--accent); text-decoration: none; }
 
-.app-shell { display: flex; min-height: 100vh; }
+.app-shell { display: flex; height: 100vh; overflow: hidden; }
 
 .sidebar {
   width: 250px;
@@ -32,12 +32,16 @@ a { color: var(--accent); text-decoration: none; }
   padding: 16px 0;
   flex-shrink: 0;
   overflow-y: auto;
+  height: 100%;
 }
-.sidebar-brand { padding: 0 16px 16px; font-weight: 700; color: var(--primary); font-size: 16px; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
+.sidebar-brand { padding: 0 16px 16px; font-weight: 700; color: var(--primary); font-size: 16px; border-bottom: 1px solid var(--border); margin-bottom: 8px; position: sticky; top: 0; background: var(--surface); z-index: 2; }
 .sidebar-section { padding: 10px 16px 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
-.sidebar-link {
-  display: block; padding: 7px 16px; color: var(--text); font-size: 13.5px; border-left: 3px solid transparent;
+.sidebar-dept-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 7px 16px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--text);
 }
+.sidebar-dept-toggle:hover { background: var(--primary-light); }
+.sidebar-link { display: block; padding: 7px 16px; color: var(--text); font-size: 13.5px; border-left: 3px solid transparent; }
 .sidebar-link:hover { background: var(--primary-light); }
 .sidebar-link.active { background: var(--primary-light); border-left-color: var(--primary); font-weight: 600; color: var(--primary); }
 .sidebar-link.disabled { color: var(--text-muted); cursor: not-allowed; }

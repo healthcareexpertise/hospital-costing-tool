@@ -65,6 +65,24 @@ CREATE TABLE IF NOT EXISTS rate_tariff_master (
   applies_to TEXT
 );
 
+CREATE TABLE IF NOT EXISTS rate_type_master (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  code TEXT UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  description TEXT
+);
+
+CREATE TABLE IF NOT EXISTS employee_master (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  emp_code TEXT UNIQUE,
+  full_name TEXT NOT NULL,
+  designation TEXT,
+  department_id INTEGER REFERENCES departments(id),
+  contact TEXT,
+  monthly_salary REAL,
+  active INTEGER DEFAULT 1
+);
+
 CREATE TABLE IF NOT EXISTS allocation_basis_master (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   classification TEXT,
@@ -115,8 +133,9 @@ CREATE TABLE IF NOT EXISTS manpower_master (
   role TEXT NOT NULL,
   category TEXT,
   no_of_persons REAL DEFAULT 1,
-  rate_type TEXT NOT NULL DEFAULT 'SALARY', -- FEE_PER_SURGERY | SALARY_PER_MONTH
-  rate_value REAL NOT NULL DEFAULT 0
+  rate_type TEXT NOT NULL DEFAULT 'SALARY', -- FEE_PER_SURGERY | SALARY_PER_MONTH (see rate_type_master)
+  rate_value REAL NOT NULL DEFAULT 0,
+  employee_id INTEGER REFERENCES employee_master(id)
 );
 
 CREATE TABLE IF NOT EXISTS materials_master (

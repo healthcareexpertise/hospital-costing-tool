@@ -41,4 +41,23 @@ router.get("/me/permissions", requireAuth, (req, res) => {
   res.json({ user: req.user, permissions: rows });
 });
 
+// Self-service: change your own name/password
+router.put("/me", requireAuth, (req, res) => {
+  const { full_name, current_password, new_password } = req.body;
+  const user = db.prepare("SELECT * FROM users WHERE id = ?").get(req.user.id);
+  if (!user) return res.status(404).json({ error: "User not found" });
+
+  if (new_password) {
+    if (!current_password || !bcrypt.compareSync(current_password, user.password_hash)) {
+      return res.status(401).json({ error: "Current password is incorrect" });
+    }
+    const hash = bcrypt.hashSync(new_password, 8);
+    db.prepare("UPDATE users SET password_hash = ? WHERE id = ?").run(hash, user.id);
+  }
+  if (full_name) {
+    db.prepare("UPDATE users SET full_name = ? WHERE id = ?").run(full_name, user.id);
+  }
+  res.json({ ok: true });
+});
+
 module.exports = router;

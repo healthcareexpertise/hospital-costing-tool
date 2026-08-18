@@ -5,15 +5,7 @@ import DataTable from "../../components/DataTable";
 import { useAuth } from "../../context/AuthContext";
 import { useProcedure } from "../../context/ProcedureContext";
 
-const MASTER_TABS = [
-  { key: "manpower", label: "Manpower", cols: [
-      { key: "sl_no", label: "Sl No", type: "number" },
-      { key: "role", label: "Role / Designation" },
-      { key: "category", label: "Category" },
-      { key: "no_of_persons", label: "No. of Persons", type: "number" },
-      { key: "rate_type", label: "Rate Type" },
-      { key: "rate_value", label: "Rate (Rs.)", type: "number" },
-  ]},
+const STATIC_TABS = [
   { key: "materials", label: "Materials", cols: [
       { key: "sl_no", label: "Sl No", type: "number" },
       { key: "item_name", label: "Item Name" },
@@ -66,9 +58,16 @@ export default function MasterPage() {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [rateTypes, setRateTypes] = useState([]);
+  const [employees, setEmployees] = useState([]);
 
   const canEdit = can(`${deptCode}_MASTER`, "edit");
   const q = `?procedure=${encodeURIComponent(selectedCode)}`;
+
+  useEffect(() => {
+    api.get("/dashboard/rate-type-master").then(setRateTypes).catch(() => setRateTypes([]));
+    api.get("/employees").then(setEmployees).catch(() => setEmployees([]));
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -79,6 +78,26 @@ export default function MasterPage() {
       .finally(() => setLoading(false));
   }, [deptCode, activeTab, selectedCode]);
 
+  const manpowerTab = {
+    key: "manpower", label: "Manpower", cols: [
+      { key: "sl_no", label: "Sl No", type: "number" },
+      { key: "role", label: "Role / Designation" },
+      { key: "category", label: "Category" },
+      { key: "employee_id", label: "Employee (optional)", type: "select",
+        options: [{ value: "", label: "— Not linked —" }, ...employees.map((e) => ({ value: e.id, label: `${e.full_name}${e.emp_code ? ` (${e.emp_code})` : ""}` }))] },
+      { key: "no_of_persons", label: "No. of Persons", type: "number" },
+      { key: "rate_type", label: "Rate Type", type: "select",
+        options: rateTypes.length ? rateTypes.map((rt) => ({ value: rt.code, label: rt.name })) : [{ value: "SALARY_PER_MONTH", label: "Salary per month" }, { value: "FEE_PER_SURGERY", label: "Fee per surgery" }] },
+      { key: "rate_value", label: "Rate (Rs.)", type: "number" },
+      { key: "total_value", label: "Total (Rate × Persons)", computed: (row) => {
+          const rate = Number(row.rate_value) || 0;
+          const persons = Number(row.no_of_persons) || 1;
+          return `₹${(rate * persons).toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
+        } },
+    ],
+  };
+
+  const MASTER_TABS = [manpowerTab, ...STATIC_TABS];
   const tab = MASTER_TABS.find((t) => t.key === activeTab);
 
   async function handleSave(id, patch) {

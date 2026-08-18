@@ -8,7 +8,7 @@ router.use(requireAuth);
 
 // table name + editable column list per master "type" query param
 const TABLES = {
-  manpower: { table: "manpower_master", cols: ["sl_no", "role", "category", "no_of_persons", "rate_type", "rate_value"] },
+  manpower: { table: "manpower_master", cols: ["sl_no", "role", "category", "no_of_persons", "rate_type", "rate_value", "employee_id"] },
   materials: { table: "materials_master", cols: ["sl_no", "item_name", "cost_price_per_unit", "qty_per_patient"] },
   equipment: { table: "equipment_master", cols: ["sl_no", "equipment_name", "cost_price", "date_of_purchase", "useful_life_years", "no_of_units", "scrap_pct", "insurance_pct", "maintenance_pct"] },
   nonmedical: { table: "nonmedical_asset_master", cols: ["sl_no", "asset_name", "no_of_units", "cost_price", "useful_life_years", "scrap_pct"] },

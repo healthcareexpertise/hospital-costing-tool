@@ -1,11 +1,19 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const MODULE_LABELS = { MASTER: "Master", INPUT: "Input", OUTPUT: "Output", DASHBOARD: "Dashboard" };
 
 export default function Sidebar() {
   const { departments, systemModules } = useAuth();
+  const location = useLocation();
+  const currentDeptCode = location.pathname.match(/^\/dept\/([^/]+)/)?.[1];
+  const [openDept, setOpenDept] = useState(currentDeptCode || null);
+  const [deptFilter, setDeptFilter] = useState("");
+
+  const filteredDepartments = departments.filter((d) =>
+    d.name.toLowerCase().includes(deptFilter.toLowerCase())
+  );
 
   return (
     <div className="sidebar">
@@ -18,29 +26,68 @@ export default function Sidebar() {
         </NavLink>
       )}
 
-      {departments.length > 0 && <div className="sidebar-section">Departments</div>}
-      {departments.map((d) => (
-        <div key={d.code}>
-          <div style={{ padding: "8px 16px 2px", fontSize: 12.5, fontWeight: 600 }}>{d.name}</div>
-          {["MASTER", "INPUT", "OUTPUT", "DASHBOARD"].map((mt) =>
-            d.modules[mt]?.can_view ? (
-              <NavLink
-                key={mt}
-                to={`/dept/${d.code}/${mt.toLowerCase()}`}
-                className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}`}
-                style={{ paddingLeft: 28 }}
-              >
-                {MODULE_LABELS[mt]}
-              </NavLink>
-            ) : null
+      {departments.length > 0 && (
+        <>
+          <div className="sidebar-section">Departments</div>
+          {departments.length > 8 && (
+            <div style={{ padding: "0 16px 8px" }}>
+              <input
+                placeholder="Filter departments..."
+                value={deptFilter}
+                onChange={(e) => setDeptFilter(e.target.value)}
+                style={{ width: "100%", fontSize: 12.5 }}
+              />
+            </div>
           )}
-        </div>
-      ))}
+        </>
+      )}
+      {filteredDepartments.map((d) => {
+        const isOpen = openDept === d.code || currentDeptCode === d.code;
+        return (
+          <div key={d.code}>
+            <div
+              className="sidebar-dept-toggle"
+              onClick={() => setOpenDept(isOpen ? null : d.code)}
+            >
+              <span>{d.name}</span>
+              <span style={{ fontSize: 10 }}>{isOpen ? "▾" : "▸"}</span>
+            </div>
+            {isOpen &&
+              ["MASTER", "INPUT", "OUTPUT", "DASHBOARD"].map((mt) =>
+                d.modules[mt]?.can_view ? (
+                  <NavLink
+                    key={mt}
+                    to={`/dept/${d.code}/${mt.toLowerCase()}`}
+                    className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}`}
+                    style={{ paddingLeft: 28 }}
+                  >
+                    {MODULE_LABELS[mt]}
+                  </NavLink>
+                ) : null
+              )}
+          </div>
+        );
+      })}
 
       {systemModules.some((m) => m.code !== "SYS_GLOBAL_DASHBOARD") && <div className="sidebar-section">Administration</div>}
       {systemModules.find((m) => m.code === "SYS_DEPARTMENT_MASTER") && (
         <NavLink to="/admin/departments" className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}`}>
           Department Master
+        </NavLink>
+      )}
+      {systemModules.find((m) => m.code === "SYS_SPECIALTY_MASTER") && (
+        <NavLink to="/admin/specialties" className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}`}>
+          Specialty Master
+        </NavLink>
+      )}
+      {systemModules.find((m) => m.code === "SYS_PROCEDURE_MASTER") && (
+        <NavLink to="/admin/procedures" className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}`}>
+          Procedure (Surgery) Master
+        </NavLink>
+      )}
+      {systemModules.find((m) => m.code === "SYS_EMPLOYEE_MASTER") && (
+        <NavLink to="/admin/employees" className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}`}>
+          Employee Master
         </NavLink>
       )}
       {systemModules.find((m) => m.code === "SYS_PROFILE_MASTER") && (
@@ -56,6 +103,11 @@ export default function Sidebar() {
       {systemModules.find((m) => m.code === "SYS_RATE_TARIFF_MASTER") && (
         <NavLink to="/admin/rates" className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}`}>
           Rate &amp; Tariff Master
+        </NavLink>
+      )}
+      {systemModules.find((m) => m.code === "SYS_RATE_TYPE_MASTER") && (
+        <NavLink to="/admin/rate-types" className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}`}>
+          Rate Type Master
         </NavLink>
       )}
       {systemModules.find((m) => m.code === "SYS_ALLOCATION_BASIS_MASTER") && (

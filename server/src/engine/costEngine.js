@@ -32,7 +32,7 @@ function assetCostForCase(cost, usefulLife, noOfUnits, scrapPct, insurancePct, m
 }
 
 function manpowerCostForCase(rateType, rateValue, noOfPersons, input) {
-  if (rateType === "FEE_PER_SURGERY") return rateValue; // flat fee, already per-surgery
+  if (rateType === "FEE_PER_SURGERY") return rateValue * (noOfPersons || 1); // flat fee per person, already per-surgery
   // Salaried: monthly gross -> per day -> per hour -> per case
   const monthly = rateValue * noOfPersons;
   const perDay = monthly / (input.standard_days_month || 22);
@@ -54,7 +54,7 @@ function computeFullDepartment(procedureId, departmentId) {
   const manpowerDetail = manpowerRows.map((r) => {
     const val = manpowerCostForCase(r.rate_type, r.rate_value, r.no_of_persons, input);
     manpower += val;
-    return { role: r.role, rate_type: r.rate_type, rate_value: r.rate_value, cost_for_case: round2(val) };
+    return { role: r.role, rate_type: r.rate_type, rate_value: r.rate_value, no_of_persons: r.no_of_persons, cost_for_case: round2(val) };
   });
 
   // B. Material
@@ -190,7 +190,7 @@ function computeDepartmentOutput(procedureId, departmentId) {
 
   if (ref) {
     const manpowerDetail = db.prepare("SELECT * FROM manpower_master WHERE department_id = ? AND procedure_id = ?").all(departmentId, procedureId)
-      .map((r) => ({ role: r.role, rate_type: r.rate_type, rate_value: r.rate_value, cost_for_case: round2(r.rate_value) }));
+      .map((r) => ({ role: r.role, rate_type: r.rate_type, rate_value: r.rate_value, no_of_persons: r.no_of_persons, cost_for_case: round2(r.rate_value * (r.no_of_persons || 1)) }));
     const materialDetail = db.prepare("SELECT * FROM materials_master WHERE department_id = ? AND procedure_id = ?").all(departmentId, procedureId)
       .map((r) => ({ item: r.item_name, cost_price: r.cost_price_per_unit, qty: r.qty_per_patient, line_value: round2(r.cost_price_per_unit * r.qty_per_patient) }));
     const equipDetail = db.prepare("SELECT * FROM equipment_master WHERE department_id = ? AND procedure_id = ?").all(departmentId, procedureId)

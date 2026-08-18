@@ -67,6 +67,10 @@ const SYSTEM_MODULES = [
   ["SYS_USER_MASTER", "User Master"],
   ["SYS_RATE_TARIFF_MASTER", "Rate & Tariff Master"],
   ["SYS_ALLOCATION_BASIS_MASTER", "Allocation Basis Master"],
+  ["SYS_SPECIALTY_MASTER", "Specialty Master"],
+  ["SYS_PROCEDURE_MASTER", "Procedure (Surgery) Master"],
+  ["SYS_EMPLOYEE_MASTER", "Employee Master"],
+  ["SYS_RATE_TYPE_MASTER", "Rate Type Master"],
 ];
 
 // ============================================================
@@ -374,6 +378,11 @@ function run() {
     ["DEFAULT_BEDS","Default no. of beds for per-bed apportionment",351,"Simple asset master"],
   ];
   rates.forEach((r) => insertRate.run(...r));
+
+  // ---- Rate Type Master ----
+  const insertRateType = db.prepare(`INSERT OR IGNORE INTO rate_type_master (code, name, description) VALUES (?,?,?)`);
+  insertRateType.run("FEE_PER_SURGERY", "Fee per surgery", "A flat professional fee already scoped to one case (e.g. Surgeon, Anaesthetist fees) — not apportioned further, but is multiplied by No. of Persons if more than one.");
+  insertRateType.run("SALARY_PER_MONTH", "Salary per month", "A monthly salary that gets apportioned to one case via the department's standard days/hours and Input driver (surgery hours or length of stay).");
 
   // ---- Allocation basis master ----
   const basisRows = loadJSON("basis_allocation.json").slice(1);

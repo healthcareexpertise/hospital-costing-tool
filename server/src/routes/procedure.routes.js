@@ -22,6 +22,32 @@ router.get("/specialties", (req, res) => {
   res.json(db.prepare("SELECT * FROM specialties ORDER BY display_order").all());
 });
 
+router.post("/specialties", requireModule("SYS_SPECIALTY_MASTER", "edit"), (req, res) => {
+  const { code, name } = req.body;
+  if (!code || !name) return res.status(400).json({ error: "code and name are required" });
+  try {
+    const maxOrder = db.prepare("SELECT MAX(display_order) m FROM specialties").get().m || 0;
+    const info = db.prepare("INSERT INTO specialties (code, name, display_order) VALUES (?,?,?)").run(
+      code.toUpperCase().replace(/[^A-Z0-9]+/g, "_"), name, maxOrder + 1
+    );
+    res.status(201).json({ id: info.lastInsertRowid });
+  } catch (e) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+router.put("/specialties/:id", requireModule("SYS_SPECIALTY_MASTER", "edit"), (req, res) => {
+  db.prepare("UPDATE specialties SET name = ? WHERE id = ?").run(req.body.name, req.params.id);
+  res.json({ ok: true });
+});
+
+router.delete("/specialties/:id", requireModule("SYS_SPECIALTY_MASTER", "edit"), (req, res) => {
+  const hasProcedures = db.prepare("SELECT COUNT(*) c FROM procedures WHERE specialty_id = ?").get(req.params.id).c;
+  if (hasProcedures > 0) return res.status(400).json({ error: "Cannot delete a specialty that still has procedures — delete or reassign them first." });
+  db.prepare("DELETE FROM specialties WHERE id = ?").run(req.params.id);
+  res.json({ ok: true });
+});
+
 // Full package-cost breakdown for one procedure (sums every department that applies to it)
 router.get("/:code/output", (req, res) => {
   const proc = db.prepare("SELECT * FROM procedures WHERE code = ?").get(req.params.code);
@@ -34,7 +60,7 @@ router.get("/:code/output", (req, res) => {
 });
 
 // ---- Procedure Master (admin CRUD) ----
-router.post("/", requireModule("SYS_DEPARTMENT_MASTER", "edit"), (req, res) => {
+router.post("/", requireModule("SYS_PROCEDURE_MASTER", "edit"), (req, res) => {
   const { specialty_code, code, name } = req.body;
   const specialty = db.prepare("SELECT id FROM specialties WHERE code = ?").get(specialty_code);
   if (!specialty) return res.status(400).json({ error: "Unknown specialty_code" });
@@ -46,13 +72,13 @@ router.post("/", requireModule("SYS_DEPARTMENT_MASTER", "edit"), (req, res) => {
   }
 });
 
-router.put("/:id", requireModule("SYS_DEPARTMENT_MASTER", "edit"), (req, res) => {
+router.put("/:id", requireModule("SYS_PROCEDURE_MASTER", "edit"), (req, res) => {
   const { name } = req.body;
   db.prepare("UPDATE procedures SET name = ? WHERE id = ?").run(name, req.params.id);
   res.json({ ok: true });
 });
 
-router.delete("/:id", requireModule("SYS_DEPARTMENT_MASTER", "edit"), (req, res) => {
+router.delete("/:id", requireModule("SYS_PROCEDURE_MASTER", "edit"), (req, res) => {
   const id = req.params.id;
   db.prepare("DELETE FROM procedure_department_reference WHERE procedure_id = ?").run(id);
   db.prepare("DELETE FROM department_input WHERE procedure_id = ?").run(id);
