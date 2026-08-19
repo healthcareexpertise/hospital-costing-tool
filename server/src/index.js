@@ -22,6 +22,7 @@ const outputRoutes = require("./routes/output.routes");
 const dashboardRoutes = require("./routes/dashboard.routes");
 const procedureRoutes = require("./routes/procedure.routes");
 const employeeRoutes = require("./routes/employee.routes");
+const testMasterRoutes = require("./routes/testmaster.routes");
 
 const app = express();
 app.use(cors());
@@ -37,6 +38,7 @@ app.use("/api/output", outputRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/procedures", procedureRoutes);
 app.use("/api/employees", employeeRoutes);
+app.use("/api/test-master", testMasterRoutes);
 
 app.get("/api/health", (req, res) => res.json({ ok: true, name: "Hospital Costing Tool API" }));
 

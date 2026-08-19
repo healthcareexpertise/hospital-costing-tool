@@ -16,10 +16,7 @@ import RateTariffMaster from "./pages/RateTariffMaster";
 import RateTypeMaster from "./pages/RateTypeMaster";
 import AllocationBasisMaster from "./pages/AllocationBasisMaster";
 import MyProfile from "./pages/MyProfile";
-import MasterPage from "./pages/dept/MasterPage";
-import InputPage from "./pages/dept/InputPage";
-import OutputPage from "./pages/dept/OutputPage";
-import DashboardPage from "./pages/dept/DashboardPage";
+import DeptRouter from "./pages/dept/DeptRouter";
 
 function Shell({ children }) {
   const { user, logout, departments, systemModules } = useAuth();
@@ -80,10 +77,10 @@ export default function App() {
                 <Route path="/admin/rates" element={<RateTariffMaster />} />
                 <Route path="/admin/rate-types" element={<RateTypeMaster />} />
                 <Route path="/admin/allocation-basis" element={<AllocationBasisMaster />} />
-                <Route path="/dept/:deptCode/master" element={<MasterPage />} />
-                <Route path="/dept/:deptCode/input" element={<InputPage />} />
-                <Route path="/dept/:deptCode/output" element={<OutputPage />} />
-                <Route path="/dept/:deptCode/dashboard" element={<DashboardPage />} />
+                <Route path="/dept/:deptCode/master" element={<DeptRouter view="master" />} />
+                <Route path="/dept/:deptCode/input" element={<DeptRouter view="input" />} />
+                <Route path="/dept/:deptCode/output" element={<DeptRouter view="output" />} />
+                <Route path="/dept/:deptCode/dashboard" element={<DeptRouter view="dashboard" />} />
                 <Route path="*" element={<Navigate to="/dashboard" replace />} />
               </Routes>
             </Shell>

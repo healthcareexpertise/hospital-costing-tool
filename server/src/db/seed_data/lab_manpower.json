@@ -1,0 +1,80 @@
+[
+  {
+    "sl_no": 1,
+    "designation": "ASST. LAB TECHNICIAN",
+    "no_of_persons": 4,
+    "annual_salary": 614264
+  },
+  {
+    "sl_no": 2,
+    "designation": "ATTENDANT",
+    "no_of_persons": 3,
+    "annual_salary": 785758
+  },
+  {
+    "sl_no": 3,
+    "designation": "BIOCHEMIST & ASST. MANAGER-LABORATORY",
+    "no_of_persons": 1,
+    "annual_salary": 462821
+  },
+  {
+    "sl_no": 4,
+    "designation": "LAB ASSISTANT",
+    "no_of_persons": 4,
+    "annual_salary": 1034761
+  },
+  {
+    "sl_no": 5,
+    "designation": "LAB TECHNICIAN",
+    "no_of_persons": 26,
+    "annual_salary": 5144566
+  },
+  {
+    "sl_no": 6,
+    "designation": "LEAD LAB TECHNICIAN",
+    "no_of_persons": 2,
+    "annual_salary": 709371
+  },
+  {
+    "sl_no": 7,
+    "designation": "MANAGER",
+    "no_of_persons": 1,
+    "annual_salary": 592927
+  },
+  {
+    "sl_no": 8,
+    "designation": "MICROBIOLOGIST",
+    "no_of_persons": 7,
+    "annual_salary": 2113437
+  },
+  {
+    "sl_no": 9,
+    "designation": "Sr. LAB TECHNICIAN",
+    "no_of_persons": 3,
+    "annual_salary": 897008
+  },
+  {
+    "sl_no": 10,
+    "designation": "Sr. MICROBIOLOGIST",
+    "no_of_persons": 1,
+    "annual_salary": 346409
+  },
+  {
+    "sl_no": 11,
+    "designation": "DEPARTMENT CO-ORDINATOR - PATHOLOGY",
+    "no_of_persons": 1,
+    "annual_salary": 326834
+  },
+  {
+    "sl_no": 12,
+    "designation": "SUPERINTENDENT",
+    "no_of_persons": 1,
+    "annual_salary": 301667
+  },
+  {
+    "sl_no": 13,
+    "designation": "TYPIST",
+    "no_of_persons": 1,
+    "annual_salary": 289156
+  }
+]

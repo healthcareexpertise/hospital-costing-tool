@@ -1,0 +1,105 @@
+{
+  "tests": [
+    {
+      "sl_no": 1,
+      "test_name": "Whole blood",
+      "reagent_cost": 203.19,
+      "manpower_embedded": 101.08,
+      "common_consumables_embedded": 129.668030006334
+    },
+    {
+      "sl_no": 2,
+      "test_name": "FFP",
+      "reagent_cost": 203.19,
+      "manpower_embedded": 101.08,
+      "common_consumables_embedded": 129.668030006334
+    },
+    {
+      "sl_no": 3,
+      "test_name": "PRP",
+      "reagent_cost": 203.19,
+      "manpower_embedded": 101.08,
+      "common_consumables_embedded": 129.668030006334
+    },
+    {
+      "sl_no": 4,
+      "test_name": "CRYO",
+      "reagent_cost": 203.19,
+      "manpower_embedded": 101.08,
+      "common_consumables_embedded": 129.668030006334
+    },
+    {
+      "sl_no": 5,
+      "test_name": "PRBC",
+      "reagent_cost": 203.19,
+      "manpower_embedded": 101.08,
+      "common_consumables_embedded": 129.668030006334
+    },
+    {
+      "sl_no": 6,
+      "test_name": "Apheresis",
+      "reagent_cost": 1151.2,
+      "manpower_embedded": 101.08,
+      "common_consumables_embedded": 129.668030006334
+    },
+    {
+      "sl_no": 7,
+      "test_name": "DCT",
+      "reagent_cost": 30.9895833333333,
+      "manpower_embedded": 101.08,
+      "common_consumables_embedded": 129.668030006334
+    },
+    {
+      "sl_no": 8,
+      "test_name": "ICT",
+      "reagent_cost": 10.74124,
+      "manpower_embedded": 101.08,
+      "common_consumables_embedded": 129.668030006334
+    },
+    {
+      "sl_no": 9,
+      "test_name": "MONO SPECIFIC ANTIBODY",
+      "reagent_cost": 129.375,
+      "manpower_embedded": 101.08,
+      "common_consumables_embedded": 129.668030006334
+    },
+    {
+      "sl_no": 10,
+      "test_name": "BLOOD GROUP CONFIRMATION",
+      "reagent_cost": 74.2708333333333,
+      "manpower_embedded": 101.08,
+      "common_consumables_embedded": 129.668030006334
+    },
+    {
+      "sl_no": 11,
+      "test_name": "HAEMOGLOBIN",
+      "reagent_cost": 32.6328,
+      "manpower_embedded": 101.08,
+      "common_consumables_embedded": 129.668030006334
+    },
+    {
+      "sl_no": 12,
+      "test_name": "AUTOLOGUS PRP",
+      "reagent_cost": 352.086666666667,
+      "manpower_embedded": 101.08,
+      "common_consumables_embedded": 129.668030006334
+    },
+    {
+      "sl_no": 13,
+      "test_name": "HAEMOGLOBIN",
+      "reagent_cost": 42.56,
+      "manpower_embedded": 101.08,
+      "common_consumables_embedded": 129.668030006334
+    }
+  ],
+  "overhead": {
+    "manpower_actual": 101.08,
+    "building_actual": 10.6742291378194,
+    "building_standard": 1.11253094689047,
+    "power_actual": 16.5641900761355,
+    "power_standard": 1.72641732081474,
+    "equipment_actual": 8.747304527810076,
+    "equipment_standard": 0.9116955298049646,
+    "common_consumables_actual": 129.668030006334
+  }
+}

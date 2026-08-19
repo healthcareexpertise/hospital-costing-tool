@@ -20,6 +20,33 @@ export default function Sidebar() {
   const filteredDepartments = departments.filter((d) =>
     d.name.toLowerCase().includes(deptFilter.toLowerCase())
   );
+  const procedureDepartments = filteredDepartments.filter((d) => d.engine_type !== "PER_TEST");
+  const testDepartments = filteredDepartments.filter((d) => d.engine_type === "PER_TEST");
+
+  function renderDept(d) {
+    const isOpen = openDept === d.code;
+    return (
+      <div key={d.code}>
+        <div className="sidebar-dept-toggle" onClick={() => setOpenDept(isOpen ? null : d.code)}>
+          <span>{d.name}</span>
+          <span style={{ fontSize: 10 }}>{isOpen ? "▾" : "▸"}</span>
+        </div>
+        {isOpen &&
+          ["MASTER", "INPUT", "OUTPUT", "DASHBOARD"].map((mt) =>
+            d.modules[mt]?.can_view ? (
+              <NavLink
+                key={mt}
+                to={`/dept/${d.code}/${mt.toLowerCase()}`}
+                className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}`}
+                style={{ paddingLeft: 28 }}
+              >
+                {MODULE_LABELS[mt]}
+              </NavLink>
+            ) : null
+          )}
+      </div>
+    );
+  }
 
   return (
     <div className="sidebar">
@@ -47,33 +74,10 @@ export default function Sidebar() {
           )}
         </>
       )}
-      {filteredDepartments.map((d) => {
-        const isOpen = openDept === d.code;
-        return (
-          <div key={d.code}>
-            <div
-              className="sidebar-dept-toggle"
-              onClick={() => setOpenDept(isOpen ? null : d.code)}
-            >
-              <span>{d.name}</span>
-              <span style={{ fontSize: 10 }}>{isOpen ? "▾" : "▸"}</span>
-            </div>
-            {isOpen &&
-              ["MASTER", "INPUT", "OUTPUT", "DASHBOARD"].map((mt) =>
-                d.modules[mt]?.can_view ? (
-                  <NavLink
-                    key={mt}
-                    to={`/dept/${d.code}/${mt.toLowerCase()}`}
-                    className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}`}
-                    style={{ paddingLeft: 28 }}
-                  >
-                    {MODULE_LABELS[mt]}
-                  </NavLink>
-                ) : null
-              )}
-          </div>
-        );
-      })}
+      {procedureDepartments.map(renderDept)}
+
+      {testDepartments.length > 0 && <div className="sidebar-section">Lab &amp; Radiology (per test)</div>}
+      {testDepartments.map(renderDept)}
 
       {systemModules.some((m) => m.code !== "SYS_GLOBAL_DASHBOARD") && <div className="sidebar-section">Administration</div>}
       {systemModules.find((m) => m.code === "SYS_DEPARTMENT_MASTER") && (

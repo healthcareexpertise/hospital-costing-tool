@@ -59,7 +59,7 @@ export function AuthProvider({ children }) {
     .filter((p) => p.department_code)
     .forEach((p) => {
       if (!deptMap[p.department_code]) {
-        deptMap[p.department_code] = { code: p.department_code, name: p.department_name, modules: {} };
+        deptMap[p.department_code] = { code: p.department_code, name: p.department_name, engine_type: p.engine_type, modules: {} };
       }
       deptMap[p.department_code].modules[p.module_type] = { can_view: !!p.can_view, can_edit: !!p.can_edit };
     });

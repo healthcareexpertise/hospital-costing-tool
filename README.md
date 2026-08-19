@@ -132,7 +132,68 @@ Each of the 35 departments gets 4 modules; system-level modules sit alongside th
 - **Cloud hosting**: live on Render as a single web service, now with a **persistent
   disk** so data survives redeploys (see below) — no longer local-only.
 
-## Deploying to the cloud (Render, Starter plan + persistent disk)
+## Lab & Radiology (per-test costing)
+
+Lab and Radiology are costed fundamentally differently from every other department in
+this app — not as a package for one procedure, but as **a price list of individual
+tests/scans**, each with its own direct cost plus a shared department overhead computed
+two ways: against real recorded **"actual"** test volume, and against each machine's
+rated **"standard"** capacity. This mirrors the methodology in the hospital's own Lab
+and Radiology costing workbooks.
+
+**9 new departments** (`LAB_BIOCHEM`, `LAB_HAEM`, `LAB_CLINPATH`, `LAB_MICRO`,
+`LAB_BLOODBANK`, `RAD_XRAY`, `RAD_CT`, `RAD_MRI`, `RAD_USG`), **529 tests total**
+(113 Lab + 13 Blood Bank + 403 Radiology), all auto-wired into the existing
+department/module/permission system — they show up in the sidebar exactly like any
+other department, and Profile Master can grant/restrict access to them the same way.
+
+**Data model** (`test_master`, `test_overhead_master` in `schema.sql`) is deliberately
+*not* scoped to a procedure — a blood test isn't tied to a specific surgery. For each
+department:
+- **Direct cost** — the test's own reagent/consumable cost (Lab), or Radiology's
+  already-fully-loaded technical cost per scan (see note below).
+- **Doctor fee** — physician/radiologist reading fee, directly attributable where the
+  source data provides it (matched by test name).
+- **Overhead** (Manpower, Equipment, Building, Power, Common Consumables) — one shared
+  set of per-test rates for the whole department, computed both "actual" and "standard",
+  applied uniformly to every test in it.
+
+Total cost per test = direct cost + doctor fee + sum of overhead components (actual, or
+standard).
+
+**How to use it**: the Master screen for these departments lists every test (editable,
+with the same auto-numbering Sl.No as elsewhere) plus an overhead panel for the 5 shared
+cost components. Output is a searchable, sortable price list showing every test's full
+cost breakdown both ways. Dashboard shows overhead composition and the top 10 most
+expensive tests.
+
+**Modeling notes / known simplifications** (documented here rather than silently
+assumed):
+- **Radiology's "direct cost"** is read directly from the source's own "Total cost per
+  test" column, which appears to already include manpower/equipment/building/power
+  overhead baked in (verified: X-ray's consumable-only cost and its "total cost per
+  test" match exactly when the two are equal, and diverge substantially where they're
+  not — consistent with additional overhead being folded into the higher figure). Only
+  the doctor's fee is added on top, since that's tracked in a genuinely separate
+  workbook with its own methodology (a % of the test's billing rate). No separate
+  overhead row is populated for the 4 Radiology departments as a result.
+- **Lab's doctor/pathologist fee** is applied as one lab-wide constant (from the one
+  clean, directly-given figure in the source), rather than the department-specific
+  cross-allocation the source data hints at (a `B01LD` working file shows doctor costs
+  cross-charged between Biochemistry/Haematology/Clinical Pathology/Microbiology at
+  different rates in a way that didn't resolve to a consistent, defensible formula in
+  the time available). If per-sub-department precision matters here, this is the first
+  place to revisit — `seedLabRadiology()` in `seed.js` has the relevant working and a
+  comment pointing at the source sheet.
+- **Blood Bank's "standard" manpower/common-consumables figures** are estimated by
+  scaling the "actual" figures using Blood Bank's own equipment actual/standard ratio,
+  because the source only gives an "actual" value directly for those two components.
+- Lab's Manpower and Power overhead are uniform across all 4 Lab sub-departments (this
+  is not a simplification — verified directly against the source, which computes them
+  once for the whole Lab, not per sub-department); Equipment and Building overhead are
+  specific to each sub-department, also matching the source.
+
+
 
 The app is already configured to deploy as a **single web service** — `npm run build`
 builds the React frontend and has Express serve it directly, so there's one URL, no

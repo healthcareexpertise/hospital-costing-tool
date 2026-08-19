@@ -1,0 +1,22 @@
+{
+  "Biochemistry": {
+    "cost_per_test_actual": 0.4977319063198084,
+    "cost_per_test_standard": 0.02705561573642839,
+    "area": 1143.9375
+  },
+  "Haematology": {
+    "cost_per_test_actual": 1.7435074237733292,
+    "cost_per_test_standard": 0.2935419301188502,
+    "area": 1323.6574999999998
+  },
+  "Microbiology": {
+    "cost_per_test_actual": 3.9887242758215735,
+    "cost_per_test_standard": 3.9887242758215735,
+    "area": 894.2374999999998
+  },
+  "Clinical pathology": {
+    "cost_per_test_actual": 5.468161585834842,
+    "cost_per_test_standard": 0.7099870990557705,
+    "area": 1129.9474999999998
+  }
+}

@@ -247,6 +247,126 @@ function seedNewSpecialties(deptIdByName, specialtyIdByCode, deptIdByCode) {
   console.log("  manpower:", mpCount, " materials:", mtCount, " equipment:", eqCount, " building:", bldCount);
 }
 
+// ============================================================
+// Lab & Radiology per-test costing (fundamentally different model — see schema.sql).
+// ============================================================
+const LAB_RAD_DEPARTMENTS = [
+  ["LAB_BIOCHEM", "LAB - BIOCHEMISTRY", "Medical Support", "PER_TEST", "DAYS", 40],
+  ["LAB_HAEM", "LAB - HAEMATOLOGY", "Medical Support", "PER_TEST", "DAYS", 41],
+  ["LAB_CLINPATH", "LAB - CLINICAL PATHOLOGY", "Medical Support", "PER_TEST", "DAYS", 42],
+  ["LAB_MICRO", "LAB - MICROBIOLOGY", "Medical Support", "PER_TEST", "DAYS", 43],
+  ["LAB_BLOODBANK", "BLOOD BANK (LAB)", "Medical Support", "PER_TEST", "DAYS", 44],
+  ["RAD_XRAY", "RADIOLOGY - X-RAY", "Medical Support", "PER_TEST", "DAYS", 45],
+  ["RAD_CT", "RADIOLOGY - CT SCAN", "Medical Support", "PER_TEST", "DAYS", 46],
+  ["RAD_MRI", "RADIOLOGY - MRI", "Medical Support", "PER_TEST", "DAYS", 47],
+  ["RAD_USG", "RADIOLOGY - USG / DOPPLER", "Medical Support", "PER_TEST", "DAYS", 48],
+];
+
+function seedLabRadiology() {
+  const insertDept = db.prepare(`INSERT OR IGNORE INTO departments (code, name, classification, engine_type, driver_type, display_order) VALUES (?,?,?,?,?,?)`);
+  LAB_RAD_DEPARTMENTS.forEach((d) => insertDept.run(...d));
+
+  const deptIdByCode = {};
+  for (const row of db.prepare("SELECT id, code FROM departments").all()) deptIdByCode[row.code] = row.id;
+
+  // Auto-create the 4 standard modules for each new department + grant Admin full access
+  const insertModule = db.prepare(`INSERT OR IGNORE INTO modules (code, name, module_type, department_id) VALUES (?,?,?,?)`);
+  const adminProfile = db.prepare("SELECT id FROM profiles WHERE name = 'Admin'").get();
+  const setPerm = db.prepare(`INSERT OR REPLACE INTO profile_module_permissions (profile_id, module_id, can_view, can_edit) VALUES (?,?,1,1)`);
+  for (const [code, name] of LAB_RAD_DEPARTMENTS.map((d) => [d[0], d[1]])) {
+    const deptId = deptIdByCode[code];
+    for (const [type, label] of [["MASTER", "Master"], ["INPUT", "Input"], ["OUTPUT", "Output"], ["DASHBOARD", "Dashboard"]]) {
+      insertModule.run(`${code}_${type}`, `${name} - ${label}`, type, deptId);
+    }
+    if (adminProfile) {
+      db.prepare("SELECT id FROM modules WHERE department_id = ?").all(deptId).forEach((m) => setPerm.run(adminProfile.id, m.id));
+    }
+  }
+
+  const insTest = db.prepare(`INSERT INTO test_master (department_id, sl_no, test_name, direct_cost, doctor_fee, notes) VALUES (?,?,?,?,?,?)`);
+  const insOverhead = db.prepare(
+    `INSERT OR REPLACE INTO test_overhead_master (department_id, manpower_actual, manpower_standard, equipment_actual, equipment_standard, building_actual, building_standard, power_actual, power_standard, common_consumables_actual, common_consumables_standard, actual_volume, standard_volume, notes)
+     VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+  );
+
+  // ---- Lab: Biochemistry, Haematology, Clinical Pathology, Microbiology ----
+  const labTests = loadJSON("lab_tests.json");
+  const labManpower = loadJSON("lab_manpower.json");
+  const labBuilding = loadJSON("lab_building.json");
+  const labPower = loadJSON("lab_power.json");
+  const labEquipment = loadJSON("lab_equipment.json");
+
+  const totalLabSalary = labManpower.reduce((s, m) => s + (typeof m.annual_salary === "number" ? m.annual_salary : 0), 0);
+  // actual/standard lab-wide test volume, back-derived from the source's own power-cost-per-test figures
+  // (per-year power cost / per-test power cost = test volume) — cross-validated against the embedded
+  // Biochemistry manpower constant in lab_tests.json, which matches to 6 significant figures.
+  const labActualVolume = 1036440 / labPower.actual;
+  const labStandardVolume = 1036440 / labPower.standard;
+  const manpowerPerTestActual = totalLabSalary / labActualVolume;
+  const manpowerPerTestStandard = totalLabSalary / labStandardVolume;
+  const DOCTORS_PER_TEST_ACTUAL = 4.17330952645083; // embedded lab-wide constant from the source (see README caveat)
+  const DOCTORS_PER_TEST_STANDARD = DOCTORS_PER_TEST_ACTUAL * (labActualVolume / labStandardVolume);
+
+  const LAB_DEPT_MAP = { LAB_BIOCHEM: "Biochemistry", LAB_HAEM: "Haematology", LAB_CLINPATH: "Clinical pathology", LAB_MICRO: "Microbiology" };
+  const LAB_EQUIP_LOC_MAP = { LAB_BIOCHEM: "LAB- BIOCHEMISTRY", LAB_HAEM: "LAB- HAEMATOLOGY", LAB_CLINPATH: "LAB- CLINICAL PATHOLOGY", LAB_MICRO: "LAB- MICROBIOLOGY" };
+
+  for (const [code, buildingKey] of Object.entries(LAB_DEPT_MAP)) {
+    const deptId = deptIdByCode[code];
+    const rows = labTests.filter((t) => t.department === code);
+    rows.forEach((t) => {
+      insTest.run(deptId, t.sl_no, t.test_name, t.direct_cost || 0, 0, null);
+    });
+    const bld = labBuilding[buildingKey] || {};
+    const equipLoc = LAB_EQUIP_LOC_MAP[code];
+    const equipRows = labEquipment.filter((e) => e.location.toUpperCase() === equipLoc.toUpperCase());
+    const equipActual = equipRows.reduce((s, e) => s + (e.per_test_actual || 0), 0);
+    const equipStandard = equipRows.reduce((s, e) => s + (e.per_test_standard || 0), 0);
+    insOverhead.run(
+      deptId,
+      manpowerPerTestActual + DOCTORS_PER_TEST_ACTUAL, manpowerPerTestStandard + DOCTORS_PER_TEST_STANDARD,
+      equipActual, equipStandard,
+      bld.cost_per_test_actual || 0, bld.cost_per_test_standard || 0,
+      labPower.actual, labPower.standard,
+      0, 0,
+      labActualVolume, labStandardVolume,
+      "Manpower/Doctors overhead is lab-wide (uniform across all 4 sub-departments) per the source data structure. Equipment and Building overhead are specific to this sub-department."
+    );
+  }
+
+  // ---- Blood Bank ----
+  const bloodbank = loadJSON("bloodbank.json");
+  const bbDeptId = deptIdByCode["LAB_BLOODBANK"];
+  bloodbank.tests.forEach((t) => {
+    insTest.run(bbDeptId, t.sl_no, t.test_name, t.reagent_cost || 0, 0, null);
+  });
+  const bbRatio = bloodbank.overhead.equipment_standard ? bloodbank.overhead.equipment_actual / bloodbank.overhead.equipment_standard : 10;
+  insOverhead.run(
+    bbDeptId,
+    bloodbank.overhead.manpower_actual, bloodbank.overhead.manpower_actual / bbRatio,
+    bloodbank.overhead.equipment_actual, bloodbank.overhead.equipment_standard,
+    bloodbank.overhead.building_actual, bloodbank.overhead.building_standard,
+    bloodbank.overhead.power_actual, bloodbank.overhead.power_standard,
+    bloodbank.overhead.common_consumables_actual, bloodbank.overhead.common_consumables_actual / bbRatio,
+    null, null,
+    "Manpower-standard is approximated by scaling manpower-actual using the equipment actual/standard ratio, since the source only gives manpower-actual directly for Blood Bank."
+  );
+
+  // ---- Radiology: X-ray, CT, MRI, USG ----
+  const radTests = loadJSON("radiology_tests.json");
+  for (const code of ["RAD_XRAY", "RAD_CT", "RAD_MRI", "RAD_USG"]) {
+    const deptId = deptIdByCode[code];
+    const rows = radTests.filter((t) => t.department === code);
+    rows.forEach((t, i) => {
+      insTest.run(deptId, i + 1, t.test_name, t.direct_cost || 0, t.doctor_fee || 0, null);
+    });
+    // No separate overhead row: Radiology's "direct_cost" is the source's own fully-loaded
+    // "Total cost per test" figure (technical costs — manpower/equipment/building/power —
+    // already baked in); only the doctor's fee is added on top as a genuinely separate line.
+  }
+
+  console.log("Lab/Radiology seed:", labTests.length, "lab tests,", bloodbank.tests.length, "blood bank tests,", radTests.length, "radiology tests");
+}
+
 function run() {
   // ---- Specialties & Procedures ----
   const insertSpecialty = db.prepare(`INSERT OR IGNORE INTO specialties (code, name, display_order) VALUES (?,?,?)`);
@@ -561,6 +681,7 @@ function run() {
   // supporting master-data detail is stored for reference/editing)
   // ==========================================================================
   seedNewSpecialties(deptIdByName, specialtyIdByCode, deptIdByCode);
+  seedLabRadiology();
 
   console.log("Seed complete.");
   console.log("Departments:", db.prepare("SELECT COUNT(*) c FROM departments").get().c);

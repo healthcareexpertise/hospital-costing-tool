@@ -72,6 +72,35 @@ CREATE TABLE IF NOT EXISTS rate_type_master (
   description TEXT
 );
 
+-- ---------- Lab & Radiology: per-test costing (a fundamentally different model from
+-- the procedure-package costing above — each test/scan is individually priced using
+-- its own direct cost + doctor's fee, plus a shared department-level overhead computed
+-- two ways: against real "actual" test volume and against each machine's rated
+-- "standard" capacity). Deliberately NOT scoped to a procedure_id — these tests are
+-- billable independent of any surgical procedure. ----------
+
+CREATE TABLE IF NOT EXISTS test_master (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  department_id INTEGER NOT NULL REFERENCES departments(id),
+  sl_no INTEGER,
+  test_name TEXT NOT NULL,
+  direct_cost REAL DEFAULT 0,
+  doctor_fee REAL DEFAULT 0,
+  notes TEXT
+);
+
+CREATE TABLE IF NOT EXISTS test_overhead_master (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  department_id INTEGER NOT NULL REFERENCES departments(id) UNIQUE,
+  manpower_actual REAL DEFAULT 0, manpower_standard REAL DEFAULT 0,
+  equipment_actual REAL DEFAULT 0, equipment_standard REAL DEFAULT 0,
+  building_actual REAL DEFAULT 0, building_standard REAL DEFAULT 0,
+  power_actual REAL DEFAULT 0, power_standard REAL DEFAULT 0,
+  common_consumables_actual REAL DEFAULT 0, common_consumables_standard REAL DEFAULT 0,
+  actual_volume REAL, standard_volume REAL,
+  notes TEXT
+);
+
 CREATE TABLE IF NOT EXISTS employee_master (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   emp_code TEXT UNIQUE,

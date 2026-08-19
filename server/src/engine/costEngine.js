@@ -264,4 +264,35 @@ function computeGlobalDashboard() {
   return { rows, bySpecialty: Object.values(bySpecialty) };
 }
 
-module.exports = { computeDepartmentOutput, computeProcedureOutput, computeGlobalDashboard };
+module.exports = { computeDepartmentOutput, computeProcedureOutput, computeGlobalDashboard, computeTestDepartmentOutput };
+
+/**
+ * Lab/Radiology per-test costing. Returns every test in a department with its cost
+ * broken into direct cost (reagent/consumable, or Radiology's fully-loaded technical
+ * total), doctor's fee, and department-level overhead — computed both against "actual"
+ * real test volume and "standard" rated machine capacity.
+ */
+function computeTestDepartmentOutput(departmentId) {
+  const dept = db.prepare("SELECT * FROM departments WHERE id = ?").get(departmentId);
+  if (!dept) throw new Error("Department not found");
+
+  const testRows = db.prepare("SELECT * FROM test_master WHERE department_id = ? ORDER BY sl_no").all(departmentId);
+  const overhead = db.prepare("SELECT * FROM test_overhead_master WHERE department_id = ?").get(departmentId);
+
+  const ov = (k) => (overhead ? overhead[k] || 0 : 0);
+  const overheadActualSum = ov("manpower_actual") + ov("equipment_actual") + ov("building_actual") + ov("power_actual") + ov("common_consumables_actual");
+  const overheadStandardSum = ov("manpower_standard") + ov("equipment_standard") + ov("building_standard") + ov("power_standard") + ov("common_consumables_standard");
+
+  const tests = testRows.map((t) => ({
+    id: t.id, sl_no: t.sl_no, test_name: t.test_name,
+    direct_cost: round2(t.direct_cost), doctor_fee: round2(t.doctor_fee),
+    overhead_actual: round2(overheadActualSum), overhead_standard: round2(overheadStandardSum),
+    total_actual: round2(t.direct_cost + t.doctor_fee + overheadActualSum),
+    total_standard: round2(t.direct_cost + t.doctor_fee + overheadStandardSum),
+  }));
+
+  return {
+    department_id: departmentId, department: dept.name, engine_type: "PER_TEST",
+    overhead: overhead || null, test_count: tests.length, tests,
+  };
+}

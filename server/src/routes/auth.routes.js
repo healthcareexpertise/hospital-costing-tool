@@ -29,7 +29,7 @@ router.post("/login", (req, res) => {
 router.get("/me/permissions", requireAuth, (req, res) => {
   const rows = db
     .prepare(
-      `SELECT m.code, m.name, m.module_type, m.department_id, d.name as department_name, d.code as department_code,
+      `SELECT m.code, m.name, m.module_type, m.department_id, d.name as department_name, d.code as department_code, d.engine_type,
               pmp.can_view, pmp.can_edit
        FROM profile_module_permissions pmp
        JOIN modules m ON m.id = pmp.module_id

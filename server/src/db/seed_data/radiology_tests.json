@@ -1,0 +1,2420 @@
+[
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY ABDOMEN (LAT VIEW)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY ABDOMEN (SUPINE)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY ABDOMEN ERECT (AP VIEW)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY ABDOMEN ERECT (PA VIEW)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY ANKLE JOINT (AP AND LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY ANKLE JOINT (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY ANKLE JOINT (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY ANKLE MORTISE VIEW",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH ANKLE (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH CALCANIUM (AXIAL)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH CALCANIUM (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH CLAVICLE (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH ELBOW (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH ELBOW (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH FOOT (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH FOOT (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH FOOT (PA)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH FOREARM (PA)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH HAND (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH HAND (OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH HAND (PA)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH HIP WITH FEMUR (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH KNEE  (AP STANDING)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH KNEE (AP AND LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH KNEE (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH KNEE (LAT) (2 EXPO)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH KNEE WITH ANKLE (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH KNEE WITH LEG ( AP & LAT STANDING)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH KNEE WITH LEG (AP STANDING)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH KNEE WITH LEG (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH KNEE WITH LEG (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH KNEES (LAT STANDING)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH LEG (AP) (1 EXPO)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH LEG (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH LEG WITH ANKLE (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH LEG WITH ANKLE (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH PATTELLA (SKYLINE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH SHOULDER (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH WRIST (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH WRIST (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BOTH WRIST (PA)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CALCANEUM (AP AND AXIAL)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CALCANEUM (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CALCANEUM (AXIAL)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CALCANEUM (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CERVICAL RIBS",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CERVICAL SPINE (AP AND LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CERVICAL SPINE (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CERVICAL SPINE (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CERVICAL SPINE (LAT) (FLEX AND EXT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CERVICAL SPINE (PORTABLE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CERVICAL SPINE OPEN MOUTH (AP AND LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CERVICAL SPINE OPEN MOUTH (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CERVICAL SPINE OPEN MOUTH (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CERVICO THORACIC SPINE (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CERVICO THORACIC SPINE (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CHEST (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CHEST (CHILD)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CHEST (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CHEST (PA)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CHEST (PORTABLE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CHEST DECUBITUS VIEW",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CHEST OBLIQUE",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CHEST WITH ABDOMEN (PORTABLE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CHEST WITH CERVICAL SPINE (PA VIEW)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CHEST WITH SHOULDER",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CHEST WITH UPPER ABDOMEN",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CLAVICLE",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CLAVICLE SERENDIPITY VIEW",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY DISTAL LOOP COLOGRAM",
+    "direct_cost": 31.14,
+    "doctor_fee": 463.59
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY DORSO LUMBAR SPINE (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY DORSO LUMBAR SPINE (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY DORSOLUMBAR SPINE (AP AND LAT)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY DORSOLUMBAR SPINE (LT BENDING)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY DORSOLUMBAR SPINE (RT BENDING)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY ELBOW (AP AND LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY ELBOW (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY ELBOW (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY ELBOW WITH FOREARM (AP AND LAT VIEW)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY ELBOW WITH FOREARM (AP VIEW)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY ELBOW WITH FOREARM (LAT VIEW)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FEMUR (AP VIEW)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FEMUR (LAT VIEW)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FEMUR WITH KNEE ( AP AND LAT)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FEMUR WITH KNEE (AP)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FEMUR WITH KNEE (LAT)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FINGER (AP AND LAT)",
+    "direct_cost": 111.32,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FINGER (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FINGER (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FOOT (AP AND LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FOOT (AP AND OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FOOT (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FOOT (AP,LAT AND OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FOOT (LAT AND OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FOOT (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FOOT (OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FOOT (PA)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FOOT WITH ANKLE (AP AND OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FOOT WITH ANKLE LAT VIEW",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FORE ARM (AP AND LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FORE ARM (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FORE ARM (LAT)",
+    "direct_cost": 111.32,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FOREARM WITH WRIST (AP AND LAT VIEW)",
+    "direct_cost": 111.32,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FOREARM WITH WRIST (AP VIEW)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FOREARM WITH WRIST (LAT VIEW)",
+    "direct_cost": 111.32,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FOREARM WITH WRIST AND ELBOW CHILD (AP AND LAT)",
+    "direct_cost": 111.32,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FULL LEG",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FULL LEG (LAT)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FULL SPINE",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FULL SPINE (AP AND LAT STANDING)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FULL SPINE (LAT)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HAND (AP AND LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HAND (AP AND OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HAND (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HAND (AP,LAT AND OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HAND (LAT AND OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HAND (OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HAND (PA)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HAND WITH WRIST (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HAND WITH WRIST (BOTH SIDES)  (AP VIEW)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HIP (AP AND LAT)",
+    "direct_cost": 62.28,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HIP (AP)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HIP WITH  FEMUR (AP)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HIP WITH FEMUR (AP AND LAT)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HIP WITH FEMUR (LAT)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HIP(LAT)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HUMERUS (AP )",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HUMERUS (AP AND LAT)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HUMERUS (LAT)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HUMERUS WITH ELBOW (AP AND LAT)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HUMERUS WITH ELBOW (AP)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HUMERUS WITH SHOULDER (AP AND LAT VIEW)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HUMERUS WITH SHOULDER (AP VIEW)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HUMERUS WITH SHOULDER (LAT VIEW)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE (AP AND LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE (AP STANDING)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE (VALGUS AND VARUS)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE WITH ANKLE (AP AND LAT VIEW)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE WITH ANKLE (AP VIEW)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE WITH FEMUR AP/LAT",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE WITH LEG",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE WITH LEG ADULT(AP AND LAT)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE WITH LEG ADULT(AP)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE WITH LEG ADULT(LAT)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE WITH LEG CHILD(AP)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE WITH LEG STANDING AP/LAT",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE WITH PATTELLA (AP,LAT AND SKYLINE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE(AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KNEE(LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KUB",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY LEG (CHILD)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY LEG BOTH (AP AND LAT)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY LEG WITH ANKLE ( AP AND LAT)",
+    "direct_cost": 0,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY LEG WITH ANKLE (AP)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY LEG WITH ANKLE(LAT)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY LEG WITH KNEE AND ANKLE CHILD (AP AND LAT)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY LUMBAR SPINE (AP AND LAT)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY LUMBAR SPINE (AP)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY LUMBAR SPINE (LAT STANDING)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY LUMBAR SPINE (LAT)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY LUMBAR SPINE CONE VIEW (AP AND LAT)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY LUMBAR SPINE SPECIAL VIEW(FLEXION AND EXTENSION)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY LUMBAR SPINE WITH PELVIS (AP)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY MAMMOGRAM (BILAT)",
+    "direct_cost": 62.28,
+    "doctor_fee": 734.4
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY MAMMOGRAM (UNILAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 496
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY MANDIBLE (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY MANDIBLE (PA)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY MASTOID (LAT OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY MASTOIDS",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY NASAL BONE",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY NASOPHARYNX (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY NECK (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY NECK (LAT VIEW)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PATTELLA (SKYLINE VIEW)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PELVIS (AP)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PELVIS (FROG LEG)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PELVIS (ILLIAC OBLIQUE)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PELVIS (INLET VIEW)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PELVIS (OBTRUVATORY OBLIQUE)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PELVIS (OUTLET VIEW)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PELVIS (PORTABLE)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PELVIS WITH BOTH HIP JOINTS (AP)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PELVIS WITH LOWER LIMBS (AP STANDING)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PELVIS WITH SI JOINT",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PELVIS WITH UPPER FEMUR (AP)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PNS",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PORTABLE (ABDOMEN)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PORTABLE (EXTREMETIES 1 EXPOSURE)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY PORTABLE (PELVIS)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SACRUM WITH COCCYX ( AP AND LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SACRUM WITH COCCYX (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SACRUM WITH COCCYX (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SCAPULA (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SCAPULA (Y VIEW)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SHOULDER ( AXIAL VIEW)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SHOULDER ( OUTLET VIEW)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SHOULDER (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SHOULDER (EXTERNAL ROTATION)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SHOULDER (PORTABLE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SKULL (AP AND LAT)",
+    "direct_cost": 62.28,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SKULL (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SKULL (COCHLEAR VIEW)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SKULL (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SOFT TISSUE NECK (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY STERNO CLAVICULAR JOINT AP OBLIQUE VIEW",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY STERNO CLAVICULAR JOINT AXIAL VIEW",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY STERNUM (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY TEMPORO MANDIBULAR JOINT",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY THORACIC SPINE (AP AND LAT)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY THORACIC SPINE (AP)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY THORACIC SPINE (LAT)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY THORACIC SPINE (SWIMMERS VIEW)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY THORACIC SPINE(SWIMMERS VIEW AP AND LAT)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY THORACO LUMBAR (AP AND LAT)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY THORACO LUMBAR (LAT)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY THORACO LUMBAR SPINE (AP)",
+    "direct_cost": 43.83,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY THUMB (AP AND LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY THUMB (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY TOES (AP AND LAT )",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY TOES (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY WRIST  (LAT AND OBLIQUE )",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY WRIST (AP AND LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY WRIST (AP AND OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY WRIST (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY WRIST (AP,LAT AND OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY WRIST (LAT)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY WRIST (OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY WRIST (PA)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY WRIST SCAPHOID (AP AND OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY WRIST SCAPHOID (AP)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY WRIST SCAPHOID (OBLIQUE)",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY RETROGRADE PYELOGRAM (RGU)",
+    "direct_cost": 255.68,
+    "doctor_fee": 363.6
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BARIUM MEAL",
+    "direct_cost": 342.97916675,
+    "doctor_fee": 418.14
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY INFANTOGRAM",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY INVERTOGRAM",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY KIDIGRAM",
+    "direct_cost": 31.14,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY SINUSOGRAM",
+    "direct_cost": 212.439361,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY MCU CHILD(1 TO 2 YRS)",
+    "direct_cost": 491.679335,
+    "doctor_fee": 390.87
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY MCU CHILD(3 TO 5 YRS)",
+    "direct_cost": 491.679335,
+    "doctor_fee": 368.145
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY IVU (UROLOGY)",
+    "direct_cost": 679.467683,
+    "doctor_fee": 518.13
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY MCU (UROLOGY)",
+    "direct_cost": 491.679335,
+    "doctor_fee": 481.77
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY FEMUR (AP & LAT VIEW)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY MCU CHILD (1 TO 5 YRS) (PORTABLE)",
+    "direct_cost": 491.679335,
+    "doctor_fee": 463.59
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY OESOPHAGOGRAM",
+    "direct_cost": 158.023333333333,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "GASTROGRAFFIN STUDY",
+    "direct_cost": 201.853333333333,
+    "doctor_fee": 463.59
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BARIUM ENEMA",
+    "direct_cost": 579.76916675,
+    "doctor_fee": 463.59
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BARIUM MEAL FOLLOW THROUGH",
+    "direct_cost": 342.97916675,
+    "doctor_fee": 463.59
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY CHOLANGIOGRAM T TUBE",
+    "direct_cost": 339.743224,
+    "doctor_fee": 363.6
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY IVU / IVP (INTRAVENOUS UROGRAM/PYELOGRAM)",
+    "direct_cost": 679.467683,
+    "doctor_fee": 563.58
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY MCU",
+    "direct_cost": 491.679335,
+    "doctor_fee": 376.326
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY NEPHROSTOGRAM",
+    "direct_cost": 334.682585,
+    "doctor_fee": 418.14
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY HSG",
+    "direct_cost": 284.473224,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY URETHROGRAM",
+    "direct_cost": 255.68,
+    "doctor_fee": 363.6
+  },
+  {
+    "department": "RAD_XRAY",
+    "test_name": "X-RAY BARIUM SWALLOW",
+    "direct_cost": 131.59986668,
+    "doctor_fee": 572.67
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Head/ Brain Plain",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Abdomen with contrast",
+    "direct_cost": 2786.79,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Stone Survey (KUB)",
+    "direct_cost": 80.18,
+    "doctor_fee": 599.94
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT head Brain Limited ( Repeat study)",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Chest / Thorax plain",
+    "direct_cost": 160.36,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT PNS Plain",
+    "direct_cost": 160.36,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Thorax & Abdomen",
+    "direct_cost": 160.36,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Cerebral /Carotid Angiography",
+    "direct_cost": 1920.43,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Chest / Thorax with Contrast",
+    "direct_cost": 1956.62,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Abdomen - Plain",
+    "direct_cost": 160.36,
+    "doctor_fee": 909
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Aortogram (Thoraco - -Abdomen)",
+    "direct_cost": 2000.61,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT extremities",
+    "direct_cost": 83.64,
+    "doctor_fee": 909
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Peripheral Angio",
+    "direct_cost": 3132.8,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Urogram",
+    "direct_cost": 1792.45,
+    "doctor_fee": 1090.8
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Head / Brain Contrast",
+    "direct_cost": 3132.45,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT PNS Contrast",
+    "direct_cost": 3132.45,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Head to Mid Thigh Polytrauma",
+    "direct_cost": 1792.45,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Pulmonary Angio",
+    "direct_cost": 1752.75,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Renal Angio",
+    "direct_cost": 1792.45,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Aortogram (Peripheral Angio",
+    "direct_cost": 1864.45,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Cervical Spine",
+    "direct_cost": 80.18,
+    "doctor_fee": 699.93
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Face 3D",
+    "direct_cost": 80.18,
+    "doctor_fee": 999.9
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Perfusion",
+    "direct_cost": 1860.99,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Virtual Endoscopy (Abdomen)",
+    "direct_cost": 83.64,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT CORONARY ANGIOGRAPHY",
+    "direct_cost": 1953.16,
+    "doctor_fee": 2099.79
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT NECK - PLAIN",
+    "direct_cost": 80.18,
+    "doctor_fee": 818.1
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT NECK - WITH CONTRAST",
+    "direct_cost": 1956.62,
+    "doctor_fee": 999.9
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT ORBITS - PLAIN",
+    "direct_cost": 80.18,
+    "doctor_fee": 599.94
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT ORBITS - WITH CONTRAST",
+    "direct_cost": 1956.62,
+    "doctor_fee": 818.1
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT PELVIS",
+    "direct_cost": 80.18,
+    "doctor_fee": 1363.5
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT SHOULDER JOINT",
+    "direct_cost": 80.18,
+    "doctor_fee": 818.1
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT TEMPORAL BONE AND COCHLEAR IMAGING",
+    "direct_cost": 80.18,
+    "doctor_fee": 699.93
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT THORACO LUMBAR SPINE",
+    "direct_cost": 80.18,
+    "doctor_fee": 1299.87
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT VENOGRAM ABDOMEN",
+    "direct_cost": 1956.62,
+    "doctor_fee": 1299.87
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT VENOGRAM PERIPHERAL",
+    "direct_cost": 1956.62,
+    "doctor_fee": 1599.84
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT WHOLE SPINE",
+    "direct_cost": 80.18,
+    "doctor_fee": 1999.8
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT GUIDED ASPIRATION",
+    "direct_cost": 1783.360953,
+    "doctor_fee": 2908.8
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT GUIDED DRAINAGE",
+    "direct_cost": 1783.360953,
+    "doctor_fee": 3454.2
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT Guided Biopsy",
+    "direct_cost": 2423.53175,
+    "doctor_fee": 2727
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT GUIDED FNAC",
+    "direct_cost": 239.93575,
+    "doctor_fee": 1636.2
+  },
+  {
+    "department": "RAD_CT",
+    "test_name": "CT DORSAL SPINE",
+    "direct_cost": 80.18,
+    "doctor_fee": 818.1
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Lumbar Spine",
+    "direct_cost": 240.54,
+    "doctor_fee": 750.2
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Lumbar Spine+C",
+    "direct_cost": 1518.98,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Stroke Protocol",
+    "direct_cost": 240.54,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "Brain Screening",
+    "direct_cost": 160.36,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Brain",
+    "direct_cost": 320.72,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Brain + Contrast",
+    "direct_cost": 1679.34,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI C spine",
+    "direct_cost": 240.54,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI C spine+C",
+    "direct_cost": 1518.98,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Whole Spine",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Whole Spine+C",
+    "direct_cost": 1278.44,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Pelvis",
+    "direct_cost": 320.72,
+    "doctor_fee": 750.2
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Pelvis+C",
+    "direct_cost": 1679.34,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Epilepsy",
+    "direct_cost": 400.9,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Knee Joint (Single)",
+    "direct_cost": 320.72,
+    "doctor_fee": 750.2
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Knee Joint (Single)+C",
+    "direct_cost": 1679.34,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Shoulder (Single)",
+    "direct_cost": 240.54,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Shoulder +C",
+    "direct_cost": 1679.34,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Lumbar Spine Screening",
+    "direct_cost": 80.18,
+    "doctor_fee": 450.12
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI D Spine",
+    "direct_cost": 240.54,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI D Spine+C",
+    "direct_cost": 1599.16,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI C spine Screening",
+    "direct_cost": 80.18,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Fistula",
+    "direct_cost": 320.72,
+    "doctor_fee": 818.4
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Fistula+C",
+    "direct_cost": 1679.34,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Abdomen",
+    "direct_cost": 320.72,
+    "doctor_fee": 900.24
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Abdomen+C",
+    "direct_cost": 1679.34,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI HIP",
+    "direct_cost": 320.72,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI HIP+C",
+    "direct_cost": 1679.34,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Ankle",
+    "direct_cost": 400.9,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Ankle +C",
+    "direct_cost": 1759.52,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI Venogram + Brain Screening",
+    "direct_cost": 240.54,
+    "doctor_fee": 975.26
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI ANGIOGRAPHY BRAIN - PLAIN",
+    "direct_cost": 80.18,
+    "doctor_fee": 300.08
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI NECK",
+    "direct_cost": 320.72,
+    "doctor_fee": 818.4
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI NECK+C",
+    "direct_cost": 1679.34,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI SI (SACRO-ILIAC) JOINTS",
+    "direct_cost": 320.72,
+    "doctor_fee": 750.2
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI SI (SACRO-ILIAC) JOINTS+C",
+    "direct_cost": 2240.6,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI ABDOMEN SCREENING",
+    "direct_cost": 160.36,
+    "doctor_fee": 450.12
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI FOOT",
+    "direct_cost": 400.9,
+    "doctor_fee": 900.24
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI FOOT+C",
+    "direct_cost": 2400.96,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI VENOGRAM",
+    "direct_cost": 80.18,
+    "doctor_fee": 525.14
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI VENOGRAM+C",
+    "direct_cost": 1198.26,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI DORSAL/THORACIC SPINE SCREENING",
+    "direct_cost": 80.18,
+    "doctor_fee": 450.12
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI FEMUR",
+    "direct_cost": 400.9,
+    "doctor_fee": 818.4
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI FEMUR+C",
+    "direct_cost": 1759.52,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI HAND",
+    "direct_cost": 400.9,
+    "doctor_fee": 900.24
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI HAND+C",
+    "direct_cost": 1759.52,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI WRIST JOINT",
+    "direct_cost": 400.9,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI WRIST JOINT +C",
+    "direct_cost": 2160.42,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI BRACHIAL PLEXUS",
+    "direct_cost": 400.9,
+    "doctor_fee": 1125.3
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI BRACHIAL PLEXUS+C",
+    "direct_cost": 1759.52,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI LEG",
+    "direct_cost": 400.9,
+    "doctor_fee": 900.24
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI LEG+C",
+    "direct_cost": 1759.52,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI PELVIS SCREENING",
+    "direct_cost": 160.36,
+    "doctor_fee": 450.12
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI PITUITARY",
+    "direct_cost": 160.36,
+    "doctor_fee": 682
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI PITUITARY+C",
+    "direct_cost": 1358.62,
+    "doctor_fee": 0
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI ANGIOGRAPHY BRAIN - WITH CONTRAST",
+    "direct_cost": 1198.26,
+    "doctor_fee": 682
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI AORTOGRAM",
+    "direct_cost": 80.18,
+    "doctor_fee": 900.24
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI CHEST/THORAX",
+    "direct_cost": 320.72,
+    "doctor_fee": 818.4
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI ELBOW JOINT (SINGLE)",
+    "direct_cost": 400.9,
+    "doctor_fee": 900.24
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI EXTREMITIES",
+    "direct_cost": 481.08,
+    "doctor_fee": 900.24
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI FEMUR/THIGH",
+    "direct_cost": 481.08,
+    "doctor_fee": 818.4
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI FOETAL STUDY",
+    "direct_cost": 240.54,
+    "doctor_fee": 818.4
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI KNEE JOINTS (BOTH)",
+    "direct_cost": 641.44,
+    "doctor_fee": 341
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI MAMMOGRAM",
+    "direct_cost": 1438.8,
+    "doctor_fee": 1125.3
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI MRCP",
+    "direct_cost": 240.54,
+    "doctor_fee": 818.4
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI ORBITS",
+    "direct_cost": 481.08,
+    "doctor_fee": 231.88
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI PERIPHERAL ANGIOGRAPHY (LOWER LIMBS)",
+    "direct_cost": 80.18,
+    "doctor_fee": 1200.32
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI RENAL ANGIOGRAM",
+    "direct_cost": 80.18,
+    "doctor_fee": 818.4
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI SCREENING",
+    "direct_cost": 160.36,
+    "doctor_fee": 450.12
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI SHOULDER JOINTS (BOTH)",
+    "direct_cost": 481.08,
+    "doctor_fee": 1800.48
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI UROGRAPHY",
+    "direct_cost": 80.18,
+    "doctor_fee": 900.24
+  },
+  {
+    "department": "RAD_MRI",
+    "test_name": "MRI WHOLE BODY SCREENING",
+    "direct_cost": 80.18,
+    "doctor_fee": 1200.32
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - ANTENATAL DOPPLER (SINGLE)",
+    "direct_cost": 16.58,
+    "doctor_fee": 659.025
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - ARTERIAL DOPPLER LOWER LIMB (BILATERAL)",
+    "direct_cost": 16.58,
+    "doctor_fee": 1295.325
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - ARTERIAL DOPPLER LOWER LIMB (UNILATERAL)",
+    "direct_cost": 16.58,
+    "doctor_fee": 659.025
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - ARTERIAL DOPPLER UPPER LIMB (BILATERAL)",
+    "direct_cost": 16.58,
+    "doctor_fee": 1204.425
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - ARTERIAL DOPPLER UPPER LIMB (UNILATERAL)",
+    "direct_cost": 16.58,
+    "doctor_fee": 590.85
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - AV FISTULA DOPPLER",
+    "direct_cost": 16.58,
+    "doctor_fee": 659.025
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - BEDSIDE CHARGE",
+    "direct_cost": 16.58,
+    "doctor_fee": 159.075
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - BREAST",
+    "direct_cost": 16.58,
+    "doctor_fee": 409.05
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - CAROTID DOPPLER",
+    "direct_cost": 16.58,
+    "doctor_fee": 590.85
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - FOLLICULAR STUDY",
+    "direct_cost": 16.58,
+    "doctor_fee": 181.8
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - HEPATIC DOPPLER",
+    "direct_cost": 16.58,
+    "doctor_fee": 659.025
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - HIP",
+    "direct_cost": 16.58,
+    "doctor_fee": 409.05
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - KUB (RCA)",
+    "direct_cost": 16.58,
+    "doctor_fee": 181.8
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - MARKING",
+    "direct_cost": 16.58,
+    "doctor_fee": 136.35
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - NECK/THYROID",
+    "direct_cost": 16.58,
+    "doctor_fee": 409.05
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - NEUROSONOGRAM",
+    "direct_cost": 16.58,
+    "doctor_fee": 409.05
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - NON SPECIFIED",
+    "direct_cost": 16.58,
+    "doctor_fee": 409.05
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - PENIS DOPPLER",
+    "direct_cost": 16.58,
+    "doctor_fee": 1363.5
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - RENAL DOPPLER",
+    "direct_cost": 16.58,
+    "doctor_fee": 659.025
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - REPEAT SCAN (DOPPLER)",
+    "direct_cost": 16.58,
+    "doctor_fee": 249.975
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - REPEAT SCAN (GENERAL)",
+    "direct_cost": 16.58,
+    "doctor_fee": 159.075
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - SALINE REDUCTION",
+    "direct_cost": 16.58,
+    "doctor_fee": 727.2
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - SCREENING (CC)",
+    "direct_cost": 16.58,
+    "doctor_fee": 204.525
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - SCROTUM WITH DOPPLER",
+    "direct_cost": 16.58,
+    "doctor_fee": 454.5
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - SOFT TISSUES",
+    "direct_cost": 16.58,
+    "doctor_fee": 409.05
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - THORAX",
+    "direct_cost": 16.58,
+    "doctor_fee": 299.97
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - TRUS (TRANS RECTAL)",
+    "direct_cost": 16.58,
+    "doctor_fee": 409.05
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - VENOUS DOPPLER LOWER LIMB (BILATERAL)",
+    "direct_cost": 16.58,
+    "doctor_fee": 1204.425
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - VENOUS DOPPLER LOWER LIMB (UNILATERAL)",
+    "direct_cost": 16.58,
+    "doctor_fee": 590.85
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - VENOUS DOPPLER UPPER LIMB (BILATERAL)",
+    "direct_cost": 16.58,
+    "doctor_fee": 1090.8
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - VENOUS DOPPLER UPPER LIMB (UNILATERAL)",
+    "direct_cost": 16.58,
+    "doctor_fee": 545.4
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - WHOLE ABDOMEN/PELVIS/KUB",
+    "direct_cost": 16.58,
+    "doctor_fee": 409.05
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG GUIDED ASPIRATION",
+    "direct_cost": 16.58,
+    "doctor_fee": 1090.8
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG GUIDED BIOPSY",
+    "direct_cost": 16.58,
+    "doctor_fee": 1454.4
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG GUIDED DRAINAGE",
+    "direct_cost": 16.58,
+    "doctor_fee": 3090.6
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG GUIDED FNAC",
+    "direct_cost": 16.58,
+    "doctor_fee": 799.92
+  },
+  {
+    "department": "RAD_USG",
+    "test_name": "USG - ABDOMEN (ABOVE 60 YRS)",
+    "direct_cost": 16.58,
+    "doctor_fee": 0
+  }
+]

@@ -1,0 +1,906 @@
+[
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 1,
+    "test_name": "Glucose",
+    "direct_cost": 8.272768,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 2,
+    "test_name": "Urea/BUN",
+    "direct_cost": 6.102432,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 3,
+    "test_name": "Creatinine",
+    "direct_cost": 5.857363131843408,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 4,
+    "test_name": "Protin",
+    "direct_cost": 2.9579838991949594,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 5,
+    "test_name": "Albumin",
+    "direct_cost": 2.535161241937903,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 6,
+    "test_name": "Cholesterol",
+    "direct_cost": 45.65493333333333,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 7,
+    "test_name": "Triglycerides",
+    "direct_cost": 52.029599999999995,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 8,
+    "test_name": "HDL",
+    "direct_cost": 47.355,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 9,
+    "test_name": "Bilirubin total",
+    "direct_cost": 12.861749999999999,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 10,
+    "test_name": "Bilirubin direct",
+    "direct_cost": 17.43273333333333,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 11,
+    "test_name": "sodium",
+    "direct_cost": 7.58317556539986,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 12,
+    "test_name": "Potassium",
+    "direct_cost": 9.89942643972954,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 13,
+    "test_name": "chloride",
+    "direct_cost": 9.89942643972954,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 14,
+    "test_name": "Electrolytes",
+    "direct_cost": 8.131878787878788,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 15,
+    "test_name": "Bicarbonate",
+    "direct_cost": 10.184383259911895,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 16,
+    "test_name": "SGOT/AST",
+    "direct_cost": 6.0228,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 17,
+    "test_name": "SGPT/ALT",
+    "direct_cost": 6.3952,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 18,
+    "test_name": "GGT",
+    "direct_cost": 21.4088,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 19,
+    "test_name": "ALP",
+    "direct_cost": 6.6808000000000005,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 20,
+    "test_name": "Uric acid",
+    "direct_cost": 47.37133333333333,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 21,
+    "test_name": "Phosphorus",
+    "direct_cost": 44.7048,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 22,
+    "test_name": "magnesium",
+    "direct_cost": 136.37120000000002,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 23,
+    "test_name": "LDH",
+    "direct_cost": 3.8248,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 24,
+    "test_name": "Amylase",
+    "direct_cost": 52.7184,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 25,
+    "test_name": "CPK",
+    "direct_cost": 11.395999999999999,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 26,
+    "test_name": "CKMB",
+    "direct_cost": 37.80654761904762,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 27,
+    "test_name": "LDL",
+    "direct_cost": 68.2304,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 28,
+    "test_name": "calcium",
+    "direct_cost": 7.58317556539986,
+    "manpower_doctors_embedded": 4.17330952645083,
+    "manpower_staff_embedded": 23.64340400266659
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 29,
+    "test_name": "RA Factor",
+    "direct_cost": 66.56533333333333,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 30,
+    "test_name": "ASO",
+    "direct_cost": 65.33333333333333,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 31,
+    "test_name": "CRP",
+    "direct_cost": 60.480000000000004,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 32,
+    "test_name": "D-Dimer",
+    "direct_cost": 247.14666666666665,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 33,
+    "test_name": "C3",
+    "direct_cost": 145.15200000000002,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 34,
+    "test_name": "C4",
+    "direct_cost": 145.15200000000002,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 35,
+    "test_name": "IgE",
+    "direct_cost": 254.016,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 36,
+    "test_name": "Microalbumin",
+    "direct_cost": 84.672,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 37,
+    "test_name": "Triage Trop I",
+    "direct_cost": 15.75,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 38,
+    "test_name": "Triage BNP",
+    "direct_cost": 30.24,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 39,
+    "test_name": "Triage Tox",
+    "direct_cost": 33.6,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 40,
+    "test_name": "Total T3",
+    "direct_cost": 45.36,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 41,
+    "test_name": "TOTAL T4",
+    "direct_cost": 46.687200000000004,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 42,
+    "test_name": "TSH",
+    "direct_cost": 30.5688,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 43,
+    "test_name": "PSA",
+    "direct_cost": 116.6865,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 44,
+    "test_name": "FSH",
+    "direct_cost": 146.6402,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 45,
+    "test_name": "LH",
+    "direct_cost": 107.5977,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 46,
+    "test_name": "Prolactin",
+    "direct_cost": 107.40729999999999,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 47,
+    "test_name": "BHCG",
+    "direct_cost": 108.1073,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 48,
+    "test_name": "AFP",
+    "direct_cost": 108.2624,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 49,
+    "test_name": "Cortisol",
+    "direct_cost": 90.5618,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 50,
+    "test_name": "Ferritin",
+    "direct_cost": 175.798,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 51,
+    "test_name": "AMH",
+    "direct_cost": 810.3985,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 52,
+    "test_name": "Free T3",
+    "direct_cost": 91,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 53,
+    "test_name": "Free T4",
+    "direct_cost": 61.4869,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 54,
+    "test_name": "OV125",
+    "direct_cost": 269.01,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 55,
+    "test_name": "Vitamin D",
+    "direct_cost": 295.7584,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 56,
+    "test_name": "CEA",
+    "direct_cost": 178.52759999999998,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 57,
+    "test_name": "Thyroglobulin",
+    "direct_cost": 129.15,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 58,
+    "test_name": "TPO Antibody",
+    "direct_cost": 231.50259999999997,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 59,
+    "test_name": "TG AB",
+    "direct_cost": 134.79059999999998,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 60,
+    "test_name": "Vitamin B12",
+    "direct_cost": 108.94940000000001,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 61,
+    "test_name": "PTH",
+    "direct_cost": 184.3254,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 62,
+    "test_name": "Troponin 1",
+    "direct_cost": 176.498,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 63,
+    "test_name": "Testosterone",
+    "direct_cost": 109.7257,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 64,
+    "test_name": "Thyroid profile\nT3, T4, TSH",
+    "direct_cost": 38.2962,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 65,
+    "test_name": "Thyroid profile\nFT3, FT4, TSH",
+    "direct_cost": 53.406125,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 66,
+    "test_name": "PSA total",
+    "direct_cost": 116.6865,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 67,
+    "test_name": "Free PSA (30T)",
+    "direct_cost": 219.762,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 68,
+    "test_name": "CA 19.9",
+    "direct_cost": 289.16066666666666,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 69,
+    "test_name": "Anti HBs Titer",
+    "direct_cost": 173.49650000000003,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 70,
+    "test_name": "HBA1C",
+    "direct_cost": 146.16,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 71,
+    "test_name": "HPLC FRACTION",
+    "direct_cost": 302.4,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 72,
+    "test_name": "LIPASE",
+    "direct_cost": 69.964,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 73,
+    "test_name": "IRON",
+    "direct_cost": 41.559333333333335,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 74,
+    "test_name": "TIBC",
+    "direct_cost": 28.7482,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_BIOCHEM",
+    "sl_no": 75,
+    "test_name": "IRON STUDIES",
+    "direct_cost": 33.552375,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_HAEM",
+    "sl_no": 76,
+    "test_name": "ESR",
+    "direct_cost": 16.874,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_HAEM",
+    "sl_no": 77,
+    "test_name": "PT-INR",
+    "direct_cost": 147.350805,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_HAEM",
+    "sl_no": 78,
+    "test_name": "APTT",
+    "direct_cost": 154.589723333333,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_HAEM",
+    "sl_no": 79,
+    "test_name": "Fibrinogen",
+    "direct_cost": 945.73768,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_HAEM",
+    "sl_no": 80,
+    "test_name": "CBC",
+    "direct_cost": 31.8712663865297,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_HAEM",
+    "sl_no": 81,
+    "test_name": "Platelet",
+    "direct_cost": 31.8712663865297,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_HAEM",
+    "sl_no": 82,
+    "test_name": "Haemoglobin",
+    "direct_cost": 31.8712663865297,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_HAEM",
+    "sl_no": 83,
+    "test_name": "PCV",
+    "direct_cost": 31.8712663865297,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_CLINPATH",
+    "sl_no": 84,
+    "test_name": "URINE ROUTINE",
+    "direct_cost": 15.68,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 85,
+    "test_name": "CULTURE AND SENSITIVITY",
+    "direct_cost": 855.76,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 86,
+    "test_name": "ALL BODY FLUIDS CULTURE \nEXCEPT URINE AND SPUTUM",
+    "direct_cost": 5.88,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 87,
+    "test_name": "TREUNAT MTB PCR",
+    "direct_cost": 580,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 88,
+    "test_name": "TREUNAT H1N1 PCR",
+    "direct_cost": 1010.05,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 89,
+    "test_name": "TREUNAT INFLUENZA PCR",
+    "direct_cost": 1210.05,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 90,
+    "test_name": "TREUNAT MTB/RIF PCR",
+    "direct_cost": 600,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 91,
+    "test_name": "TREUNAT HBV PCR",
+    "direct_cost": 1003.125,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 92,
+    "test_name": "TREUNAT DENGUE PCR",
+    "direct_cost": 630,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 93,
+    "test_name": "TREUNAT COVID19 PCR",
+    "direct_cost": 1175.1505,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 94,
+    "test_name": "TREUNAT COVID19 PCR",
+    "direct_cost": 1175.135,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 95,
+    "test_name": "TREUNAT ALL PCR TESTS",
+    "direct_cost": 374.99875,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 96,
+    "test_name": "TREUNAT ALL PCR TESTS",
+    "direct_cost": 29.9995,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 97,
+    "test_name": "TREUNAT ALL PCR TESTS",
+    "direct_cost": 29.9995,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 98,
+    "test_name": "TREUNAT ALL PCR TESTS",
+    "direct_cost": 90,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 99,
+    "test_name": "TREUNAT ALL PCR TESTS",
+    "direct_cost": 98.8008,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 100,
+    "test_name": "TREUNAT ALL PCR TESTS",
+    "direct_cost": 59.95,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 101,
+    "test_name": "TREUNAT ALL PCR TESTS",
+    "direct_cost": 28.4938,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 102,
+    "test_name": "TREUNAT ALL PCR TESTS",
+    "direct_cost": 58.0652,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 103,
+    "test_name": "AFB CULTURE",
+    "direct_cost": 0.141035,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 104,
+    "test_name": "RESPIRATORY PANEL",
+    "direct_cost": 7923,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 105,
+    "test_name": "PNEUMONIA PANEL",
+    "direct_cost": 10567,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 106,
+    "test_name": "MENINGITIS/ ENCHEPALITIS PANEL",
+    "direct_cost": 8414,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 107,
+    "test_name": "BLOOD CULTURE IDENTIFICATION PANEL",
+    "direct_cost": 7923,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 108,
+    "test_name": "GASTRO INTESTINAL PANEL",
+    "direct_cost": 7923,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 109,
+    "test_name": "HIV CLIA",
+    "direct_cost": 156.912,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 110,
+    "test_name": "HBSAG CLIA",
+    "direct_cost": 130.68,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 111,
+    "test_name": "HCV CLIA",
+    "direct_cost": 258.048,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 112,
+    "test_name": "SYPHILIS TPA",
+    "direct_cost": 388.416,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  },
+  {
+    "department": "LAB_MICRO",
+    "sl_no": 113,
+    "test_name": "HCV ELISA",
+    "direct_cost": 29.75,
+    "manpower_doctors_embedded": null,
+    "manpower_staff_embedded": null
+  }
+]
