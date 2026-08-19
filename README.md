@@ -129,16 +129,22 @@ Each of the 35 departments gets 4 modules; system-level modules sit alongside th
   source files are available.
 - **Production hardening not included**: no HTTPS/reverse-proxy config, no refresh
   tokens, no audit trail, no pagination on large tables, no automated tests.
-- **Cloud hosting**: not yet done — this build is still local-only, per the sequencing
-  agreed on (data model first, hosting once broader). See the chat for a walkthrough of
-  free-tier options (Render, Railway) once you're ready for that step.
+- **Cloud hosting**: live on Render as a single web service, now with a **persistent
+  disk** so data survives redeploys (see below) — no longer local-only.
 
-## Deploying to the cloud (Render, free tier)
+## Deploying to the cloud (Render, Starter plan + persistent disk)
 
 The app is already configured to deploy as a **single web service** — `npm run build`
 builds the React frontend and has Express serve it directly, so there's one URL, no
 separate frontend/backend hosting to coordinate, and (after this one-time setup) no more
-commands to run, ever.
+commands to run, ever. `render.yaml` also provisions a **persistent disk**, so your data
+(Master edits, new users, new procedures, everything entered through the UI) survives
+redeploys — it no longer resets to the seeded starting data every time you push a fix.
+
+This requires Render's **Starter plan** (~$7/month for the web service) plus the disk
+itself (~$0.25/month for 1GB, far more than a SQLite database needs) — persistent disks
+aren't available on the free tier. You'll need a payment method on file in your Render
+account.
 
 1. **Put the code on GitHub** (Render deploys from a Git repo — this is the only way to
    avoid a command line entirely).
@@ -149,40 +155,45 @@ commands to run, ever.
      `costingapp` folder's contents (everything inside it — `client/`, `server/`,
      `scripts/`, `package.json`, `render.yaml`, `README.md`, `.gitignore`) into the
      browser window. Commit the upload.
-2. **Create a Render account** at render.com (free, no credit card required for the free
-   tier at time of writing).
+2. **Create a Render account** at render.com and add a payment method (Account Settings
+   → Billing) — required for the Starter plan and disk.
 3. Click **New > Blueprint**, connect your GitHub account, and select the repository you
    just created. Render reads `render.yaml` from the repo root and pre-fills everything —
-   service name, build command, start command, and a securely auto-generated
+   service name, plan, build command, start command, disk, and a securely auto-generated
    `JWT_SECRET`. Click **Apply**.
 4. Wait for the build to finish (a few minutes — it runs `npm install` for both
    client and server, builds the React app, and starts the Node service). Render shows
    build logs live.
 5. Once live, Render gives you a URL like `https://hospital-costing-tool.onrender.com`.
-   Open it — the database seeds itself automatically on first request (you'll see
-   "Fresh database detected — running seed automatically..." in the logs), then the
-   login screen loads. Sign in with the same demo accounts as local (`admin` /
-   `password123`, etc.) — share the URL with anyone who needs access; no install step for
-   them at all.
+   Open it — the database seeds itself automatically on first boot (you'll see
+   "Fresh database detected — running seed automatically..." in the logs, but only this
+   first time), then the login screen loads. Sign in with the same demo accounts as
+   local (`admin` / `password123`, etc.) — share the URL with anyone who needs access;
+   no install step for them at all.
 
-### Important caveats for this free-tier setup
+### How the persistent disk works
 
-- **Data persistence**: Render's free tier does not include a persistent disk. The
-  SQLite database resets to the seeded starting data on every redeploy, and possibly on
-  restart after the service spins down from inactivity. This is fine for evaluating the
-  app or giving stakeholders a live demo, but **any edits made through the UI (Master
-  data changes, new users, Profile Master permission changes) are not guaranteed to
-  survive a restart.** For a deployment where edits need to persist permanently, either:
-  - Upgrade the Render service to a paid plan with a persistent disk, and mount it at
-    `server/src/db/` (Render's dashboard has a "Disks" tab once you're on a paid plan), or
-  - Migrate from SQLite to a hosted Postgres (Render offers a free Postgres instance for
-    90 days, permanent on paid plans) — this would need `server/src/db/db.js` rewritten
-    against a Postgres client instead of `node:sqlite`, since the two aren't drop-in
-    compatible the way `node:sqlite`/`better-sqlite3` were.
-- **Free tier sleep**: the service spins down after ~15 minutes of no traffic and takes
-  10-30 seconds to wake up on the next request. Fine for a demo; annoying for daily
-  production use — the paid "Starter" tier removes this.
+- The disk mounts at `/opt/render/project/data`, deliberately **not** inside
+  `server/src/db/` — that folder holds `schema.sql` and `seed_data/*.json` from the repo
+  itself, and mounting an (initially empty) disk directly over it would hide those files
+  from the running app. Instead, `server/src/db/db.js` reads a `DATA_DIR` environment
+  variable (set by `render.yaml`) to know where the actual database file lives, and falls
+  back to its own folder for local development where `DATA_DIR` isn't set.
+- On every deploy, the code changes (new features, bug fixes) but the mounted disk — and
+  therefore the database file on it — is untouched, so your data persists across
+  deploys. Only a fresh disk (e.g. if you delete and recreate the service) would trigger
+  reseeding.
+- Verified locally by starting the server against a directory, adding a test record,
+  fully killing the process, and starting a brand new process pointed at the same
+  directory — the record was still there and no reseed was triggered, which is exactly
+  what happens on a Render redeploy.
+
+### Other caveats
+
+- **No sleep on Starter**: unlike the free tier, a Starter-plan service stays always-on —
+  no more 15-minute-inactivity spin-down or cold-start delay.
 - **JWT_SECRET**: `render.yaml` has Render auto-generate a random one on deploy, so
+
   sessions are properly secured (not using the `dev-secret-change-me` fallback from
   local development).
 

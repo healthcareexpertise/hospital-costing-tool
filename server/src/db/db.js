@@ -1,9 +1,17 @@
-const { DatabaseSync } = require("node:sqlite");
-const fs = require("fs");
 const path = require("path");
+const fs = require("fs");
 
-const DB_PATH = path.join(__dirname, "costing.db");
+// In production (Render), DATA_DIR points at a mounted persistent disk, separate from
+// this source directory — so the disk (which starts empty) never hides schema.sql or
+// seed_data/, which live in the repo alongside this file. Locally, DATA_DIR just
+// defaults to this same folder for convenience.
+const DATA_DIR = process.env.DATA_DIR || __dirname;
+if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
+
+const DB_PATH = path.join(DATA_DIR, "costing.db");
 const isNew = !fs.existsSync(DB_PATH);
+
+const { DatabaseSync } = require("node:sqlite");
 
 const rawDb = new DatabaseSync(DB_PATH);
 rawDb.exec("PRAGMA journal_mode = WAL");

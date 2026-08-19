@@ -1,11 +1,21 @@
-# Render Blueprint — deploys this app as a single web service.
+# Render Blueprint — deploys this app as a single web service with persistent storage.
 # In the Render dashboard: New > Blueprint > point at your GitHub repo containing this
 # file > Apply. Render reads this file and configures everything automatically.
+#
+# NOTE: persistent disks require a paid plan (Starter or higher) — Render does not
+# allow disks on the free tier. This costs roughly $7/month for the Starter web
+# service plus ~$0.25/month for a 1GB disk (SQLite database, well under that size).
+# You'll need a payment method on file in your Render account for this to deploy.
+#
+# The disk mounts at /opt/render/project/data — deliberately NOT inside server/src/db,
+# because that folder also holds schema.sql and seed_data/ from the repo; mounting an
+# (initially empty) disk directly over it would hide those files. db.js reads the
+# DATA_DIR env var below to know where the persistent database file actually lives.
 services:
   - type: web
     name: hospital-costing-tool
     runtime: node
-    plan: free
+    plan: starter
     buildCommand: npm install --prefix server --include=dev --no-audit --no-fund && npm install --prefix client --include=dev --no-audit --no-fund && npm run build --prefix client && node scripts/copy-client-dist.js
     startCommand: npm run start --prefix server
     envVars:
@@ -13,4 +23,10 @@ services:
         generateValue: true
       - key: NODE_ENV
         value: production
+      - key: DATA_DIR
+        value: /opt/render/project/data
     healthCheckPath: /api/health
+    disk:
+      name: costing-data
+      mountPath: /opt/render/project/data
+      sizeGB: 1
