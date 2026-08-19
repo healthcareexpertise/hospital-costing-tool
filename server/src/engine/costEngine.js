@@ -243,10 +243,10 @@ function computeProcedureOutput(procedureId) {
 }
 
 /** Global dashboard: every procedure across every specialty, with its package cost. */
-function computeGlobalDashboard() {
+function computeGlobalDashboard(hospitalId) {
   const procs = db.prepare(
-    "SELECT p.id, p.code, p.name, s.name as specialty, s.code as specialty_code, s.display_order FROM procedures p JOIN specialties s ON s.id = p.specialty_id ORDER BY s.display_order, p.name"
-  ).all();
+    "SELECT p.id, p.code, p.name, s.name as specialty, s.code as specialty_code, s.display_order FROM procedures p JOIN specialties s ON s.id = p.specialty_id WHERE p.hospital_id = ? ORDER BY s.display_order, p.name"
+  ).all(hospitalId);
 
   const rows = procs.map((p) => {
     const out = computeProcedureOutput(p.id);

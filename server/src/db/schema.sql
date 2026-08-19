@@ -1,37 +1,65 @@
 -- ============================================================
--- CABG / Multi-specialty Hospital Costing Tool — Database Schema
+-- Multi-Specialty Hospital Costing Tool — Database Schema
 -- ============================================================
+
+-- ---------- Multi-tenancy: hospitals ----------
+
+CREATE TABLE IF NOT EXISTS hospitals (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  code TEXT UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  address TEXT,
+  city TEXT,
+  state TEXT,
+  contact_person TEXT,
+  phone TEXT,
+  email TEXT,
+  bed_count INTEGER,
+  established_year INTEGER,
+  logo_url TEXT,
+  active INTEGER DEFAULT 1,
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
 
 -- ---------- Security: profiles, users, modules, permissions ----------
 
 CREATE TABLE IF NOT EXISTS profiles (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT UNIQUE NOT NULL,
+  hospital_id INTEGER NOT NULL REFERENCES hospitals(id),
+  name TEXT NOT NULL,
   description TEXT,
-  is_system INTEGER DEFAULT 0   -- 1 = Admin profile, cannot be deleted
+  is_system INTEGER DEFAULT 0,  -- 1 = Admin profile, cannot be deleted
+  UNIQUE(hospital_id, name)
 );
 
 CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  hospital_id INTEGER REFERENCES hospitals(id),  -- NULL only for platform admins (cross-hospital)
   username TEXT UNIQUE NOT NULL,
   password_hash TEXT NOT NULL,
   full_name TEXT NOT NULL,
-  profile_id INTEGER NOT NULL REFERENCES profiles(id),
+  profile_id INTEGER REFERENCES profiles(id),    -- NULL for platform admins
   department_id INTEGER REFERENCES departments(id),  -- home department (nullable for admin/finance)
+  is_platform_admin INTEGER DEFAULT 0,
   active INTEGER DEFAULT 1
 );
 
 CREATE TABLE IF NOT EXISTS departments (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  code TEXT UNIQUE NOT NULL,
+  hospital_id INTEGER NOT NULL REFERENCES hospitals(id),
+  code TEXT NOT NULL,
   name TEXT NOT NULL,
   classification TEXT NOT NULL,       -- Medical Support / Service / Other Costs
-  engine_type TEXT NOT NULL DEFAULT 'FULL',  -- FULL | SIMPLE
+  engine_type TEXT NOT NULL DEFAULT 'FULL',  -- FULL | SIMPLE | PER_TEST
   driver_type TEXT NOT NULL DEFAULT 'HOURS', -- HOURS | DAYS  (allocation basis driver)
-  display_order INTEGER
+  display_order INTEGER,
+  UNIQUE(hospital_id, code)
 );
 
--- Modules: 4 auto per department (MASTER/INPUT/OUTPUT/DASHBOARD) + SYSTEM modules
+-- Modules: 4 auto per department (MASTER/INPUT/OUTPUT/DASHBOARD) + SYSTEM modules.
+-- Not directly hospital-scoped — department_id already ties a department-module to one
+-- hospital transitively, and SYSTEM modules (Profile Master, Hospital Profile, etc.) are
+-- the same fixed set of screens offered to every hospital.
 CREATE TABLE IF NOT EXISTS modules (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   code TEXT UNIQUE NOT NULL,          -- e.g. OT_MASTER, OT_INPUT, OT_OUTPUT, OT_DASHBOARD, SYS_PROFILE_MASTER
@@ -50,6 +78,8 @@ CREATE TABLE IF NOT EXISTS profile_module_permissions (
 
 -- ---------- Reference masters ----------
 
+-- Fixed, universal list (Manpower/Material/Machinery/Expenses/Utilities) — same for every
+-- hospital, so intentionally not hospital-scoped.
 CREATE TABLE IF NOT EXISTS cost_heads (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   code TEXT UNIQUE NOT NULL,
@@ -59,17 +89,21 @@ CREATE TABLE IF NOT EXISTS cost_heads (
 
 CREATE TABLE IF NOT EXISTS rate_tariff_master (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  param_code TEXT UNIQUE NOT NULL,
+  hospital_id INTEGER NOT NULL REFERENCES hospitals(id),
+  param_code TEXT NOT NULL,
   param_name TEXT NOT NULL,
   value REAL NOT NULL,
-  applies_to TEXT
+  applies_to TEXT,
+  UNIQUE(hospital_id, param_code)
 );
 
 CREATE TABLE IF NOT EXISTS rate_type_master (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  code TEXT UNIQUE NOT NULL,
+  hospital_id INTEGER NOT NULL REFERENCES hospitals(id),
+  code TEXT NOT NULL,
   name TEXT NOT NULL,
-  description TEXT
+  description TEXT,
+  UNIQUE(hospital_id, code)
 );
 
 -- ---------- Lab & Radiology: per-test costing (a fundamentally different model from
@@ -77,7 +111,8 @@ CREATE TABLE IF NOT EXISTS rate_type_master (
 -- its own direct cost + doctor's fee, plus a shared department-level overhead computed
 -- two ways: against real "actual" test volume and against each machine's rated
 -- "standard" capacity). Deliberately NOT scoped to a procedure_id — these tests are
--- billable independent of any surgical procedure. ----------
+-- billable independent of any surgical procedure. Hospital scoping comes transitively
+-- through department_id, since every department now belongs to exactly one hospital. ----------
 
 CREATE TABLE IF NOT EXISTS test_master (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -103,7 +138,8 @@ CREATE TABLE IF NOT EXISTS test_overhead_master (
 
 CREATE TABLE IF NOT EXISTS employee_master (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  emp_code TEXT UNIQUE,
+  hospital_id INTEGER NOT NULL REFERENCES hospitals(id),
+  emp_code TEXT,
   full_name TEXT NOT NULL,
   designation TEXT,
   department_id INTEGER REFERENCES departments(id),
@@ -114,6 +150,7 @@ CREATE TABLE IF NOT EXISTS employee_master (
 
 CREATE TABLE IF NOT EXISTS allocation_basis_master (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  hospital_id INTEGER NOT NULL REFERENCES hospitals(id),
   classification TEXT,
   department_name TEXT,
   cost_component TEXT,
@@ -124,16 +161,20 @@ CREATE TABLE IF NOT EXISTS allocation_basis_master (
 
 CREATE TABLE IF NOT EXISTS specialties (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  code TEXT UNIQUE NOT NULL,
+  hospital_id INTEGER NOT NULL REFERENCES hospitals(id),
+  code TEXT NOT NULL,
   name TEXT NOT NULL,
-  display_order INTEGER
+  display_order INTEGER,
+  UNIQUE(hospital_id, code)
 );
 
 CREATE TABLE IF NOT EXISTS procedures (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  hospital_id INTEGER NOT NULL REFERENCES hospitals(id),
   specialty_id INTEGER NOT NULL REFERENCES specialties(id),
-  code TEXT UNIQUE NOT NULL,
-  name TEXT NOT NULL
+  code TEXT NOT NULL,
+  name TEXT NOT NULL,
+  UNIQUE(hospital_id, code)
 );
 
 -- Ground-truth per-procedure department costs, sourced directly from the hospital's own

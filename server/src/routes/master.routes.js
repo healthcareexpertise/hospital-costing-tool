@@ -20,10 +20,10 @@ const TABLES = {
 };
 
 function resolveDeptAndProcedure(req, res, next) {
-  const dept = db.prepare("SELECT * FROM departments WHERE code = ?").get(req.params.deptCode);
+  const dept = db.prepare("SELECT * FROM departments WHERE code = ? AND hospital_id = ?").get(req.params.deptCode, req.user.hospital_id);
   if (!dept) return res.status(404).json({ error: "Unknown department code" });
   const procCode = req.query.procedure || "CABG";
-  const proc = db.prepare("SELECT * FROM procedures WHERE code = ?").get(procCode);
+  const proc = db.prepare("SELECT * FROM procedures WHERE code = ? AND hospital_id = ?").get(procCode, req.user.hospital_id);
   if (!proc) return res.status(404).json({ error: `Unknown procedure code ${procCode}` });
   req.dept = dept;
   req.proc = proc;

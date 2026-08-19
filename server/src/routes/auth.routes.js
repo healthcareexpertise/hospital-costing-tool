@@ -10,7 +10,10 @@ router.post("/login", (req, res) => {
   const { username, password } = req.body;
   const user = db
     .prepare(
-      `SELECT u.*, p.name as profile_name FROM users u JOIN profiles p ON p.id = u.profile_id
+      `SELECT u.*, p.name as profile_name, h.name as hospital_name, h.code as hospital_code
+       FROM users u
+       LEFT JOIN profiles p ON p.id = u.profile_id
+       LEFT JOIN hospitals h ON h.id = u.hospital_id
        WHERE u.username = ? AND u.active = 1`
     )
     .get(username);
@@ -18,15 +21,30 @@ router.post("/login", (req, res) => {
     return res.status(401).json({ error: "Invalid username or password" });
   }
   const token = jwt.sign(
-    { id: user.id, username: user.username, full_name: user.full_name, profile_id: user.profile_id, profile_name: user.profile_name },
+    {
+      id: user.id, username: user.username, full_name: user.full_name,
+      profile_id: user.profile_id, profile_name: user.profile_name,
+      hospital_id: user.hospital_id, hospital_name: user.hospital_name, hospital_code: user.hospital_code,
+      is_platform_admin: !!user.is_platform_admin,
+    },
     SECRET,
     { expiresIn: "8h" }
   );
-  res.json({ token, user: { id: user.id, username: user.username, full_name: user.full_name, profile_name: user.profile_name } });
+  res.json({
+    token,
+    user: {
+      id: user.id, username: user.username, full_name: user.full_name, profile_name: user.profile_name,
+      hospital_name: user.hospital_name, is_platform_admin: !!user.is_platform_admin,
+    },
+  });
 });
 
 // Returns the caller's full permission map, used by the frontend to build the sidebar/routes
 router.get("/me/permissions", requireAuth, (req, res) => {
+  if (req.user.is_platform_admin) {
+    // Platform admins aren't tied to a profile/hospital — they only get the Hospital Master screen.
+    return res.json({ user: req.user, permissions: [] });
+  }
   const rows = db
     .prepare(
       `SELECT m.code, m.name, m.module_type, m.department_id, d.name as department_name, d.code as department_code, d.engine_type,

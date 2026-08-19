@@ -80,6 +80,11 @@ export default function Sidebar() {
       {testDepartments.map(renderDept)}
 
       {systemModules.some((m) => m.code !== "SYS_GLOBAL_DASHBOARD") && <div className="sidebar-section">Administration</div>}
+      {systemModules.find((m) => m.code === "SYS_HOSPITAL_PROFILE") && (
+        <NavLink to="/admin/hospital" className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}`}>
+          Hospital Profile
+        </NavLink>
+      )}
       {systemModules.find((m) => m.code === "SYS_DEPARTMENT_MASTER") && (
         <NavLink to="/admin/departments" className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}`}>
           Department Master

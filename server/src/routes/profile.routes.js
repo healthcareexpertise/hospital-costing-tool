@@ -6,9 +6,9 @@ const { requireModule } = require("../middleware/rbac");
 const router = express.Router();
 router.use(requireAuth);
 
-// List all profiles
+// List all profiles for this hospital
 router.get("/", requireModule("SYS_PROFILE_MASTER", "view"), (req, res) => {
-  res.json(db.prepare("SELECT * FROM profiles ORDER BY id").all());
+  res.json(db.prepare("SELECT * FROM profiles WHERE hospital_id = ? ORDER BY id").all(req.user.hospital_id));
 });
 
 // Create a new profile
@@ -16,7 +16,8 @@ router.post("/", requireModule("SYS_PROFILE_MASTER", "edit"), (req, res) => {
   const { name, description } = req.body;
   if (!name) return res.status(400).json({ error: "name is required" });
   try {
-    const info = db.prepare("INSERT INTO profiles (name, description, is_system) VALUES (?,?,0)").run(name, description || "");
+    const info = db.prepare("INSERT INTO profiles (hospital_id, name, description, is_system) VALUES (?,?,?,0)")
+      .run(req.user.hospital_id, name, description || "");
     res.status(201).json({ id: info.lastInsertRowid });
   } catch (e) {
     res.status(400).json({ error: e.message });
@@ -25,7 +26,7 @@ router.post("/", requireModule("SYS_PROFILE_MASTER", "edit"), (req, res) => {
 
 // Delete a profile (system profiles protected)
 router.delete("/:id", requireModule("SYS_PROFILE_MASTER", "edit"), (req, res) => {
-  const profile = db.prepare("SELECT * FROM profiles WHERE id = ?").get(req.params.id);
+  const profile = db.prepare("SELECT * FROM profiles WHERE id = ? AND hospital_id = ?").get(req.params.id, req.user.hospital_id);
   if (!profile) return res.status(404).json({ error: "Not found" });
   if (profile.is_system) return res.status(400).json({ error: "Cannot delete a system profile" });
   db.prepare("DELETE FROM profile_module_permissions WHERE profile_id = ?").run(req.params.id);
@@ -33,8 +34,11 @@ router.delete("/:id", requireModule("SYS_PROFILE_MASTER", "edit"), (req, res) =>
   res.json({ ok: true });
 });
 
-// All modules grouped by department, with this profile's current permissions — feeds the assignment grid
+// All modules relevant to this hospital (SYSTEM modules + this hospital's own department
+// modules — never another hospital's), with this profile's current permissions.
 router.get("/:id/modules", requireModule("SYS_PROFILE_MASTER", "view"), (req, res) => {
+  const profile = db.prepare("SELECT * FROM profiles WHERE id = ? AND hospital_id = ?").get(req.params.id, req.user.hospital_id);
+  if (!profile) return res.status(404).json({ error: "Not found" });
   const modules = db
     .prepare(
       `SELECT m.id, m.code, m.name, m.module_type, d.name as department_name, d.display_order,
@@ -42,16 +46,17 @@ router.get("/:id/modules", requireModule("SYS_PROFILE_MASTER", "view"), (req, re
        FROM modules m
        LEFT JOIN departments d ON d.id = m.department_id
        LEFT JOIN profile_module_permissions pmp ON pmp.module_id = m.id AND pmp.profile_id = ?
+       WHERE d.id IS NULL OR d.hospital_id = ?
        ORDER BY d.display_order IS NULL, d.display_order, m.module_type`
     )
-    .all(req.params.id);
+    .all(req.params.id, req.user.hospital_id);
   res.json(modules);
 });
 
 // Bulk-update permissions for a profile: body = [{module_id, can_view, can_edit}, ...]
 router.put("/:id/modules", requireModule("SYS_PROFILE_MASTER", "edit"), (req, res) => {
   const profileId = req.params.id;
-  const profile = db.prepare("SELECT * FROM profiles WHERE id = ?").get(profileId);
+  const profile = db.prepare("SELECT * FROM profiles WHERE id = ? AND hospital_id = ?").get(profileId, req.user.hospital_id);
   if (!profile) return res.status(404).json({ error: "Not found" });
   const updates = req.body.permissions || [];
   const stmt = db.prepare(

@@ -9,7 +9,7 @@ router.use(requireAuth);
 
 router.get("/global", requireModule("SYS_GLOBAL_DASHBOARD", "view"), (req, res) => {
   try {
-    res.json(computeGlobalDashboard());
+    res.json(computeGlobalDashboard(req.user.hospital_id));
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
@@ -17,7 +17,7 @@ router.get("/global", requireModule("SYS_GLOBAL_DASHBOARD", "view"), (req, res) 
 
 // ---- Rate & Tariff Master (system-wide constants) ----
 router.get("/rate-tariff-master", requireModule("SYS_RATE_TARIFF_MASTER", "view"), (req, res) => {
-  res.json(db.prepare("SELECT * FROM rate_tariff_master ORDER BY id").all());
+  res.json(db.prepare("SELECT * FROM rate_tariff_master WHERE hospital_id = ? ORDER BY id").all(req.user.hospital_id));
 });
 
 router.post("/rate-tariff-master", requireModule("SYS_RATE_TARIFF_MASTER", "edit"), (req, res) => {
@@ -25,8 +25,8 @@ router.post("/rate-tariff-master", requireModule("SYS_RATE_TARIFF_MASTER", "edit
   if (!param_code || !param_name || value === undefined) return res.status(400).json({ error: "param_code, param_name and value are required" });
   try {
     const info = db.prepare(
-      `INSERT INTO rate_tariff_master (param_code, param_name, value, applies_to) VALUES (?,?,?,?)`
-    ).run(param_code.toUpperCase().replace(/[^A-Z0-9]+/g, "_"), param_name, Number(value), applies_to || "");
+      `INSERT INTO rate_tariff_master (hospital_id, param_code, param_name, value, applies_to) VALUES (?,?,?,?,?)`
+    ).run(req.user.hospital_id, param_code.toUpperCase().replace(/[^A-Z0-9]+/g, "_"), param_name, Number(value), applies_to || "");
     res.status(201).json({ id: info.lastInsertRowid });
   } catch (e) {
     res.status(400).json({ error: e.message });
@@ -35,7 +35,7 @@ router.post("/rate-tariff-master", requireModule("SYS_RATE_TARIFF_MASTER", "edit
 
 router.put("/rate-tariff-master/:id", requireModule("SYS_RATE_TARIFF_MASTER", "edit"), (req, res) => {
   const { param_name, value, applies_to } = req.body;
-  const existing = db.prepare("SELECT * FROM rate_tariff_master WHERE id = ?").get(req.params.id);
+  const existing = db.prepare("SELECT * FROM rate_tariff_master WHERE id = ? AND hospital_id = ?").get(req.params.id, req.user.hospital_id);
   if (!existing) return res.status(404).json({ error: "Not found" });
   db.prepare(`UPDATE rate_tariff_master SET param_name = ?, value = ?, applies_to = ? WHERE id = ?`).run(
     param_name !== undefined ? param_name : existing.param_name,
@@ -47,21 +47,21 @@ router.put("/rate-tariff-master/:id", requireModule("SYS_RATE_TARIFF_MASTER", "e
 });
 
 router.delete("/rate-tariff-master/:id", requireModule("SYS_RATE_TARIFF_MASTER", "edit"), (req, res) => {
-  db.prepare("DELETE FROM rate_tariff_master WHERE id = ?").run(req.params.id);
+  db.prepare("DELETE FROM rate_tariff_master WHERE id = ? AND hospital_id = ?").run(req.params.id, req.user.hospital_id);
   res.json({ ok: true });
 });
 
 // ---- Rate Type Master ----
 router.get("/rate-type-master", requireModule("SYS_RATE_TYPE_MASTER", "view"), (req, res) => {
-  res.json(db.prepare("SELECT * FROM rate_type_master ORDER BY id").all());
+  res.json(db.prepare("SELECT * FROM rate_type_master WHERE hospital_id = ? ORDER BY id").all(req.user.hospital_id));
 });
 
 router.post("/rate-type-master", requireModule("SYS_RATE_TYPE_MASTER", "edit"), (req, res) => {
   const { code, name, description } = req.body;
   if (!code || !name) return res.status(400).json({ error: "code and name are required" });
   try {
-    const info = db.prepare(`INSERT INTO rate_type_master (code, name, description) VALUES (?,?,?)`).run(
-      code.toUpperCase().replace(/[^A-Z0-9]+/g, "_"), name, description || ""
+    const info = db.prepare(`INSERT INTO rate_type_master (hospital_id, code, name, description) VALUES (?,?,?,?)`).run(
+      req.user.hospital_id, code.toUpperCase().replace(/[^A-Z0-9]+/g, "_"), name, description || ""
     );
     res.status(201).json({ id: info.lastInsertRowid });
   } catch (e) {
@@ -71,17 +71,18 @@ router.post("/rate-type-master", requireModule("SYS_RATE_TYPE_MASTER", "edit"), 
 
 router.put("/rate-type-master/:id", requireModule("SYS_RATE_TYPE_MASTER", "edit"), (req, res) => {
   const { name, description } = req.body;
-  db.prepare(`UPDATE rate_type_master SET name = ?, description = ? WHERE id = ?`).run(name, description || "", req.params.id);
+  db.prepare(`UPDATE rate_type_master SET name = ?, description = ? WHERE id = ? AND hospital_id = ?`).run(name, description || "", req.params.id, req.user.hospital_id);
   res.json({ ok: true });
 });
 
 router.delete("/rate-type-master/:id", requireModule("SYS_RATE_TYPE_MASTER", "edit"), (req, res) => {
-  db.prepare("DELETE FROM rate_type_master WHERE id = ?").run(req.params.id);
+  db.prepare("DELETE FROM rate_type_master WHERE id = ? AND hospital_id = ?").run(req.params.id, req.user.hospital_id);
   res.json({ ok: true });
 });
 
+// ---- Allocation Basis Master ----
 router.get("/allocation-basis-master", requireModule("SYS_ALLOCATION_BASIS_MASTER", "view"), (req, res) => {
-  res.json(db.prepare("SELECT * FROM allocation_basis_master ORDER BY id").all());
+  res.json(db.prepare("SELECT * FROM allocation_basis_master WHERE hospital_id = ? ORDER BY id").all(req.user.hospital_id));
 });
 
 router.post("/allocation-basis-master", requireModule("SYS_ALLOCATION_BASIS_MASTER", "edit"), (req, res) => {
@@ -90,21 +91,21 @@ router.post("/allocation-basis-master", requireModule("SYS_ALLOCATION_BASIS_MAST
     return res.status(400).json({ error: "department_name, cost_component and basis_of_allocation are required" });
   }
   const info = db.prepare(
-    `INSERT INTO allocation_basis_master (classification, department_name, cost_component, basis_of_allocation) VALUES (?,?,?,?)`
-  ).run(classification || "", department_name, cost_component, basis_of_allocation);
+    `INSERT INTO allocation_basis_master (hospital_id, classification, department_name, cost_component, basis_of_allocation) VALUES (?,?,?,?,?)`
+  ).run(req.user.hospital_id, classification || "", department_name, cost_component, basis_of_allocation);
   res.status(201).json({ id: info.lastInsertRowid });
 });
 
 router.put("/allocation-basis-master/:id", requireModule("SYS_ALLOCATION_BASIS_MASTER", "edit"), (req, res) => {
   const { classification, department_name, cost_component, basis_of_allocation } = req.body;
   db.prepare(
-    `UPDATE allocation_basis_master SET classification=?, department_name=?, cost_component=?, basis_of_allocation=? WHERE id=?`
-  ).run(classification || "", department_name, cost_component, basis_of_allocation, req.params.id);
+    `UPDATE allocation_basis_master SET classification=?, department_name=?, cost_component=?, basis_of_allocation=? WHERE id=? AND hospital_id=?`
+  ).run(classification || "", department_name, cost_component, basis_of_allocation, req.params.id, req.user.hospital_id);
   res.json({ ok: true });
 });
 
 router.delete("/allocation-basis-master/:id", requireModule("SYS_ALLOCATION_BASIS_MASTER", "edit"), (req, res) => {
-  db.prepare("DELETE FROM allocation_basis_master WHERE id = ?").run(req.params.id);
+  db.prepare("DELETE FROM allocation_basis_master WHERE id = ? AND hospital_id = ?").run(req.params.id, req.user.hospital_id);
   res.json({ ok: true });
 });
 

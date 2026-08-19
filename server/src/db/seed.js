@@ -71,6 +71,7 @@ const SYSTEM_MODULES = [
   ["SYS_PROCEDURE_MASTER", "Procedure (Surgery) Master"],
   ["SYS_EMPLOYEE_MASTER", "Employee Master"],
   ["SYS_RATE_TYPE_MASTER", "Rate Type Master"],
+  ["SYS_HOSPITAL_PROFILE", "Hospital Profile"],
 ];
 
 // ============================================================
@@ -109,7 +110,7 @@ function slugify(s) {
   return String(s).trim().toUpperCase().replace(/[^A-Z0-9]+/g, "_").replace(/^_+|_+$/g, "");
 }
 
-function seedNewSpecialties(deptIdByName, specialtyIdByCode, deptIdByCode) {
+function seedNewSpecialties(hospitalId, deptIdByName, specialtyIdByCode, deptIdByCode) {
   const num = (v) => {
     if (v === null || v === undefined || v === "") return null;
     const n = Number(v);
@@ -120,7 +121,7 @@ function seedNewSpecialties(deptIdByName, specialtyIdByCode, deptIdByCode) {
   const masterBlocks = loadJSON("new_specialty_master_data.json");
   const kvBlocks = loadJSON("new_specialty_kv_data.json");
 
-  const insertProcedure = db.prepare(`INSERT OR IGNORE INTO procedures (specialty_id, code, name) VALUES (?,?,?)`);
+  const insertProcedure = db.prepare(`INSERT OR IGNORE INTO procedures (hospital_id, specialty_id, code, name) VALUES (?,?,?,?)`);
   const insertRef = db.prepare(
     `INSERT OR REPLACE INTO procedure_department_reference (procedure_id, department_id, manpower, material, machinery, expenses, utilities, total)
      VALUES (?,?,?,?,?,?,?,?)`
@@ -138,7 +139,7 @@ function seedNewSpecialties(deptIdByName, specialtyIdByCode, deptIdByCode) {
     for (const [procName, data] of Object.entries(procs)) {
       if (!data) continue;
       const code = `${specialtyCode}_${slugify(procName)}`;
-      insertProcedure.run(specialtyId, code, procName.trim());
+      insertProcedure.run(hospitalId, specialtyId, code, procName.trim());
       const procId = db.prepare("SELECT id FROM procedures WHERE code = ?").get(code).id;
       procIdByKey[`${specialtyCode}|${procName}`] = procId;
 
@@ -262,21 +263,21 @@ const LAB_RAD_DEPARTMENTS = [
   ["RAD_USG", "RADIOLOGY - USG / DOPPLER", "Medical Support", "PER_TEST", "DAYS", 48],
 ];
 
-function seedLabRadiology() {
-  const insertDept = db.prepare(`INSERT OR IGNORE INTO departments (code, name, classification, engine_type, driver_type, display_order) VALUES (?,?,?,?,?,?)`);
-  LAB_RAD_DEPARTMENTS.forEach((d) => insertDept.run(...d));
+function seedLabRadiology(hospitalId) {
+  const insertDept = db.prepare(`INSERT OR IGNORE INTO departments (hospital_id, code, name, classification, engine_type, driver_type, display_order) VALUES (?,?,?,?,?,?,?)`);
+  LAB_RAD_DEPARTMENTS.forEach((d) => insertDept.run(hospitalId, ...d));
 
   const deptIdByCode = {};
-  for (const row of db.prepare("SELECT id, code FROM departments").all()) deptIdByCode[row.code] = row.id;
+  for (const row of db.prepare("SELECT id, code FROM departments WHERE hospital_id = ?").all(hospitalId)) deptIdByCode[row.code] = row.id;
 
   // Auto-create the 4 standard modules for each new department + grant Admin full access
   const insertModule = db.prepare(`INSERT OR IGNORE INTO modules (code, name, module_type, department_id) VALUES (?,?,?,?)`);
-  const adminProfile = db.prepare("SELECT id FROM profiles WHERE name = 'Admin'").get();
+  const adminProfile = db.prepare("SELECT id FROM profiles WHERE name = 'Admin' AND hospital_id = ?").get(hospitalId);
   const setPerm = db.prepare(`INSERT OR REPLACE INTO profile_module_permissions (profile_id, module_id, can_view, can_edit) VALUES (?,?,1,1)`);
   for (const [code, name] of LAB_RAD_DEPARTMENTS.map((d) => [d[0], d[1]])) {
     const deptId = deptIdByCode[code];
     for (const [type, label] of [["MASTER", "Master"], ["INPUT", "Input"], ["OUTPUT", "Output"], ["DASHBOARD", "Dashboard"]]) {
-      insertModule.run(`${code}_${type}`, `${name} - ${label}`, type, deptId);
+      insertModule.run(`H${hospitalId}_${code}_${type}`, `${name} - ${label}`, type, deptId);
     }
     if (adminProfile) {
       db.prepare("SELECT id FROM modules WHERE department_id = ?").all(deptId).forEach((m) => setPerm.run(adminProfile.id, m.id));
@@ -368,36 +369,49 @@ function seedLabRadiology() {
 }
 
 function run() {
+  // ---- Hospital (multi-tenancy root) ----
+  const insertHospital = db.prepare(
+    `INSERT OR IGNORE INTO hospitals (code, name, address, city, state, bed_count) VALUES (?,?,?,?,?,?)`
+  );
+  insertHospital.run("BMH", "Baby Memorial Hospital", null, "Kozhikode", "Kerala", 351);
+  const hospitalId = db.prepare("SELECT id FROM hospitals WHERE code = 'BMH'").get().id;
+
+  // Platform admin: manages the hospitals list itself, not tied to any one hospital
+  const insertPlatformAdmin = db.prepare(
+    `INSERT OR IGNORE INTO users (hospital_id, username, password_hash, full_name, profile_id, is_platform_admin) VALUES (NULL,?,?,?,NULL,1)`
+  );
+  insertPlatformAdmin.run("platform.admin", bcrypt.hashSync("password123", 8), "Platform Administrator");
+
   // ---- Specialties & Procedures ----
-  const insertSpecialty = db.prepare(`INSERT OR IGNORE INTO specialties (code, name, display_order) VALUES (?,?,?)`);
+  const insertSpecialty = db.prepare(`INSERT OR IGNORE INTO specialties (hospital_id, code, name, display_order) VALUES (?,?,?,?)`);
   const SPECIALTIES = [
     ["CTVS", "Cardiothoracic & Vascular Surgery", 1],
     ["CARDIO", "Cardiology", 2],
     ["NEUROSURG", "Neurosurgery", 3],
     ["URO", "Urology", 4],
   ];
-  SPECIALTIES.forEach(([code, name, order]) => insertSpecialty.run(code, name, order));
+  SPECIALTIES.forEach(([code, name, order]) => insertSpecialty.run(hospitalId, code, name, order));
   const specialtyIdByCode = Object.fromEntries(
-    db.prepare("SELECT id, code FROM specialties").all().map((r) => [r.code, r.id])
+    db.prepare("SELECT id, code FROM specialties WHERE hospital_id = ?").all(hospitalId).map((r) => [r.code, r.id])
   );
 
-  const insertProcedure = db.prepare(`INSERT OR IGNORE INTO procedures (specialty_id, code, name) VALUES (?,?,?)`);
-  insertProcedure.run(specialtyIdByCode["CTVS"], "CABG", "CABG (On-Pump)");
-  const cabgProcId = db.prepare("SELECT id FROM procedures WHERE code = 'CABG'").get().id;
+  const insertProcedure = db.prepare(`INSERT OR IGNORE INTO procedures (hospital_id, specialty_id, code, name) VALUES (?,?,?,?)`);
+  insertProcedure.run(hospitalId, specialtyIdByCode["CTVS"], "CABG", "CABG (On-Pump)");
+  const cabgProcId = db.prepare("SELECT id FROM procedures WHERE code = 'CABG' AND hospital_id = ?").get(hospitalId).id;
 
   const insertDept = db.prepare(
-    `INSERT OR IGNORE INTO departments (code, name, classification, engine_type, driver_type, display_order)
-     VALUES (?,?,?,?,?,?)`
+    `INSERT OR IGNORE INTO departments (hospital_id, code, name, classification, engine_type, driver_type, display_order)
+     VALUES (?,?,?,?,?,?,?)`
   );
   const deptIdByName = {};
   for (const [code, name, classification, engine, driver, order] of DEPARTMENTS) {
-    insertDept.run(code, name, classification, engine, driver, order);
+    insertDept.run(hospitalId, code, name, classification, engine, driver, order);
   }
-  for (const row of db.prepare("SELECT id, name FROM departments").all()) {
+  for (const row of db.prepare("SELECT id, name FROM departments WHERE hospital_id = ?").all(hospitalId)) {
     deptIdByName[row.name] = row.id;
   }
   const deptIdByCode = {};
-  for (const row of db.prepare("SELECT id, code FROM departments").all()) {
+  for (const row of db.prepare("SELECT id, code FROM departments WHERE hospital_id = ?").all(hospitalId)) {
     deptIdByCode[row.code] = row.id;
   }
 
@@ -417,16 +431,16 @@ function run() {
 
   // ---- Profiles ----
   const insertProfile = db.prepare(
-    `INSERT OR IGNORE INTO profiles (name, description, is_system) VALUES (?,?,?)`
+    `INSERT OR IGNORE INTO profiles (hospital_id, name, description, is_system) VALUES (?,?,?,?)`
   );
-  insertProfile.run("Admin", "Full access to every module (view + edit)", 1);
-  insertProfile.run("OT Manager", "Full access to OT department only", 0);
-  insertProfile.run("ICU Manager", "Full access to ICU department only", 0);
-  insertProfile.run("Finance Viewer", "Read-only access to all dashboards and outputs, no masters", 0);
-  insertProfile.run("Data Entry Clerk", "Can edit master/input data for assigned departments, cannot view dashboard", 0);
+  insertProfile.run(hospitalId, "Admin", "Full access to every module (view + edit)", 1);
+  insertProfile.run(hospitalId, "OT Manager", "Full access to OT department only", 0);
+  insertProfile.run(hospitalId, "ICU Manager", "Full access to ICU department only", 0);
+  insertProfile.run(hospitalId, "Finance Viewer", "Read-only access to all dashboards and outputs, no masters", 0);
+  insertProfile.run(hospitalId, "Data Entry Clerk", "Can edit master/input data for assigned departments, cannot view dashboard", 0);
 
   const profiles = Object.fromEntries(
-    db.prepare("SELECT id, name FROM profiles").all().map((r) => [r.name, r.id])
+    db.prepare("SELECT id, name FROM profiles WHERE hospital_id = ?").all(hospitalId).map((r) => [r.name, r.id])
   );
   const allModules = db.prepare("SELECT id, code, department_id, module_type FROM modules").all();
 
@@ -467,14 +481,14 @@ function run() {
 
   // ---- Users ----
   const insertUser = db.prepare(
-    `INSERT OR IGNORE INTO users (username, password_hash, full_name, profile_id, department_id) VALUES (?,?,?,?,?)`
+    `INSERT OR IGNORE INTO users (hospital_id, username, password_hash, full_name, profile_id, department_id) VALUES (?,?,?,?,?,?)`
   );
   const pw = bcrypt.hashSync("password123", 8);
-  insertUser.run("admin", pw, "System Administrator", profiles["Admin"], null);
-  insertUser.run("ot.manager", pw, "OT Department Head", profiles["OT Manager"], otDeptId);
-  insertUser.run("icu.manager", pw, "ICU Department Head", profiles["ICU Manager"], icuDeptId);
-  insertUser.run("finance.viewer", pw, "Finance Analyst", profiles["Finance Viewer"], null);
-  insertUser.run("data.clerk", pw, "Data Entry Clerk", profiles["Data Entry Clerk"], otDeptId);
+  insertUser.run(hospitalId, "admin", pw, "System Administrator", profiles["Admin"], null);
+  insertUser.run(hospitalId, "ot.manager", pw, "OT Department Head", profiles["OT Manager"], otDeptId);
+  insertUser.run(hospitalId, "icu.manager", pw, "ICU Department Head", profiles["ICU Manager"], icuDeptId);
+  insertUser.run(hospitalId, "finance.viewer", pw, "Finance Analyst", profiles["Finance Viewer"], null);
+  insertUser.run(hospitalId, "data.clerk", pw, "Data Entry Clerk", profiles["Data Entry Clerk"], otDeptId);
 
   // ---- Cost heads ----
   const insertCH = db.prepare(`INSERT OR IGNORE INTO cost_heads (code,name,display_order) VALUES (?,?,?)`);
@@ -482,7 +496,7 @@ function run() {
     .forEach(([c,n,o]) => insertCH.run(c,n,o));
 
   // ---- Rate & tariff master ----
-  const insertRate = db.prepare(`INSERT OR IGNORE INTO rate_tariff_master (param_code, param_name, value, applies_to) VALUES (?,?,?,?)`);
+  const insertRate = db.prepare(`INSERT OR IGNORE INTO rate_tariff_master (hospital_id, param_code, param_name, value, applies_to) VALUES (?,?,?,?,?)`);
   const rates = [
     ["STD_DAYS_YEAR","Standard working days per year",300,"Equipment/AC/Furniture depreciation"],
     ["STD_DAYS_MONTH","Standard days per month",22,"Manpower/Building"],
@@ -497,22 +511,22 @@ function run() {
     ["BUILDING_LIFE_YEARS","Building asset life (years)",30,"Building master"],
     ["DEFAULT_BEDS","Default no. of beds for per-bed apportionment",351,"Simple asset master"],
   ];
-  rates.forEach((r) => insertRate.run(...r));
+  rates.forEach((r) => insertRate.run(hospitalId, ...r));
 
   // ---- Rate Type Master ----
-  const insertRateType = db.prepare(`INSERT OR IGNORE INTO rate_type_master (code, name, description) VALUES (?,?,?)`);
-  insertRateType.run("FEE_PER_SURGERY", "Fee per surgery", "A flat professional fee already scoped to one case (e.g. Surgeon, Anaesthetist fees) — not apportioned further, but is multiplied by No. of Persons if more than one.");
-  insertRateType.run("SALARY_PER_MONTH", "Salary per month", "A monthly salary that gets apportioned to one case via the department's standard days/hours and Input driver (surgery hours or length of stay).");
+  const insertRateType = db.prepare(`INSERT OR IGNORE INTO rate_type_master (hospital_id, code, name, description) VALUES (?,?,?,?)`);
+  insertRateType.run(hospitalId, "FEE_PER_SURGERY", "Fee per surgery", "A flat professional fee already scoped to one case (e.g. Surgeon, Anaesthetist fees) — not apportioned further, but is multiplied by No. of Persons if more than one.");
+  insertRateType.run(hospitalId, "SALARY_PER_MONTH", "Salary per month", "A monthly salary that gets apportioned to one case via the department's standard days/hours and Input driver (surgery hours or length of stay).");
 
   // ---- Allocation basis master ----
   const basisRows = loadJSON("basis_allocation.json").slice(1);
-  const insertBasis = db.prepare(`INSERT INTO allocation_basis_master (classification, department_name, cost_component, basis_of_allocation) VALUES (?,?,?,?)`);
+  const insertBasis = db.prepare(`INSERT INTO allocation_basis_master (hospital_id, classification, department_name, cost_component, basis_of_allocation) VALUES (?,?,?,?,?)`);
   let curClass = null, curDept = null;
   for (const [cls, dept, comp, basis] of basisRows) {
     if (cls) curClass = cls;
     if (dept) curDept = dept;
     if (!comp) continue;
-    insertBasis.run(curClass, curDept, comp, basis);
+    insertBasis.run(hospitalId, curClass, curDept, comp, basis);
   }
 
   // ---- Department input (driver defaults) — CABG procedure ----
@@ -680,8 +694,8 @@ function run() {
   // cost sheets — ground-truth totals go in procedure_department_reference,
   // supporting master-data detail is stored for reference/editing)
   // ==========================================================================
-  seedNewSpecialties(deptIdByName, specialtyIdByCode, deptIdByCode);
-  seedLabRadiology();
+  seedNewSpecialties(hospitalId, deptIdByName, specialtyIdByCode, deptIdByCode);
+  seedLabRadiology(hospitalId);
 
   console.log("Seed complete.");
   console.log("Departments:", db.prepare("SELECT COUNT(*) c FROM departments").get().c);

@@ -132,7 +132,38 @@ Each of the 35 departments gets 4 modules; system-level modules sit alongside th
 - **Cloud hosting**: live on Render as a single web service, now with a **persistent
   disk** so data survives redeploys (see below) — no longer local-only.
 
-## Lab & Radiology (per-test costing)
+## Multi-tenancy (Hospital Profile Master)
+
+The app now supports multiple hospitals on one deployment, each with **completely
+isolated data** — departments, procedures, master data, users, profiles, everything.
+
+- **Platform Admin** (`platform.admin` / `password123`) — not tied to any hospital. Signs
+  in to a dedicated screen (Hospital Master) that lists every hospital on the platform
+  and lets you onboard a new one: hospital record, a starter set of 11 departments (OT,
+  ICU, Ward, Pharmacy, Lab, Radiology, HR, Finance, Housekeeping, Security, Maintenance),
+  default Rate & Tariff / Rate Type masters, and that hospital's first Admin login — all
+  created atomically in one transaction. Deliberately does **not** copy Baby Memorial's
+  own CABG/Cardiology/Neurosurgery/Urology/Lab/Radiology data, since that's proprietary
+  to them, not a generic template.
+- **Hospital Admin** (e.g. Baby Memorial's `admin`) — sees only their own hospital's
+  data. A **Hospital Profile** screen (Sidebar → Administration) lets them view/edit
+  their own hospital's details (address, contact, bed count, etc.) — self-service, no
+  platform admin involvement needed for that.
+- **Isolation is enforced at the database layer**, not just hidden in the UI: every
+  route that touches departments, procedures, specialties, profiles, users, or the
+  Rate/Rate-Type/Allocation-Basis masters filters by the caller's own `hospital_id` from
+  their JWT. Two hospitals can both use department code `OT` with zero collision (the
+  uniqueness constraint is `(hospital_id, code)`, not global) — **verified directly**: a
+  test hospital's admin got a 404 (not a 403 — the department genuinely doesn't exist in
+  their scope) when trying to touch Baby Memorial's OT department by code.
+- **What's *not* hospital-scoped, deliberately**: `cost_heads` (the fixed Manpower/
+  Material/Machinery/Expenses/Utilities list — the same for everyone) and the deeper
+  master tables (`manpower_master`, `equipment_master`, etc.) — those stay correctly
+  isolated *transitively* through `department_id`/`procedure_id`, since every department
+  and procedure now belongs to exactly one hospital. This kept the migration to a
+  manageable set of tables instead of touching all twenty-odd of them directly.
+
+
 
 Lab and Radiology are costed fundamentally differently from every other department in
 this app — not as a package for one procedure, but as **a price list of individual

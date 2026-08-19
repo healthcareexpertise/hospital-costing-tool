@@ -16,7 +16,31 @@ import RateTariffMaster from "./pages/RateTariffMaster";
 import RateTypeMaster from "./pages/RateTypeMaster";
 import AllocationBasisMaster from "./pages/AllocationBasisMaster";
 import MyProfile from "./pages/MyProfile";
+import HospitalProfile from "./pages/HospitalProfile";
+import HospitalMaster from "./pages/HospitalMaster";
 import DeptRouter from "./pages/dept/DeptRouter";
+
+// Platform admins aren't tied to a hospital at all — they get a minimal shell with just
+// the cross-hospital Hospital Master screen, not the normal department/module sidebar.
+function PlatformAdminShell() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  return (
+    <div className="app-shell">
+      <div className="main-area" style={{ width: "100%" }}>
+        <div className="topbar">
+          <div className="topbar-title">Hospital Costing Tool — Platform Administration</div>
+          <div className="topbar-user">
+            <span>{user?.full_name}</span>
+            <span className="badge">Platform Admin</span>
+            <button className="btn-link" onClick={() => { logout(); navigate("/login"); }}>Log out</button>
+          </div>
+        </div>
+        <HospitalMaster />
+      </div>
+    </div>
+  );
+}
 
 function Shell({ children }) {
   const { user, logout, departments, systemModules } = useAuth();
@@ -27,7 +51,7 @@ function Shell({ children }) {
       <Sidebar />
       <div className="main-area">
         <div className="topbar">
-          <div className="topbar-title">Multi-Specialty Hospital Costing Tool</div>
+          <div className="topbar-title">{user?.hospital_name || "Multi-Specialty Hospital Costing Tool"}</div>
           <ProcedureSelector />
           <div className="topbar-user">
             <Link to="/my-profile" className="btn-link" style={{ textDecoration: "none" }}>{user?.full_name}</Link>
@@ -63,30 +87,40 @@ export default function App() {
         path="/*"
         element={
           <ProtectedRoute>
-            <Shell>
-              <Routes>
-                <Route path="/" element={<Navigate to="/dashboard" replace />} />
-                <Route path="/dashboard" element={<GlobalDashboard />} />
-                <Route path="/my-profile" element={<MyProfile />} />
-                <Route path="/admin/departments" element={<DepartmentMaster />} />
-                <Route path="/admin/specialties" element={<SpecialtyMaster />} />
-                <Route path="/admin/procedures" element={<ProcedureMasterAdmin />} />
-                <Route path="/admin/employees" element={<EmployeeMaster />} />
-                <Route path="/admin/profiles" element={<ProfileMaster />} />
-                <Route path="/admin/users" element={<UserMaster />} />
-                <Route path="/admin/rates" element={<RateTariffMaster />} />
-                <Route path="/admin/rate-types" element={<RateTypeMaster />} />
-                <Route path="/admin/allocation-basis" element={<AllocationBasisMaster />} />
-                <Route path="/dept/:deptCode/master" element={<DeptRouter view="master" />} />
-                <Route path="/dept/:deptCode/input" element={<DeptRouter view="input" />} />
-                <Route path="/dept/:deptCode/output" element={<DeptRouter view="output" />} />
-                <Route path="/dept/:deptCode/dashboard" element={<DeptRouter view="dashboard" />} />
-                <Route path="*" element={<Navigate to="/dashboard" replace />} />
-              </Routes>
-            </Shell>
+            <AppBody />
           </ProtectedRoute>
         }
       />
     </Routes>
+  );
+}
+
+function AppBody() {
+  const { user } = useAuth();
+  if (user?.is_platform_admin) return <PlatformAdminShell />;
+
+  return (
+    <Shell>
+      <Routes>
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/dashboard" element={<GlobalDashboard />} />
+        <Route path="/my-profile" element={<MyProfile />} />
+        <Route path="/admin/hospital" element={<HospitalProfile />} />
+        <Route path="/admin/departments" element={<DepartmentMaster />} />
+        <Route path="/admin/specialties" element={<SpecialtyMaster />} />
+        <Route path="/admin/procedures" element={<ProcedureMasterAdmin />} />
+        <Route path="/admin/employees" element={<EmployeeMaster />} />
+        <Route path="/admin/profiles" element={<ProfileMaster />} />
+        <Route path="/admin/users" element={<UserMaster />} />
+        <Route path="/admin/rates" element={<RateTariffMaster />} />
+        <Route path="/admin/rate-types" element={<RateTypeMaster />} />
+        <Route path="/admin/allocation-basis" element={<AllocationBasisMaster />} />
+        <Route path="/dept/:deptCode/master" element={<DeptRouter view="master" />} />
+        <Route path="/dept/:deptCode/input" element={<DeptRouter view="input" />} />
+        <Route path="/dept/:deptCode/output" element={<DeptRouter view="output" />} />
+        <Route path="/dept/:deptCode/dashboard" element={<DeptRouter view="dashboard" />} />
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      </Routes>
+    </Shell>
   );
 }

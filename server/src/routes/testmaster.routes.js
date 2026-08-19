@@ -8,7 +8,7 @@ const router = express.Router();
 router.use(requireAuth);
 
 function resolveDept(req, res, next) {
-  const dept = db.prepare("SELECT * FROM departments WHERE code = ?").get(req.params.deptCode);
+  const dept = db.prepare("SELECT * FROM departments WHERE code = ? AND hospital_id = ?").get(req.params.deptCode, req.user.hospital_id);
   if (!dept) return res.status(404).json({ error: "Unknown department code" });
   req.dept = dept;
   next();
