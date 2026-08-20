@@ -102,6 +102,33 @@ Each of the 35 departments gets 4 modules; system-level modules sit alongside th
 
 ## Known limitations / next steps
 
+- **Common inputs are now hospital-wide, not per-department.** Standard working days/year,
+  standard days/month, and default bed count live once in each hospital's Rate & Tariff
+  Master and are inherited by every department's Input screen unless explicitly
+  overridden — edit the hospital-wide value once and every department/procedure using
+  the default picks it up immediately (verified: changing STD_DAYS_YEAR moved OT's
+  machinery cost live, with no change needed on OT's own Input record).
+- **Lab/Radiology overhead is now fully live-computed**, not a precomputed constant.
+  Each department's Master screen stores an *annual total* per cost component
+  (Manpower/Equipment/Building/Power/Common Consumables) plus *actual* and *standard*
+  test volumes; the per-test rate is `annual total ÷ volume`, computed on every request —
+  the same calculation the source Excel used. Verified: halving Biochemistry's actual
+  volume exactly doubled its per-test overhead, then reverted cleanly. This is what makes
+  the Lab/Radiology masters genuinely reusable for a different hospital with different
+  patient volumes, rather than baking in Baby Memorial's own numbers permanently.
+- **⚠️ Schema change — Lab/Radiology overhead**: `test_overhead_master`'s columns
+  changed shape (from precomputed `*_actual`/`*_standard` rates to `*_annual_total` +
+  `actual_volume`/`standard_volume`). If you're deploying this on top of an existing
+  persistent-disk database that already has the *old* Lab/Radiology overhead data, that
+  old data won't match the new column names — you'll want to either let a fresh Lab/
+  Radiology reseed happen (the seed script's test-row insert is guarded to only run once
+  per hospital if `test_master` is already populated, but the *overhead* table is always
+  safely re-computed) or manually clear the `test_overhead_master` table once before
+  this deploy so it reseeds cleanly.
+- Duplicate Sl.No values that existed in the original CABG data (seeded from source
+  Excel's own row numbers across separate sub-tables) have been renumbered sequentially;
+  this runs automatically as part of every seed.
+
 - **New-specialty Output isn't yet wired to Master edits.** For the 22
   Cardiology/Neurosurgery/Urology procedures, Output reads the hospital's own validated
   reference total rather than recomputing from Master rows (see Architecture above). If

@@ -52,18 +52,29 @@ router.delete("/:deptCode/tests/:id", resolveDept, requireDeptModule("MASTER", "
   res.json({ ok: true });
 });
 
-// ---- Overhead constants ----
+// ---- Overhead constants (annual totals + test volumes — see costEngine.js for how
+// these combine into a live per-test rate) ----
 router.get("/:deptCode/overhead", resolveDept, requireDeptModule("MASTER", "view"), (req, res) => {
-  res.json(db.prepare("SELECT * FROM test_overhead_master WHERE department_id = ?").get(req.dept.id) || null);
+  const overhead = db.prepare("SELECT * FROM test_overhead_master WHERE department_id = ?").get(req.dept.id);
+  if (!overhead) return res.json(null);
+  const annualTotal = (overhead.manpower_annual_total || 0) + (overhead.equipment_annual_total || 0) + (overhead.building_annual_total || 0) +
+    (overhead.power_annual_total || 0) + (overhead.common_consumables_annual_total || 0);
+  const actualVolume = overhead.actual_volume || 1;
+  const standardVolume = overhead.standard_volume || 1;
+  res.json({
+    ...overhead,
+    annual_total: Math.round(annualTotal * 100) / 100,
+    overhead_per_test_actual: Math.round((annualTotal / actualVolume) * 100) / 100,
+    overhead_per_test_standard: Math.round((annualTotal / standardVolume) * 100) / 100,
+  });
 });
 
 router.put("/:deptCode/overhead", resolveDept, requireDeptModule("MASTER", "edit"), (req, res) => {
   const cols = [
-    "manpower_actual", "manpower_standard", "equipment_actual", "equipment_standard",
-    "building_actual", "building_standard", "power_actual", "power_standard",
-    "common_consumables_actual", "common_consumables_standard", "notes",
+    "manpower_annual_total", "equipment_annual_total", "building_annual_total",
+    "power_annual_total", "common_consumables_annual_total", "actual_volume", "standard_volume", "notes",
   ];
-  const vals = cols.map((c) => (req.body[c] !== undefined ? req.body[c] : 0));
+  const vals = cols.map((c) => (req.body[c] !== undefined ? req.body[c] : (c === "actual_volume" || c === "standard_volume" ? 1 : 0)));
   const existing = db.prepare("SELECT id FROM test_overhead_master WHERE department_id = ?").get(req.dept.id);
   if (existing) {
     db.prepare(`UPDATE test_overhead_master SET ${cols.map((c) => c + "=?").join(",")} WHERE department_id=?`).run(...vals, req.dept.id);

@@ -1,14 +1,27 @@
 const { db } = require("../db/db");
 
-function getRates() {
-  const rows = db.prepare("SELECT param_code, value FROM rate_tariff_master").all();
+// Hospital-scoped — every hospital has its own Rate & Tariff Master (STD_DAYS_YEAR,
+// STD_DAYS_MONTH, DEFAULT_BEDS, etc). This is the "common input module" shared across
+// every specialty/procedure at that hospital: department_input rows inherit from here
+// for the 3 fields that are genuinely hospital-wide constants, unless overridden.
+function getRates(hospitalId) {
+  const rows = db.prepare("SELECT param_code, value FROM rate_tariff_master WHERE hospital_id = ?").all(hospitalId);
   const r = {};
   rows.forEach((x) => (r[x.param_code] = x.value));
   return r;
 }
 
-function getInput(procedureId, departmentId) {
-  return db.prepare("SELECT * FROM department_input WHERE procedure_id = ? AND department_id = ?").get(procedureId, departmentId);
+// Merges a department_input row with the hospital's common defaults for any of the 3
+// fields left NULL (standard_working_days_year, standard_days_month, no_of_beds).
+function getInput(procedureId, departmentId, rates) {
+  const input = db.prepare("SELECT * FROM department_input WHERE procedure_id = ? AND department_id = ?").get(procedureId, departmentId);
+  if (!input) return input;
+  return {
+    ...input,
+    standard_working_days_year: input.standard_working_days_year ?? rates.STD_DAYS_YEAR ?? 300,
+    standard_days_month: input.standard_days_month ?? rates.STD_DAYS_MONTH ?? 22,
+    no_of_beds: input.no_of_beds ?? rates.DEFAULT_BEDS ?? 100,
+  };
 }
 
 function round2(n) {
@@ -44,8 +57,9 @@ function manpowerCostForCase(rateType, rateValue, noOfPersons, input) {
 }
 
 function computeFullDepartment(procedureId, departmentId) {
-  const rates = getRates();
-  const input = getInput(procedureId, departmentId);
+  const dept = db.prepare("SELECT * FROM departments WHERE id = ?").get(departmentId);
+  const rates = getRates(dept.hospital_id);
+  const input = getInput(procedureId, departmentId, rates);
   if (!input) throw new Error(`No department_input configured for procedure ${procedureId} / department ${departmentId}`);
 
   // A. Manpower
@@ -148,7 +162,9 @@ function computeFullDepartment(procedureId, departmentId) {
 }
 
 function computeSimpleDepartment(procedureId, departmentId) {
-  const input = getInput(procedureId, departmentId);
+  const dept = db.prepare("SELECT * FROM departments WHERE id = ?").get(departmentId);
+  const rates = getRates(dept.hospital_id);
+  const input = getInput(procedureId, departmentId, rates);
   const rows = db.prepare("SELECT * FROM simple_asset_master WHERE department_id = ? AND procedure_id = ?").all(departmentId, procedureId);
   let total = 0;
   const detail = [];
@@ -201,7 +217,7 @@ function computeDepartmentOutput(procedureId, departmentId) {
       department_id: departmentId,
       engine_type: dept.engine_type,
       source: "reference",
-      input: getInput(procedureId, departmentId),
+      input: getInput(procedureId, departmentId, getRates(dept.hospital_id)),
       cost_heads: {
         manpower: round2(ref.manpower), material: round2(ref.material), machinery: round2(ref.machinery),
         expenses: round2(ref.expenses), utilities: round2(ref.utilities), total: round2(ref.total),
@@ -269,8 +285,14 @@ module.exports = { computeDepartmentOutput, computeProcedureOutput, computeGloba
 /**
  * Lab/Radiology per-test costing. Returns every test in a department with its cost
  * broken into direct cost (reagent/consumable, or Radiology's fully-loaded technical
- * total), doctor's fee, and department-level overhead — computed both against "actual"
- * real test volume and "standard" rated machine capacity.
+ * total), doctor's fee, and department-level overhead.
+ *
+ * Overhead is computed LIVE as (annual total cost) ÷ (test volume) — the same
+ * calculation the source Excel used — rather than being a precomputed constant. This
+ * means a different hospital can enter their own manpower/equipment/building/power
+ * annual costs and their own actual/standard test volumes on the Master screen, and
+ * every test's cost recalculates automatically, both "actual" (real recorded volume)
+ * and "standard" (rated machine capacity).
  */
 function computeTestDepartmentOutput(departmentId) {
   const dept = db.prepare("SELECT * FROM departments WHERE id = ?").get(departmentId);
@@ -279,9 +301,14 @@ function computeTestDepartmentOutput(departmentId) {
   const testRows = db.prepare("SELECT * FROM test_master WHERE department_id = ? ORDER BY sl_no").all(departmentId);
   const overhead = db.prepare("SELECT * FROM test_overhead_master WHERE department_id = ?").get(departmentId);
 
-  const ov = (k) => (overhead ? overhead[k] || 0 : 0);
-  const overheadActualSum = ov("manpower_actual") + ov("equipment_actual") + ov("building_actual") + ov("power_actual") + ov("common_consumables_actual");
-  const overheadStandardSum = ov("manpower_standard") + ov("equipment_standard") + ov("building_standard") + ov("power_standard") + ov("common_consumables_standard");
+  const annualTotal = overhead
+    ? (overhead.manpower_annual_total || 0) + (overhead.equipment_annual_total || 0) + (overhead.building_annual_total || 0) +
+      (overhead.power_annual_total || 0) + (overhead.common_consumables_annual_total || 0)
+    : 0;
+  const actualVolume = overhead?.actual_volume || 1;
+  const standardVolume = overhead?.standard_volume || 1;
+  const overheadActualSum = annualTotal / actualVolume;
+  const overheadStandardSum = annualTotal / standardVolume;
 
   const tests = testRows.map((t) => ({
     id: t.id, sl_no: t.sl_no, test_name: t.test_name,
@@ -293,6 +320,7 @@ function computeTestDepartmentOutput(departmentId) {
 
   return {
     department_id: departmentId, department: dept.name, engine_type: "PER_TEST",
-    overhead: overhead || null, test_count: tests.length, tests,
+    overhead: overhead ? { ...overhead, annual_total: round2(annualTotal), overhead_per_test_actual: round2(overheadActualSum), overhead_per_test_standard: round2(overheadStandardSum) } : null,
+    test_count: tests.length, tests,
   };
 }

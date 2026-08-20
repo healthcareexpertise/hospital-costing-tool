@@ -17,6 +17,26 @@ const rawDb = new DatabaseSync(DB_PATH);
 rawDb.exec("PRAGMA journal_mode = WAL");
 rawDb.exec("PRAGMA foreign_keys = ON");
 
+// One-off migration guard: test_overhead_master's columns were renamed (per-test rates ->
+// annual totals + volume, so overhead computes live instead of being a fixed constant —
+// see costEngine.js). CREATE TABLE IF NOT EXISTS won't touch an existing table with the
+// old column names, so detect that case here and drop it — it'll be recreated with the
+// new schema below, then reseeded (this table only ever held seed-derived data up to this
+// point, so this is safe; it does mean any manual edits made to Lab/Radiology overhead
+// figures before this deploy will need to be re-entered).
+let overheadMigrated = false;
+try {
+  const cols = rawDb.prepare("PRAGMA table_info(test_overhead_master)").all();
+  const hasOldSchema = cols.some((c) => c.name === "manpower_actual");
+  if (hasOldSchema) {
+    console.log("Migrating test_overhead_master to the new annual-total schema (old per-test-rate data will be reseeded)...");
+    rawDb.exec("DROP TABLE test_overhead_master");
+    overheadMigrated = true;
+  }
+} catch (e) {
+  // table doesn't exist yet on a fresh database — nothing to migrate
+}
+
 const schema = fs.readFileSync(path.join(__dirname, "schema.sql"), "utf8");
 rawDb.exec(schema);
 

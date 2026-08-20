@@ -4,11 +4,11 @@ import { api } from "../../api/client";
 import { useAuth } from "../../context/AuthContext";
 
 const OVERHEAD_FIELDS = [
-  ["manpower_actual", "manpower_standard", "Manpower"],
-  ["equipment_actual", "equipment_standard", "Equipment"],
-  ["building_actual", "building_standard", "Building"],
-  ["power_actual", "power_standard", "Power"],
-  ["common_consumables_actual", "common_consumables_standard", "Common Consumables"],
+  ["manpower_annual_total", "Manpower"],
+  ["equipment_annual_total", "Equipment"],
+  ["building_annual_total", "Building"],
+  ["power_annual_total", "Power"],
+  ["common_consumables_annual_total", "Common Consumables"],
 ];
 
 export default function TestMasterPage() {
@@ -118,46 +118,75 @@ export default function TestMasterPage() {
         </div>
       </div>
 
-      <div className="card" style={{ maxWidth: 560 }}>
-        <p className="card-title">Shared department overhead (applied to every test)</p>
-        {overhead?.notes && <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: -6 }}>{overhead.notes}</p>}
+      <div className="card" style={{ maxWidth: 620 }}>
+        <p className="card-title">Shared department overhead</p>
+        <p style={{ fontSize: 12.5, color: "var(--text-muted)", marginTop: -6 }}>
+          Enter the department's <strong>annual total cost</strong> for each component, plus how many tests it
+          covers in a year — both real recorded volume ("Actual") and rated machine capacity ("Standard"). The
+          per-test rate below is <strong>computed live</strong> as total ÷ volume, exactly like the source
+          spreadsheet — change the volume for a different hospital and every test's cost recalculates automatically.
+        </p>
+        {overhead?.notes && <p style={{ fontSize: 12, color: "var(--text-muted)" }}>{overhead.notes}</p>}
         <table>
-          <thead><tr><th>Component</th><th>Actual (Rs./test)</th><th>Standard (Rs./test)</th></tr></thead>
+          <thead><tr><th>Component</th><th>Annual Total (Rs.)</th></tr></thead>
           <tbody>
-            {OVERHEAD_FIELDS.map(([aKey, sKey, label]) => (
-              <tr key={aKey}>
+            {OVERHEAD_FIELDS.map(([key, label]) => (
+              <tr key={key}>
                 <td>{label}</td>
                 <td>
                   {overheadDraft ? (
-                    <input type="number" value={overheadDraft[aKey] || 0} onChange={(e) => setOverheadDraft({ ...overheadDraft, [aKey]: Number(e.target.value) })} style={{ width: 100 }} />
+                    <input type="number" value={overheadDraft[key] || 0} onChange={(e) => setOverheadDraft({ ...overheadDraft, [key]: Number(e.target.value) })} style={{ width: 140 }} />
                   ) : (
-                    (overhead?.[aKey] || 0).toFixed(2)
-                  )}
-                </td>
-                <td>
-                  {overheadDraft ? (
-                    <input type="number" value={overheadDraft[sKey] || 0} onChange={(e) => setOverheadDraft({ ...overheadDraft, [sKey]: Number(e.target.value) })} style={{ width: 100 }} />
-                  ) : (
-                    (overhead?.[sKey] || 0).toFixed(2)
+                    `₹${(overhead?.[key] || 0).toLocaleString(undefined, { maximumFractionDigits: 2 })}`
                   )}
                 </td>
               </tr>
             ))}
+            <tr>
+              <td style={{ fontWeight: 600 }}>Annual Total (all components)</td>
+              <td style={{ fontWeight: 600 }}>₹{(overhead?.annual_total || 0).toLocaleString(undefined, { maximumFractionDigits: 2 })}</td>
+            </tr>
           </tbody>
         </table>
-        {overhead?.actual_volume && (
-          <p style={{ fontSize: 11.5, color: "var(--text-muted)", marginTop: 8 }}>
-            Derived from actual volume {Math.round(overhead.actual_volume).toLocaleString()} tests/year vs. standard capacity {Math.round(overhead.standard_volume).toLocaleString()} tests/year.
-          </p>
-        )}
+
+        <div style={{ display: "flex", gap: 16, marginTop: 12 }}>
+          <div className="field" style={{ flex: 1 }}>
+            <label>Actual test volume (tests/year)</label>
+            {overheadDraft ? (
+              <input type="number" value={overheadDraft.actual_volume || 1} onChange={(e) => setOverheadDraft({ ...overheadDraft, actual_volume: Number(e.target.value) })} />
+            ) : (
+              <input value={Math.round(overhead?.actual_volume || 1).toLocaleString()} disabled />
+            )}
+          </div>
+          <div className="field" style={{ flex: 1 }}>
+            <label>Standard capacity (tests/year)</label>
+            {overheadDraft ? (
+              <input type="number" value={overheadDraft.standard_volume || 1} onChange={(e) => setOverheadDraft({ ...overheadDraft, standard_volume: Number(e.target.value) })} />
+            ) : (
+              <input value={Math.round(overhead?.standard_volume || 1).toLocaleString()} disabled />
+            )}
+          </div>
+        </div>
+
+        <div className="grid grid-4" style={{ marginTop: 12 }}>
+          <div className="metric">
+            <p className="metric-label">Computed overhead / test (actual)</p>
+            <p className="metric-value">₹{(overhead?.overhead_per_test_actual || 0).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+          </div>
+          <div className="metric">
+            <p className="metric-label">Computed overhead / test (standard)</p>
+            <p className="metric-value">₹{(overhead?.overhead_per_test_standard || 0).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+          </div>
+        </div>
+
         {canEdit && (
           overheadDraft ? (
-            <div style={{ marginTop: 10 }}>
+            <div style={{ marginTop: 12 }}>
               <button className="primary" onClick={saveOverhead} style={{ marginRight: 6 }}>Save</button>
               <button className="secondary" onClick={() => setOverheadDraft(null)}>Cancel</button>
             </div>
           ) : (
-            <button className="secondary" style={{ marginTop: 10 }} onClick={startOverheadEdit}>Edit overhead</button>
+            <button className="secondary" style={{ marginTop: 12 }} onClick={startOverheadEdit}>Edit overhead</button>
           )
         )}
         {savedOverhead && <span style={{ marginLeft: 10, color: "var(--primary)", fontSize: 13 }}>Saved ✓</span>}

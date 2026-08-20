@@ -124,15 +124,21 @@ CREATE TABLE IF NOT EXISTS test_master (
   notes TEXT
 );
 
+-- Overhead is stored as ANNUAL TOTALS + test volumes (actual and standard/rated capacity),
+-- not precomputed per-test rates — costEngine.js divides live, exactly mirroring the
+-- source Excel's own (total cost ÷ volume) calculation. This is what makes it safe to
+-- reuse for a different hospital: enter their own totals and their own volumes, and
+-- every test's cost recalculates automatically.
 CREATE TABLE IF NOT EXISTS test_overhead_master (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   department_id INTEGER NOT NULL REFERENCES departments(id) UNIQUE,
-  manpower_actual REAL DEFAULT 0, manpower_standard REAL DEFAULT 0,
-  equipment_actual REAL DEFAULT 0, equipment_standard REAL DEFAULT 0,
-  building_actual REAL DEFAULT 0, building_standard REAL DEFAULT 0,
-  power_actual REAL DEFAULT 0, power_standard REAL DEFAULT 0,
-  common_consumables_actual REAL DEFAULT 0, common_consumables_standard REAL DEFAULT 0,
-  actual_volume REAL, standard_volume REAL,
+  manpower_annual_total REAL DEFAULT 0,
+  equipment_annual_total REAL DEFAULT 0,
+  building_annual_total REAL DEFAULT 0,
+  power_annual_total REAL DEFAULT 0,
+  common_consumables_annual_total REAL DEFAULT 0,
+  actual_volume REAL DEFAULT 1,
+  standard_volume REAL DEFAULT 1,
   notes TEXT
 );
 
@@ -301,9 +307,15 @@ CREATE TABLE IF NOT EXISTS department_input (
   procedure_id INTEGER NOT NULL REFERENCES procedures(id),
   driver_hours REAL,          -- e.g. surgery duration in hours (OT, AC/Building hourly depts)
   driver_days REAL,           -- e.g. length of stay in days (Ward, ICU, per-bed depts)
-  standard_working_days_year REAL DEFAULT 300,
-  standard_days_month REAL DEFAULT 22,
+  -- The next 3 are genuinely common across every specialty/procedure at a given hospital,
+  -- so they're NULL by default and inherited live from Rate & Tariff Master (STD_DAYS_YEAR /
+  -- STD_DAYS_MONTH / DEFAULT_BEDS) — only set a value here to override for this specific
+  -- department+procedure. standard_hours_day is NOT included here because it genuinely
+  -- varies by department type (OT runs ~7hr shifts, ICU is staffed 24hr) rather than being
+  -- a hospital-wide constant.
+  standard_working_days_year REAL,
+  standard_days_month REAL,
+  no_of_beds REAL,
   standard_hours_day REAL DEFAULT 8,
-  no_of_beds REAL DEFAULT 351,
   UNIQUE(procedure_id, department_id)
 );

@@ -19,7 +19,15 @@ function resolveDeptAndProcedure(req, res, next) {
 
 router.get("/:deptCode", resolveDeptAndProcedure, requireDeptModule("INPUT", "view"), (req, res) => {
   const row = db.prepare("SELECT * FROM department_input WHERE department_id = ? AND procedure_id = ?").get(req.dept.id, req.proc.id);
-  res.json(row || null);
+  const rateRows = db.prepare("SELECT param_code, value FROM rate_tariff_master WHERE hospital_id = ?").all(req.user.hospital_id);
+  const rates = {};
+  rateRows.forEach((r) => (rates[r.param_code] = r.value));
+  const hospitalDefaults = {
+    standard_working_days_year: rates.STD_DAYS_YEAR ?? 300,
+    standard_days_month: rates.STD_DAYS_MONTH ?? 22,
+    no_of_beds: rates.DEFAULT_BEDS ?? 100,
+  };
+  res.json({ ...row, hospital_defaults: hospitalDefaults });
 });
 
 router.put("/:deptCode", resolveDeptAndProcedure, requireDeptModule("INPUT", "edit"), (req, res) => {
