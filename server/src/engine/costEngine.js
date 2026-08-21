@@ -283,44 +283,57 @@ function computeGlobalDashboard(hospitalId) {
 module.exports = { computeDepartmentOutput, computeProcedureOutput, computeGlobalDashboard, computeTestDepartmentOutput };
 
 /**
- * Lab/Radiology per-test costing. Returns every test in a department with its cost
- * broken into direct cost (reagent/consumable, or Radiology's fully-loaded technical
- * total), doctor's fee, and department-level overhead.
+ * Lab/Radiology per-test costing. Returns every test in a department (grouped by
+ * sub_department — e.g. Biochemistry, Haematology, X-Ray, CT — since one department now
+ * covers several of these) with its cost broken into direct cost, doctor's fee, and
+ * sub-department-level overhead.
  *
  * Overhead is computed LIVE as (annual total cost) ÷ (test volume) — the same
- * calculation the source Excel used — rather than being a precomputed constant. This
- * means a different hospital can enter their own manpower/equipment/building/power
- * annual costs and their own actual/standard test volumes on the Master screen, and
- * every test's cost recalculates automatically, both "actual" (real recorded volume)
- * and "standard" (rated machine capacity).
+ * calculation the source Excel used — rather than being a precomputed constant, per
+ * sub_department. This means a different hospital can enter their own manpower/
+ * equipment/building/power annual costs and their own actual/standard test volumes on
+ * the Master screen, and every test's cost recalculates automatically.
  */
-function computeTestDepartmentOutput(departmentId) {
+function computeTestDepartmentOutput(departmentId, subDepartment) {
   const dept = db.prepare("SELECT * FROM departments WHERE id = ?").get(departmentId);
   if (!dept) throw new Error("Department not found");
 
-  const testRows = db.prepare("SELECT * FROM test_master WHERE department_id = ? ORDER BY sl_no").all(departmentId);
-  const overhead = db.prepare("SELECT * FROM test_overhead_master WHERE department_id = ?").get(departmentId);
+  const testRows = subDepartment
+    ? db.prepare("SELECT * FROM test_master WHERE department_id = ? AND sub_department = ? ORDER BY sl_no").all(departmentId, subDepartment)
+    : db.prepare("SELECT * FROM test_master WHERE department_id = ? ORDER BY sub_department, sl_no").all(departmentId);
 
-  const annualTotal = overhead
-    ? (overhead.manpower_annual_total || 0) + (overhead.equipment_annual_total || 0) + (overhead.building_annual_total || 0) +
-      (overhead.power_annual_total || 0) + (overhead.common_consumables_annual_total || 0)
-    : 0;
-  const actualVolume = overhead?.actual_volume || 1;
-  const standardVolume = overhead?.standard_volume || 1;
-  const overheadActualSum = annualTotal / actualVolume;
-  const overheadStandardSum = annualTotal / standardVolume;
+  const overheadRows = db.prepare("SELECT * FROM test_overhead_master WHERE department_id = ?").all(departmentId);
+  const overheadBySubDept = {};
+  overheadRows.forEach((o) => (overheadBySubDept[o.sub_department] = o));
 
-  const tests = testRows.map((t) => ({
-    id: t.id, sl_no: t.sl_no, test_name: t.test_name,
-    direct_cost: round2(t.direct_cost), doctor_fee: round2(t.doctor_fee),
-    overhead_actual: round2(overheadActualSum), overhead_standard: round2(overheadStandardSum),
-    total_actual: round2(t.direct_cost + t.doctor_fee + overheadActualSum),
-    total_standard: round2(t.direct_cost + t.doctor_fee + overheadStandardSum),
-  }));
+  function rateFor(sub) {
+    const overhead = overheadBySubDept[sub || ""];
+    const annualTotal = overhead
+      ? (overhead.manpower_annual_total || 0) + (overhead.equipment_annual_total || 0) + (overhead.building_annual_total || 0) +
+        (overhead.power_annual_total || 0) + (overhead.common_consumables_annual_total || 0)
+      : 0;
+    const actualVolume = overhead?.actual_volume || 1;
+    const standardVolume = overhead?.standard_volume || 1;
+    return { actual: annualTotal / actualVolume, standard: annualTotal / standardVolume, overhead, annualTotal };
+  }
+
+  const tests = testRows.map((t) => {
+    const rate = rateFor(t.sub_department);
+    return {
+      id: t.id, sl_no: t.sl_no, test_name: t.test_name, sub_department: t.sub_department,
+      direct_cost: round2(t.direct_cost), doctor_fee: round2(t.doctor_fee),
+      overhead_actual: round2(rate.actual), overhead_standard: round2(rate.standard),
+      total_actual: round2(t.direct_cost + t.doctor_fee + rate.actual),
+      total_standard: round2(t.direct_cost + t.doctor_fee + rate.standard),
+    };
+  });
+
+  const subDepartments = [...new Set(testRows.map((t) => t.sub_department))];
 
   return {
     department_id: departmentId, department: dept.name, engine_type: "PER_TEST",
-    overhead: overhead ? { ...overhead, annual_total: round2(annualTotal), overhead_per_test_actual: round2(overheadActualSum), overhead_per_test_standard: round2(overheadStandardSum) } : null,
+    sub_departments: subDepartments,
+    overhead: subDepartment ? { ...(overheadBySubDept[subDepartment] || {}), ...(() => { const r = rateFor(subDepartment); return { annual_total: round2(r.annualTotal), overhead_per_test_actual: round2(r.actual), overhead_per_test_standard: round2(r.standard) }; })() } : null,
     test_count: tests.length, tests,
   };
 }

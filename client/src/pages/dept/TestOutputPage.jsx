@@ -7,6 +7,7 @@ export default function TestOutputPage() {
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
+  const [subFilter, setSubFilter] = useState("ALL");
   const [sortKey, setSortKey] = useState("sl_no");
   const [sortDir, setSortDir] = useState(1);
 
@@ -15,15 +16,18 @@ export default function TestOutputPage() {
     api.get(`/test-master/${deptCode}/output`).then(setData).catch((e) => setError(e.message));
   }, [deptCode]);
 
+  const subDepts = useMemo(() => data ? [...new Set(data.tests.map((t) => t.sub_department))] : [], [data]);
+
   const filteredSorted = useMemo(() => {
     if (!data) return [];
     let rows = data.tests;
+    if (subFilter !== "ALL") rows = rows.filter((t) => t.sub_department === subFilter);
     if (search.trim()) {
       const s = search.toLowerCase();
       rows = rows.filter((t) => t.test_name.toLowerCase().includes(s));
     }
     return [...rows].sort((a, b) => (a[sortKey] > b[sortKey] ? sortDir : a[sortKey] < b[sortKey] ? -sortDir : 0));
-  }, [data, search, sortKey, sortDir]);
+  }, [data, search, subFilter, sortKey, sortDir]);
 
   function toggleSort(key) {
     if (sortKey === key) setSortDir(-sortDir);
@@ -33,32 +37,37 @@ export default function TestOutputPage() {
   if (error) return <div className="content"><div className="card error-text">{error}</div></div>;
   if (!data) return <div className="content">Loading...</div>;
 
-  const avgActual = data.tests.length ? data.tests.reduce((s, t) => s + t.total_actual, 0) / data.tests.length : 0;
+  const avgActual = filteredSorted.length ? filteredSorted.reduce((s, t) => s + t.total_actual, 0) / filteredSorted.length : 0;
 
   return (
     <div className="content">
       <div className="card">
-        <p className="card-title">{deptCode} — Test Price List ({data.test_count} tests)</p>
+        <p className="card-title">{deptCode} — Test Price List ({data.test_count} tests across {subDepts.length} sub-departments)</p>
         <div className="grid grid-4">
-          <div className="metric"><p className="metric-label">Total tests</p><p className="metric-value">{data.test_count}</p></div>
-          <div className="metric"><p className="metric-label">Avg. cost (actual)</p><p className="metric-value">₹{avgActual.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p></div>
-          <div className="metric"><p className="metric-label">Overhead / test (actual)</p><p className="metric-value">₹{(data.tests[0]?.overhead_actual || 0).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p></div>
-          <div className="metric"><p className="metric-label">Overhead / test (standard)</p><p className="metric-value">₹{(data.tests[0]?.overhead_standard || 0).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p></div>
+          <div className="metric"><p className="metric-label">Showing</p><p className="metric-value">{filteredSorted.length}</p></div>
+          <div className="metric"><p className="metric-label">Avg. cost (actual, shown)</p><p className="metric-value">₹{avgActual.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p></div>
         </div>
       </div>
 
       <div className="card">
-        <input
-          placeholder="Search test name..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{ width: "100%", marginBottom: 12 }}
-        />
+        <div style={{ display: "flex", gap: 10, marginBottom: 12 }}>
+          <select value={subFilter} onChange={(e) => setSubFilter(e.target.value)}>
+            <option value="ALL">All sub-departments</option>
+            {subDepts.map((s) => <option key={s} value={s}>{s}</option>)}
+          </select>
+          <input
+            placeholder="Search test name..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            style={{ flex: 1 }}
+          />
+        </div>
         <div className="table-wrap">
           <table>
             <thead>
               <tr>
                 <th onClick={() => toggleSort("sl_no")} style={{ cursor: "pointer" }}>Sl No</th>
+                <th onClick={() => toggleSort("sub_department")} style={{ cursor: "pointer" }}>Sub-Dept</th>
                 <th onClick={() => toggleSort("test_name")} style={{ cursor: "pointer" }}>Test Name</th>
                 <th onClick={() => toggleSort("direct_cost")} style={{ cursor: "pointer" }}>Direct Cost</th>
                 <th onClick={() => toggleSort("doctor_fee")} style={{ cursor: "pointer" }}>Doctor Fee</th>
@@ -70,7 +79,7 @@ export default function TestOutputPage() {
             <tbody>
               {filteredSorted.map((t) => (
                 <tr key={t.id}>
-                  <td>{t.sl_no}</td><td>{t.test_name}</td>
+                  <td>{t.sl_no}</td><td>{t.sub_department}</td><td>{t.test_name}</td>
                   <td>₹{t.direct_cost.toLocaleString(undefined, { maximumFractionDigits: 2 })}</td>
                   <td>₹{t.doctor_fee.toLocaleString(undefined, { maximumFractionDigits: 2 })}</td>
                   <td>₹{t.overhead_actual.toLocaleString(undefined, { maximumFractionDigits: 2 })}</td>
@@ -79,7 +88,7 @@ export default function TestOutputPage() {
                 </tr>
               ))}
               {filteredSorted.length === 0 && (
-                <tr><td colSpan={7} style={{ textAlign: "center", color: "var(--text-muted)", padding: 20 }}>No tests match "{search}"</td></tr>
+                <tr><td colSpan={8} style={{ textAlign: "center", color: "var(--text-muted)", padding: 20 }}>No tests match your filters</td></tr>
               )}
             </tbody>
           </table>

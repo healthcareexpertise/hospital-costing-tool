@@ -1,0 +1,272 @@
+[
+  {
+    "sub_department": "Biochemistry",
+    "equipment_name": "REFRACTOMETER",
+    "cost_price": 30000,
+    "life_years": 7
+  },
+  {
+    "sub_department": "Biochemistry",
+    "equipment_name": "ANALYSER HBA1C D-10 BIORAD",
+    "cost_price": 0,
+    "life_years": 7
+  },
+  {
+    "sub_department": "Biochemistry",
+    "equipment_name": "ANALYSER HBA1C D-10 BIORAD",
+    "cost_price": 0,
+    "life_years": 7
+  },
+  {
+    "sub_department": "Biochemistry",
+    "equipment_name": "CLINICAL CHEMISTRY ANALYSER FULLY AUTOMATED DxC 800 Pro BECK",
+    "cost_price": 0,
+    "life_years": 7
+  },
+  {
+    "sub_department": "Biochemistry",
+    "equipment_name": "IMMUNOASSAY SYSTEM MINI VIDAS BIOMERIEUX",
+    "cost_price": 0,
+    "life_years": 7
+  },
+  {
+    "sub_department": "Biochemistry",
+    "equipment_name": "COLORIMETER CE-5",
+    "cost_price": 36.67,
+    "life_years": 7
+  },
+  {
+    "sub_department": "Biochemistry",
+    "equipment_name": "CENTRIFUGE R-8M REMI",
+    "cost_price": 32667.12,
+    "life_years": 7
+  },
+  {
+    "sub_department": "Biochemistry",
+    "equipment_name": "CLINICAL CHEMISTRY&IMMUNO ANALYSER-FULLY AUTOMATED",
+    "cost_price": 2205042.95,
+    "life_years": 7
+  },
+  {
+    "sub_department": "Biochemistry",
+    "equipment_name": "ANALYSER BIOCHEMISTRY CHEM-7 ERBE",
+    "cost_price": 144366.4,
+    "life_years": 7
+  },
+  {
+    "sub_department": "Biochemistry",
+    "equipment_name": "CENTRIFUGE R-8C BL REMI",
+    "cost_price": 43365,
+    "life_years": 7
+  },
+  {
+    "sub_department": "Biochemistry",
+    "equipment_name": "CENTRIFUGE R-8C BL REMI",
+    "cost_price": 48218,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB-CLINICAL PATH",
+    "equipment_name": "ANALYSER URINE URISYS1100 ROCHE",
+    "cost_price": 0,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB-CLINICAL PATH",
+    "equipment_name": "ANALYSER URINE COBASU411 ROCHE",
+    "cost_price": 0,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB-CLINICAL PATH",
+    "equipment_name": "INCUBATOR (ROTEK RI-14)",
+    "cost_price": 13806,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB-CLINICAL PATH",
+    "equipment_name": "HOT AIR OVEN KEMI",
+    "cost_price": 6675.51,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB-CLINICAL PATH",
+    "equipment_name": "CENTRIFUGE R-8C BL REMI",
+    "cost_price": 48218,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB-CLINICAL PATH",
+    "equipment_name": "MICROSCOPE MONOCULAR MAGNUS MLX-M",
+    "cost_price": 85.9,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB-CLINICAL PATH",
+    "equipment_name": "MICROSCOPE MONOCULAR MAGNUS MLX-M",
+    "cost_price": 3685.13,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB-CLINICAL PATH",
+    "equipment_name": "CENTRIFUGE R-8C BL REMI",
+    "cost_price": 43365,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB-CLINICAL PATH",
+    "equipment_name": "MICROSCOPE BINOCULAR VISION 2000",
+    "cost_price": 161351.76,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB-CLINICAL PATH",
+    "equipment_name": "INCUBATOR LAB KEMI",
+    "cost_price": 3569.86,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB-CLINICAL PATH",
+    "equipment_name": "MICROSCOPE BINOCULAR VISION 2000",
+    "cost_price": 26369.35,
+    "life_years": 7
+  },
+  {
+    "sub_department": "Haematology",
+    "equipment_name": "ANALYSER ESR VESCUBE 30 TOUCH TRANSASIA",
+    "cost_price": 0,
+    "life_years": 7
+  },
+  {
+    "sub_department": "Haematology",
+    "equipment_name": "HEMATOLOGY ANALYSER - FULLY AUTOMATED LH 750 BECKMAN COULTER",
+    "cost_price": 0.7,
+    "life_years": 7
+  },
+  {
+    "sub_department": "Haematology",
+    "equipment_name": "HEMATOLOGY ANALYSER - FULLY AUTOMATED",
+    "cost_price": 617590.13,
+    "life_years": 7
+  },
+  {
+    "sub_department": "Haematology",
+    "equipment_name": "HAEMOMIXER",
+    "cost_price": 80.53,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "HOOD LAMINAR AIR FLOW VLF-2",
+    "cost_price": 18384.98,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "INCUBATOR LAB BINS2 BESTON",
+    "cost_price": 4494.11,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "READER ELISA I MARK BIORAD",
+    "cost_price": 0,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "WASHER  ELISA PW 40 BIORAD",
+    "cost_price": 0,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "MGIT - SYSTEM BACTEC MGIT G4 BD",
+    "cost_price": 0,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "CYCLOMIXER CM 101 REMI",
+    "cost_price": 7110.43,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "CENTRIFUGE R-8C BL REMI",
+    "cost_price": 40500,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "TRUELAB REALTIME MICRO PCR WORK STATION",
+    "cost_price": 784000,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "CENTRIFUGE R 23 REMI",
+    "cost_price": 80.53,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "HOT AIR OVEN  HOS-2 (35X35X35CM) LABLINE",
+    "cost_price": 4494.11,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "INCUBATOR LAB BACTERIOLOGICAL INS6 LABLINE",
+    "cost_price": 23121.91,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "MICROSCOPE BINOCULAR VISION 2000",
+    "cost_price": 16317.1,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "MICROSCOPE BINOCULAR VISION 2000",
+    "cost_price": 2808.97,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "MICROSCOPE MONOCULAR CXL LABOMED",
+    "cost_price": 6945.44,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "PH METER MK VI SYSTRONICS",
+    "cost_price": 4099.39,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "AUTOCLAVE LAB PEEKAY SURGICALS",
+    "cost_price": 23770.83,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "AUTOCLAVE VERTICAL 4.0KW ,  AV-101",
+    "cost_price": 12123.13,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "BIOLOGICAL SAFETY CABINET BSC 4 LABLINE",
+    "cost_price": 57615.3,
+    "life_years": 7
+  },
+  {
+    "sub_department": "LAB - MICRO",
+    "equipment_name": "BIOLOGICAL SAFETY CABINET",
+    "cost_price": 136822.27,
+    "life_years": 7
+  }
+]

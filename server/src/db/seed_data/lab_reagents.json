@@ -1,0 +1,464 @@
+[
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Glucose",
+    "kit_cost": 41363.84,
+    "tests_per_kit": 5000
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Urea/BUN",
+    "kit_cost": 30512.16,
+    "tests_per_kit": 5000
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Creatinine",
+    "kit_cost": 39051.04,
+    "tests_per_kit": 6667
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Protin",
+    "kit_cost": 16901.92,
+    "tests_per_kit": 5714
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Albumin",
+    "kit_cost": 16901.92,
+    "tests_per_kit": 6667
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Cholesterol",
+    "kit_cost": 27392.96,
+    "tests_per_kit": 600
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Triglycerides",
+    "kit_cost": 31217.76,
+    "tests_per_kit": 600
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "HDL",
+    "kit_cost": 18942,
+    "tests_per_kit": 400
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Bilirubin total",
+    "kit_cost": 10289.4,
+    "tests_per_kit": 800
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Bilirubin direct",
+    "kit_cost": 10459.64,
+    "tests_per_kit": 600
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "sodium",
+    "kit_cost": 32524.24,
+    "tests_per_kit": 4289
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Potassium",
+    "kit_cost": 42458.64,
+    "tests_per_kit": 4289
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "chloride",
+    "kit_cost": 42458.64,
+    "tests_per_kit": 4289
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Electrolytes",
+    "kit_cost": 49645.12,
+    "tests_per_kit": 6105
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Bicarbonate",
+    "kit_cost": 36989.68,
+    "tests_per_kit": 3632
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "SGOT/AST",
+    "kit_cost": 4818.24,
+    "tests_per_kit": 800
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "SGPT/ALT",
+    "kit_cost": 5116.16,
+    "tests_per_kit": 800
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "GGT",
+    "kit_cost": 2140.88,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "ALP",
+    "kit_cost": 5344.64,
+    "tests_per_kit": 800
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Uric acid",
+    "kit_cost": 28422.8,
+    "tests_per_kit": 600
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Phosphorus",
+    "kit_cost": 26822.88,
+    "tests_per_kit": 600
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "magnesium",
+    "kit_cost": 27274.24,
+    "tests_per_kit": 200
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "LDH",
+    "kit_cost": 1529.92,
+    "tests_per_kit": 400
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Amylase",
+    "kit_cost": 21087.36,
+    "tests_per_kit": 400
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "CPK",
+    "kit_cost": 4558.4,
+    "tests_per_kit": 400
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "CKMB",
+    "kit_cost": 12703,
+    "tests_per_kit": 336
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "LDL",
+    "kit_cost": 13646.08,
+    "tests_per_kit": 200
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "calcium",
+    "kit_cost": 32524.24,
+    "tests_per_kit": 4289
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "RA Factor",
+    "kit_cost": 1996.96,
+    "tests_per_kit": 30
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "ASO",
+    "kit_cost": 1960,
+    "tests_per_kit": 30
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "CRP",
+    "kit_cost": 1814.4,
+    "tests_per_kit": 30
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "D-Dimer",
+    "kit_cost": 3707.2,
+    "tests_per_kit": 15
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "C3",
+    "kit_cost": 2177.28,
+    "tests_per_kit": 15
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "C4",
+    "kit_cost": 2177.28,
+    "tests_per_kit": 15
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "IgE",
+    "kit_cost": 3810.24,
+    "tests_per_kit": 15
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Microalbumin",
+    "kit_cost": 1270.08,
+    "tests_per_kit": 15
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Triage Trop I",
+    "kit_cost": 393.75,
+    "tests_per_kit": 25
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Triage BNP",
+    "kit_cost": 756,
+    "tests_per_kit": 25
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Triage Tox",
+    "kit_cost": 840,
+    "tests_per_kit": 25
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Total T3",
+    "kit_cost": 4536,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "TOTAL T4",
+    "kit_cost": 4668.72,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "TSH",
+    "kit_cost": 6113.76,
+    "tests_per_kit": 200
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "PSA",
+    "kit_cost": 11668.65,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "FSH",
+    "kit_cost": 14664.02,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "LH",
+    "kit_cost": 10759.77,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Prolactin",
+    "kit_cost": 10740.73,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "BHCG",
+    "kit_cost": 10810.73,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "AFP",
+    "kit_cost": 10826.24,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Cortisol",
+    "kit_cost": 9056.18,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Ferritin",
+    "kit_cost": 17579.8,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "AMH",
+    "kit_cost": 81039.85,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Free T3",
+    "kit_cost": 9100,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Free T4",
+    "kit_cost": 6148.69,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "OV125",
+    "kit_cost": 26901,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Vitamin D",
+    "kit_cost": 29575.84,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "CEA",
+    "kit_cost": 17852.76,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Thyroglobulin",
+    "kit_cost": 12915,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "TPO Antibody",
+    "kit_cost": 23150.26,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "TG AB",
+    "kit_cost": 13479.06,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Vitamin B12",
+    "kit_cost": 10894.94,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "PTH",
+    "kit_cost": 18432.54,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Troponin 1",
+    "kit_cost": 17649.8,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Testosterone",
+    "kit_cost": 10972.57,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Thyroid profile\nT3, T4, TSH",
+    "kit_cost": 15318.48,
+    "tests_per_kit": 400
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Thyroid profile\nFT3, FT4, TSH",
+    "kit_cost": 21362.45,
+    "tests_per_kit": 400
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "PSA total",
+    "kit_cost": 11668.65,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Free PSA (30T)",
+    "kit_cost": 6592.86,
+    "tests_per_kit": 30
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "CA 19.9",
+    "kit_cost": 8674.82,
+    "tests_per_kit": 30
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "Anti HBs Titer",
+    "kit_cost": 10409.79,
+    "tests_per_kit": 60
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "HBA1C",
+    "kit_cost": 58464,
+    "tests_per_kit": 400
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "HPLC FRACTION",
+    "kit_cost": 60480,
+    "tests_per_kit": 200
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "LIPASE",
+    "kit_cost": 3498.2,
+    "tests_per_kit": 50
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "IRON",
+    "kit_cost": 2493.56,
+    "tests_per_kit": 60
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "TIBC",
+    "kit_cost": 2874.82,
+    "tests_per_kit": 100
+  },
+  {
+    "sub_department": "Biochemistry",
+    "test_name": "IRON STUDIES",
+    "kit_cost": 5368.38,
+    "tests_per_kit": 160
+  },
+  {
+    "sub_department": "Haematology",
+    "test_name": "ESR",
+    "kit_cost": 84370,
+    "tests_per_kit": 5000
+  },
+  {
+    "sub_department": "Clinical Pathology",
+    "test_name": "URINE ROUTINE",
+    "kit_cost": 1568,
+    "tests_per_kit": 100
+  }
+]

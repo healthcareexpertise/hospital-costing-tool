@@ -116,6 +116,17 @@ Each of the 35 departments gets 4 modules; system-level modules sit alongside th
   volume exactly doubled its per-test overhead, then reverted cleanly. This is what makes
   the Lab/Radiology masters genuinely reusable for a different hospital with different
   patient volumes, rather than baking in Baby Memorial's own numbers permanently.
+- **⚠️ Schema change — Lab/Radiology department structure**: Lab and Radiology went
+  from 9 separate departments (`LAB_BIOCHEM`, `RAD_XRAY`, etc.) down to 2
+  (`LABORATORY`, `RADIOLOGY`) with a `sub_department` field distinguishing Biochemistry
+  from Haematology from X-Ray from CT, etc. If you're deploying this on top of an
+  existing persistent-disk database that still has the old 9-department structure, the
+  old department codes won't exist anymore — Profile Master permissions referencing the
+  old per-sub-department modules will need re-granting against the new 2-department
+  modules (Admin's own permissions repopulate automatically on next seed; other profiles
+  that had OT-Manager-style scoped access to a specific old Lab sub-department will need
+  their permissions reassigned to the new `LABORATORY`/`RADIOLOGY` modules in Profile
+  Master).
 - **⚠️ Schema change — Lab/Radiology overhead**: `test_overhead_master`'s columns
   changed shape (from precomputed `*_actual`/`*_standard` rates to `*_annual_total` +
   `actual_volume`/`standard_volume`). If you're deploying this on top of an existing
@@ -192,38 +203,53 @@ isolated data** — departments, procedures, master data, users, profiles, every
 
 
 
+## Lab & Radiology (per-test costing)
+
 Lab and Radiology are costed fundamentally differently from every other department in
 this app — not as a package for one procedure, but as **a price list of individual
-tests/scans**, each with its own direct cost plus a shared department overhead computed
-two ways: against real recorded **"actual"** test volume, and against each machine's
-rated **"standard"** capacity. This mirrors the methodology in the hospital's own Lab
-and Radiology costing workbooks.
+tests/scans**, each with its own direct cost plus a shared sub-department overhead
+computed two ways: against real recorded **"actual"** test volume, and against each
+machine's rated **"standard"** capacity. This mirrors the methodology in the hospital's
+own Lab and Radiology costing workbooks.
 
-**9 new departments** (`LAB_BIOCHEM`, `LAB_HAEM`, `LAB_CLINPATH`, `LAB_MICRO`,
-`LAB_BLOODBANK`, `RAD_XRAY`, `RAD_CT`, `RAD_MRI`, `RAD_USG`), **529 tests total**
-(113 Lab + 13 Blood Bank + 403 Radiology), all auto-wired into the existing
-department/module/permission system — they show up in the sidebar exactly like any
-other department, and Profile Master can grant/restrict access to them the same way.
+**Just 2 departments** — `LABORATORY` and `RADIOLOGY` — not 9. Each groups its tests by
+a **`sub_department`** field (Biochemistry, Haematology, Clinical Pathology,
+Microbiology, Blood Bank under Laboratory; X-Ray, CT, MRI, USG/Doppler under Radiology)
+shown as tabs on the Master/Output/Dashboard screens, rather than as separate top-level
+departments — keeping the sidebar and Profile Master permission list simple (one
+Master/Input/Output/Dashboard permission per department, not nine) while the underlying
+costing still tracks each sub-department's own overhead independently. **529 tests
+total** (113 Lab + 13 Blood Bank + 403 Radiology).
 
-**Data model** (`test_master`, `test_overhead_master` in `schema.sql`) is deliberately
-*not* scoped to a procedure — a blood test isn't tied to a specific surgery. For each
-department:
+**Data model** (`test_master`, `test_overhead_master`, `reagent_master`,
+`test_equipment_master` in `schema.sql`) is deliberately *not* scoped to a procedure — a
+blood test isn't tied to a specific surgery. For each test:
 - **Direct cost** — the test's own reagent/consumable cost (Lab), or Radiology's
-  already-fully-loaded technical cost per scan (see note below).
+  already-fully-loaded technical cost per scan (see note below). Optionally linked to a
+  **Reagent Master** row (kit cost ÷ tests per kit = cost per test, editable and
+  auto-computed) and/or a **Test Equipment Master** row (which machine runs this test) —
+  both are separate reference registers per sub-department, joined from the Tests tab.
 - **Doctor fee** — physician/radiologist reading fee, directly attributable where the
   source data provides it (matched by test name).
-- **Overhead** (Manpower, Equipment, Building, Power, Common Consumables) — one shared
-  set of per-test rates for the whole department, computed both "actual" and "standard",
-  applied uniformly to every test in it.
+- **Overhead** (Manpower, Equipment, Building, Power, Common Consumables) — stored as
+  **annual totals + actual/standard test volume** per sub-department, with the per-test
+  rate computed *live* as total ÷ volume (see below), rather than a baked-in constant.
 
-Total cost per test = direct cost + doctor fee + sum of overhead components (actual, or
-standard).
+Total cost per test = direct cost + doctor fee + (annual overhead total ÷ volume).
 
-**How to use it**: the Master screen for these departments lists every test (editable,
-with the same auto-numbering Sl.No as elsewhere) plus an overhead panel for the 5 shared
-cost components. Output is a searchable, sortable price list showing every test's full
-cost breakdown both ways. Dashboard shows overhead composition and the top 10 most
-expensive tests.
+**How to use it**: each department's Master screen has sub-department tabs, and within
+each tab: a Tests screen (editable, auto-numbered Sl.No, with Reagent/Equipment
+dropdowns), a Reagent Master, an Equipment Master, and a Shared Overhead screen (annual
+totals + actual/standard volume, with the computed per-test rate shown live). Output is
+a searchable, sortable, sub-department-filterable price list. Dashboard shows overhead
+composition and top-10 tests per sub-department.
+
+**Proven live, not just built**: halving a sub-department's actual test volume on the
+Overhead screen exactly doubles every test's overhead cost in that sub-department, and
+reverting restores the original figure — verified directly, not just reasoned about.
+This is what makes these masters genuinely reusable for a different hospital with
+different patient volumes and reagent contracts, rather than baking in Baby Memorial's
+own numbers permanently.
 
 **Modeling notes / known simplifications** (documented here rather than silently
 assumed):
@@ -233,25 +259,32 @@ assumed):
   test" match exactly when the two are equal, and diverge substantially where they're
   not — consistent with additional overhead being folded into the higher figure). Only
   the doctor's fee is added on top, since that's tracked in a genuinely separate
-  workbook with its own methodology (a % of the test's billing rate). No separate
-  overhead row is populated for the 4 Radiology departments as a result.
+  workbook with its own methodology (a % of the test's billing rate). No overhead row is
+  populated for Radiology's sub-departments as a result.
 - **Lab's doctor/pathologist fee** is applied as one lab-wide constant (from the one
   clean, directly-given figure in the source), rather than the department-specific
   cross-allocation the source data hints at (a `B01LD` working file shows doctor costs
   cross-charged between Biochemistry/Haematology/Clinical Pathology/Microbiology at
   different rates in a way that didn't resolve to a consistent, defensible formula in
   the time available). If per-sub-department precision matters here, this is the first
-  place to revisit — `seedLabRadiology()` in `seed.js` has the relevant working and a
-  comment pointing at the source sheet.
+  place to revisit — `seedLabRadiologyOverhead()` in `seed.js` has the relevant working
+  and a comment pointing at the source sheet.
 - **Blood Bank's "standard" manpower/common-consumables figures** are estimated by
   scaling the "actual" figures using Blood Bank's own equipment actual/standard ratio,
   because the source only gives an "actual" value directly for those two components.
-- Lab's Manpower and Power overhead are uniform across all 4 Lab sub-departments (this
-  is not a simplification — verified directly against the source, which computes them
-  once for the whole Lab, not per sub-department); Equipment and Building overhead are
-  specific to each sub-department, also matching the source.
+- Lab's Manpower and Power overhead are the same annual total and volume across every
+  Lab sub-department (this is not a simplification — verified directly against the
+  source, which computes them once for the whole Lab, not per sub-department);
+  Equipment and Building overhead are specific to each sub-department, also matching
+  the source.
+- The **Reagent Master → Test Direct Cost link is informational, not auto-syncing**:
+  editing a reagent's kit cost updates its own computed cost-per-test, but doesn't
+  automatically push that new number into every linked test's `direct_cost` field yet —
+  that's a reasonable next step if reagent price changes turn out to be frequent.
 
 
+
+## Deploying to the cloud (Render, Starter plan + persistent disk)
 
 The app is already configured to deploy as a **single web service** — `npm run build`
 builds the React frontend and has Express serve it directly, so there's one URL, no

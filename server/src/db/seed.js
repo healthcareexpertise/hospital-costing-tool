@@ -251,17 +251,17 @@ function seedNewSpecialties(hospitalId, deptIdByName, specialtyIdByCode, deptIdB
 // ============================================================
 // Lab & Radiology per-test costing (fundamentally different model — see schema.sql).
 // ============================================================
+// Just 2 top-level departments now — Laboratory and Radiology — instead of 9 separate
+// ones. Each groups its tests by "sub_department" (Biochemistry, Haematology, X-Ray,
+// CT, ...) as a field on test_master/test_overhead_master rather than as a whole
+// separate department, so the sidebar/permissions stay simple while the underlying
+// costing still tracks each sub-department's own overhead accurately.
 const LAB_RAD_DEPARTMENTS = [
-  ["LAB_BIOCHEM", "LAB - BIOCHEMISTRY", "Medical Support", "PER_TEST", "DAYS", 40],
-  ["LAB_HAEM", "LAB - HAEMATOLOGY", "Medical Support", "PER_TEST", "DAYS", 41],
-  ["LAB_CLINPATH", "LAB - CLINICAL PATHOLOGY", "Medical Support", "PER_TEST", "DAYS", 42],
-  ["LAB_MICRO", "LAB - MICROBIOLOGY", "Medical Support", "PER_TEST", "DAYS", 43],
-  ["LAB_BLOODBANK", "BLOOD BANK (LAB)", "Medical Support", "PER_TEST", "DAYS", 44],
-  ["RAD_XRAY", "RADIOLOGY - X-RAY", "Medical Support", "PER_TEST", "DAYS", 45],
-  ["RAD_CT", "RADIOLOGY - CT SCAN", "Medical Support", "PER_TEST", "DAYS", 46],
-  ["RAD_MRI", "RADIOLOGY - MRI", "Medical Support", "PER_TEST", "DAYS", 47],
-  ["RAD_USG", "RADIOLOGY - USG / DOPPLER", "Medical Support", "PER_TEST", "DAYS", 48],
+  ["LABORATORY", "LABORATORY", "Medical Support", "PER_TEST", "DAYS", 40],
+  ["RADIOLOGY", "RADIOLOGY", "Medical Support", "PER_TEST", "DAYS", 41],
 ];
+const LAB_SUB_DEPTS = ["Biochemistry", "Haematology", "Clinical Pathology", "Microbiology", "Blood Bank"];
+const RAD_SUB_DEPTS = ["X-Ray", "CT", "MRI", "USG / Doppler"];
 
 function seedLabRadiology(hospitalId) {
   const insertDept = db.prepare(`INSERT OR IGNORE INTO departments (hospital_id, code, name, classification, engine_type, driver_type, display_order) VALUES (?,?,?,?,?,?,?)`);
@@ -287,41 +287,62 @@ function seedLabRadiology(hospitalId) {
   const testCount = db.prepare("SELECT COUNT(*) c FROM test_master tm JOIN departments d ON d.id = tm.department_id WHERE d.hospital_id = ?").get(hospitalId).c;
   if (testCount === 0) {
     seedLabRadiologyTests(hospitalId, deptIdByCode);
+    seedReagentsAndEquipment(hospitalId, deptIdByCode);
   }
   seedLabRadiologyOverhead(hospitalId, deptIdByCode);
 }
 
-// The test rows (names + direct costs) — NOT safe to re-run once populated (plain INSERT,
-// would duplicate). Only called when this hospital has zero Lab/Radiology tests yet.
+// The test rows (names + direct costs), tagged with sub_department — NOT safe to re-run
+// once populated (plain INSERT, would duplicate). Only called when this hospital has
+// zero Lab/Radiology tests yet.
 function seedLabRadiologyTests(hospitalId, deptIdByCode) {
-  const insTest = db.prepare(`INSERT INTO test_master (department_id, sl_no, test_name, direct_cost, doctor_fee, notes) VALUES (?,?,?,?,?,?)`);
+  const insTest = db.prepare(`INSERT INTO test_master (department_id, sub_department, sl_no, test_name, direct_cost, doctor_fee, notes) VALUES (?,?,?,?,?,?,?)`);
+  const labDeptId = deptIdByCode["LABORATORY"];
+  const radDeptId = deptIdByCode["RADIOLOGY"];
 
   const labTests = loadJSON("lab_tests.json");
-  const LAB_DEPT_MAP = { LAB_BIOCHEM: "Biochemistry", LAB_HAEM: "Haematology", LAB_CLINPATH: "Clinical pathology", LAB_MICRO: "Microbiology" };
-  for (const code of Object.keys(LAB_DEPT_MAP)) {
-    const deptId = deptIdByCode[code];
-    labTests.filter((t) => t.department === code).forEach((t) => insTest.run(deptId, t.sl_no, t.test_name, t.direct_cost || 0, 0, null));
+  const LAB_DEPT_MAP = { LAB_BIOCHEM: "Biochemistry", LAB_HAEM: "Haematology", LAB_CLINPATH: "Clinical Pathology", LAB_MICRO: "Microbiology" };
+  for (const [code, subDept] of Object.entries(LAB_DEPT_MAP)) {
+    labTests.filter((t) => t.department === code).forEach((t) => insTest.run(labDeptId, subDept, t.sl_no, t.test_name, t.direct_cost || 0, 0, null));
   }
 
   const bloodbank = loadJSON("bloodbank.json");
-  const bbDeptId = deptIdByCode["LAB_BLOODBANK"];
-  bloodbank.tests.forEach((t) => insTest.run(bbDeptId, t.sl_no, t.test_name, t.reagent_cost || 0, 0, null));
+  bloodbank.tests.forEach((t) => insTest.run(labDeptId, "Blood Bank", t.sl_no, t.test_name, t.reagent_cost || 0, 0, null));
 
   const radTests = loadJSON("radiology_tests.json");
-  for (const code of ["RAD_XRAY", "RAD_CT", "RAD_MRI", "RAD_USG"]) {
-    const deptId = deptIdByCode[code];
-    radTests.filter((t) => t.department === code).forEach((t, i) => insTest.run(deptId, i + 1, t.test_name, t.direct_cost || 0, t.doctor_fee || 0, null));
+  const RAD_DEPT_MAP = { RAD_XRAY: "X-Ray", RAD_CT: "CT", RAD_MRI: "MRI", RAD_USG: "USG / Doppler" };
+  for (const [code, subDept] of Object.entries(RAD_DEPT_MAP)) {
+    radTests.filter((t) => t.department === code).forEach((t, i) => insTest.run(radDeptId, subDept, i + 1, t.test_name, t.direct_cost || 0, t.doctor_fee || 0, null));
   }
 }
 
-// The overhead constants (annual totals + volume) — safe to re-run any time (INSERT OR
-// REPLACE, keyed by department_id which is UNIQUE), used both for fresh hospitals and to
-// repopulate after the one-off test_overhead_master schema migration in db.js.
+// Reagent (kit cost ÷ tests per kit) and Equipment registers, linked to their matching
+// test rows by name where possible so the Test Master shows the mapping directly.
+function seedReagentsAndEquipment(hospitalId, deptIdByCode) {
+  const labDeptId = deptIdByCode["LABORATORY"];
+  const insReagent = db.prepare(`INSERT INTO reagent_master (department_id, sub_department, item_name, kit_cost, tests_per_kit, notes) VALUES (?,?,?,?,?,?)`);
+  const insEquip = db.prepare(`INSERT INTO test_equipment_master (department_id, sub_department, equipment_name, cost_price, life_years, notes) VALUES (?,?,?,?,?,?)`);
+  const linkReagent = db.prepare(`UPDATE test_master SET reagent_id = ? WHERE department_id = ? AND sub_department = ? AND test_name = ?`);
+
+  const reagents = loadJSON("lab_reagents.json");
+  reagents.forEach((r) => {
+    const info = insReagent.run(labDeptId, r.sub_department, r.test_name, r.kit_cost, r.tests_per_kit, `Cost per test = kit cost ÷ tests per kit = ${(r.kit_cost / r.tests_per_kit).toFixed(2)}`);
+    linkReagent.run(info.lastInsertRowid, labDeptId, r.sub_department, r.test_name);
+  });
+
+  const equipment = loadJSON("lab_equipment_register.json");
+  equipment.forEach((e) => insEquip.run(labDeptId, e.sub_department, e.equipment_name, e.cost_price, e.life_years, null));
+}
+
+// The overhead constants (annual totals + volume) per (department, sub_department) —
+// safe to re-run any time (INSERT OR REPLACE, keyed by department_id+sub_department).
 function seedLabRadiologyOverhead(hospitalId, deptIdByCode) {
   const insOverhead = db.prepare(
-    `INSERT OR REPLACE INTO test_overhead_master (department_id, manpower_annual_total, equipment_annual_total, building_annual_total, power_annual_total, common_consumables_annual_total, actual_volume, standard_volume, notes)
-     VALUES (?,?,?,?,?,?,?,?,?)`
+    `INSERT OR REPLACE INTO test_overhead_master (department_id, sub_department, manpower_annual_total, equipment_annual_total, building_annual_total, power_annual_total, common_consumables_annual_total, actual_volume, standard_volume, notes)
+     VALUES (?,?,?,?,?,?,?,?,?,?)`
   );
+  const labDeptId = deptIdByCode["LABORATORY"];
+  const radDeptId = deptIdByCode["RADIOLOGY"];
 
   // ---- Lab: Biochemistry, Haematology, Clinical Pathology, Microbiology ----
   const labManpower = loadJSON("lab_manpower.json");
@@ -339,12 +360,13 @@ function seedLabRadiologyOverhead(hospitalId, deptIdByCode) {
   const doctorsAnnualTotal = DOCTORS_PER_TEST_ACTUAL * labActualVolume;
   const manpowerAnnualTotal = totalLabSalary + doctorsAnnualTotal; // raw annual totals — divided live by the engine
 
-  const LAB_DEPT_MAP = { LAB_BIOCHEM: "Biochemistry", LAB_HAEM: "Haematology", LAB_CLINPATH: "Clinical pathology", LAB_MICRO: "Microbiology" };
+  const LAB_DEPT_MAP = { LAB_BIOCHEM: "Biochemistry", LAB_HAEM: "Haematology", LAB_CLINPATH: "Clinical Pathology", LAB_MICRO: "Microbiology" };
   const LAB_EQUIP_LOC_MAP = { LAB_BIOCHEM: "LAB- BIOCHEMISTRY", LAB_HAEM: "LAB- HAEMATOLOGY", LAB_CLINPATH: "LAB- CLINICAL PATHOLOGY", LAB_MICRO: "LAB- MICROBIOLOGY" };
+  const LAB_BUILDING_KEY = { LAB_BIOCHEM: "Biochemistry", LAB_HAEM: "Haematology", LAB_CLINPATH: "Clinical pathology", LAB_MICRO: "Microbiology" };
 
-  for (const [code, buildingKey] of Object.entries(LAB_DEPT_MAP)) {
-    const deptId = deptIdByCode[code];
-    const bld = labBuilding[buildingKey] || {};
+  for (const code of Object.keys(LAB_DEPT_MAP)) {
+    const subDept = LAB_DEPT_MAP[code];
+    const bld = labBuilding[LAB_BUILDING_KEY[code]] || {};
     const equipLoc = LAB_EQUIP_LOC_MAP[code];
     const equipRows = labEquipment.filter((e) => e.location.toUpperCase() === equipLoc.toUpperCase());
     // Reconstruct each sub-department's raw annual equipment/building totals from the source's
@@ -355,31 +377,27 @@ function seedLabRadiologyOverhead(hospitalId, deptIdByCode) {
     const powerAnnualTotal = 1036440; // lab-wide raw annual power cost, given directly in the source
 
     insOverhead.run(
-      deptId,
+      labDeptId, subDept,
       manpowerAnnualTotal, equipAnnualTotal, buildingAnnualTotal, powerAnnualTotal, 0,
       labActualVolume, labStandardVolume,
-      "Manpower/Doctors overhead is lab-wide (the same annual total and volume are used for all 4 Lab sub-departments), matching the source data's own structure. Equipment and Building totals are specific to this sub-department, reconstructed from the source's per-test rate × lab-wide volume. Edit the annual totals and/or actual/standard volume below to recalculate for a different hospital."
+      "Manpower/Doctors overhead is lab-wide (the same annual total and volume are used for every Lab sub-department), matching the source data's own structure. Equipment and Building totals are specific to this sub-department, reconstructed from the source's per-test rate × lab-wide volume. Edit the annual totals and/or actual/standard volume below to recalculate for a different hospital."
     );
   }
 
-  // ---- Blood Bank ----
+  // ---- Blood Bank (its own sub-department within Laboratory) ----
   const bloodbank = loadJSON("bloodbank.json");
-  const bbDeptId = deptIdByCode["LAB_BLOODBANK"];
-  // Blood Bank's source gives per-test rates directly rather than a separate volume figure;
-  // treat "1 unit" as the volume so the annual-total column equals the known per-test rate,
-  // keeping the same live (total ÷ volume) calculation shape as every other department.
   const bbEquipStdRatio = bloodbank.overhead.equipment_standard ? bloodbank.overhead.equipment_actual / bloodbank.overhead.equipment_standard : 10;
   insOverhead.run(
-    bbDeptId,
+    labDeptId, "Blood Bank",
     bloodbank.overhead.manpower_actual, bloodbank.overhead.equipment_actual, bloodbank.overhead.building_actual,
     bloodbank.overhead.power_actual, bloodbank.overhead.common_consumables_actual,
     1, bbEquipStdRatio,
     "Volume is normalized to 1 for 'actual' since the source gives Blood Bank's overhead as direct per-test rates rather than a separate total/volume pair. 'Standard' volume approximates the actual/standard ratio observed in Blood Bank's own equipment figures, since the source doesn't give a Blood-Bank-specific standard test volume directly."
   );
 
-  // Radiology's overhead has no separate row: its "direct_cost" is the source's own fully-loaded
-  // "Total cost per test" figure (technical costs — manpower/equipment/building/power — already
-  // baked in); only the doctor's fee is added on top as a genuinely separate line — see costEngine.js.
+  // Radiology sub-departments have no overhead row: their "direct_cost" is the source's own
+  // fully-loaded "Total cost per test" figure (technical costs — manpower/equipment/building/
+  // power — already baked in); only the doctor's fee is added on top — see costEngine.js.
 
   console.log("Lab/Radiology overhead seeded for hospital", hospitalId);
 }
@@ -729,11 +747,13 @@ function run() {
     reNum();
   }
   ["manpower_master", "materials_master", "equipment_master", "nonmedical_asset_master", "ac_master", "power_master"].forEach(renumberSlNo);
-  // test_master (Lab/Radiology) isn't procedure-scoped — renumber by department alone
-  const testDepts = db.prepare("SELECT DISTINCT department_id FROM test_master").all();
+  // test_master (Lab/Radiology) isn't procedure-scoped, and each sub-department (e.g.
+  // Biochemistry, Haematology) restarts its own Sl. No sequence — renumber by
+  // (department, sub_department) rather than department alone.
+  const testGroups = db.prepare("SELECT DISTINCT department_id, sub_department FROM test_master").all();
   const reNumTest = db.transaction(() => {
-    for (const d of testDepts) {
-      const rows = db.prepare("SELECT id FROM test_master WHERE department_id = ? ORDER BY sl_no, id").all(d.department_id);
+    for (const g of testGroups) {
+      const rows = db.prepare("SELECT id FROM test_master WHERE department_id = ? AND sub_department IS ? ORDER BY sl_no, id").all(g.department_id, g.sub_department);
       rows.forEach((r, i) => db.prepare("UPDATE test_master SET sl_no = ? WHERE id = ?").run(i + 1, r.id));
     }
   });

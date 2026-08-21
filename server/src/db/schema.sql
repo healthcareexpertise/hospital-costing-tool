@@ -117,21 +117,21 @@ CREATE TABLE IF NOT EXISTS rate_type_master (
 CREATE TABLE IF NOT EXISTS test_master (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   department_id INTEGER NOT NULL REFERENCES departments(id),
+  sub_department TEXT,        -- e.g. Biochemistry, Haematology, X-Ray, CT — groups tests within
+                               -- the single Laboratory/Radiology department (see Known limitations)
   sl_no INTEGER,
   test_name TEXT NOT NULL,
   direct_cost REAL DEFAULT 0,
   doctor_fee REAL DEFAULT 0,
+  reagent_id INTEGER REFERENCES reagent_master(id),        -- optional: which reagent/kit this test consumes
+  equipment_id INTEGER REFERENCES test_equipment_master(id), -- optional: which machine performs this test
   notes TEXT
 );
 
--- Overhead is stored as ANNUAL TOTALS + test volumes (actual and standard/rated capacity),
--- not precomputed per-test rates — costEngine.js divides live, exactly mirroring the
--- source Excel's own (total cost ÷ volume) calculation. This is what makes it safe to
--- reuse for a different hospital: enter their own totals and their own volumes, and
--- every test's cost recalculates automatically.
 CREATE TABLE IF NOT EXISTS test_overhead_master (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  department_id INTEGER NOT NULL REFERENCES departments(id) UNIQUE,
+  department_id INTEGER NOT NULL REFERENCES departments(id),
+  sub_department TEXT NOT NULL DEFAULT '',
   manpower_annual_total REAL DEFAULT 0,
   equipment_annual_total REAL DEFAULT 0,
   building_annual_total REAL DEFAULT 0,
@@ -139,6 +139,34 @@ CREATE TABLE IF NOT EXISTS test_overhead_master (
   common_consumables_annual_total REAL DEFAULT 0,
   actual_volume REAL DEFAULT 1,
   standard_volume REAL DEFAULT 1,
+  notes TEXT,
+  UNIQUE(department_id, sub_department)
+);
+
+-- The reagent/kit a Lab test consumes: kit cost ÷ tests per kit = cost per test, mirroring
+-- exactly how the source spreadsheet's Reagent Cost sheet worked. One reagent can be
+-- linked from multiple tests (e.g. the same kit used for several related tests).
+CREATE TABLE IF NOT EXISTS reagent_master (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  department_id INTEGER NOT NULL REFERENCES departments(id),
+  sub_department TEXT,
+  item_name TEXT NOT NULL,
+  kit_cost REAL DEFAULT 0,
+  tests_per_kit REAL DEFAULT 1,
+  notes TEXT
+);
+
+-- The specific machine/instrument a Lab or Radiology test runs on — separate from the
+-- Equipment annual total on test_overhead_master (that's the whole sub-department's
+-- combined equipment cost pool); this is a reference register for which test uses which
+-- named machine, and its own cost/life for future equipment-specific costing.
+CREATE TABLE IF NOT EXISTS test_equipment_master (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  department_id INTEGER NOT NULL REFERENCES departments(id),
+  sub_department TEXT,
+  equipment_name TEXT NOT NULL,
+  cost_price REAL DEFAULT 0,
+  life_years REAL DEFAULT 7,
   notes TEXT
 );
 
