@@ -288,6 +288,7 @@ function seedLabRadiology(hospitalId) {
   if (testCount === 0) {
     seedLabRadiologyTests(hospitalId, deptIdByCode);
     seedReagentsAndEquipment(hospitalId, deptIdByCode);
+    seedTestManpower(hospitalId, deptIdByCode);
   }
   seedLabRadiologyOverhead(hospitalId, deptIdByCode);
 }
@@ -334,31 +335,62 @@ function seedReagentsAndEquipment(hospitalId, deptIdByCode) {
   equipment.forEach((e) => insEquip.run(labDeptId, e.sub_department, e.equipment_name, e.cost_price, e.life_years, null));
 }
 
+// Manpower roster per sub-department — editable, linkable to Employee Master. Biochemistry/
+// Haematology/Clinical Pathology/Microbiology each get their own copy of the same shared
+// staff list from the source (which treats Lab manpower as one pool, not sub-department
+// specific) so each can be customized independently going forward; Blood Bank gets its own
+// distinct, much smaller staff line since its source figures are clearly a separate pool.
+function seedTestManpower(hospitalId, deptIdByCode) {
+  const labDeptId = deptIdByCode["LABORATORY"];
+  const insManpower = db.prepare(`INSERT INTO test_manpower_master (department_id, sub_department, sl_no, designation, no_of_persons, monthly_salary, notes) VALUES (?,?,?,?,?,?,?)`);
+
+  const labManpower = loadJSON("lab_manpower.json");
+  const labPower = loadJSON("lab_power.json");
+  const labActualVolume = 1036440 / labPower.actual;
+  const DOCTORS_PER_TEST_ACTUAL = 4.17330952645083; // embedded lab-wide constant from the source (see README caveat)
+  const doctorsMonthlySalaryEquivalent = (DOCTORS_PER_TEST_ACTUAL * labActualVolume) / 12;
+
+  const LAB_SUB_DEPTS_SHARED = ["Biochemistry", "Haematology", "Clinical Pathology", "Microbiology"];
+  for (const subDept of LAB_SUB_DEPTS_SHARED) {
+    let sl = 1;
+    labManpower.forEach((m) => {
+      if (typeof m.annual_salary !== "number") return;
+      const persons = m.no_of_persons || 1;
+      insManpower.run(labDeptId, subDept, sl++, m.designation, persons, m.annual_salary / 12 / persons,
+        "Part of the Lab-wide shared staff pool from the source data — the same roster is duplicated into every Lab sub-department so each can be customized independently.");
+    });
+    insManpower.run(labDeptId, subDept, sl++, "Pathologist / Doctor (professional fee pool)", 1, doctorsMonthlySalaryEquivalent,
+      "Represents the lab-wide doctor's fee constant from the source data, expressed as an equivalent monthly figure — see README caveat on this simplification.");
+  }
+
+  // Blood Bank: its own much smaller, separate manpower figure (per-test rate converted to a
+  // monthly-equivalent single line, since the source gives it directly rather than a roster).
+  const bloodbank = loadJSON("bloodbank.json");
+  const bbMonthlyEquivalent = (bloodbank.overhead.manpower_actual * 1) / 12; // actual_volume is normalized to 1 for Blood Bank
+  insManpower.run(labDeptId, "Blood Bank", 1, "Blood Bank staff (combined)", 1, bbMonthlyEquivalent,
+    "Blood Bank's manpower is a separate, smaller pool from the other Lab sub-departments — the source gives it as a direct per-test rate rather than an itemized roster, so it's represented here as one combined line.");
+}
+
 // The overhead constants (annual totals + volume) per (department, sub_department) —
 // safe to re-run any time (INSERT OR REPLACE, keyed by department_id+sub_department).
 function seedLabRadiologyOverhead(hospitalId, deptIdByCode) {
   const insOverhead = db.prepare(
-    `INSERT OR REPLACE INTO test_overhead_master (department_id, sub_department, manpower_annual_total, equipment_annual_total, building_annual_total, power_annual_total, common_consumables_annual_total, actual_volume, standard_volume, notes)
-     VALUES (?,?,?,?,?,?,?,?,?,?)`
+    `INSERT OR REPLACE INTO test_overhead_master (department_id, sub_department, equipment_annual_total, building_annual_total, power_annual_total, common_consumables_annual_total, actual_volume, standard_volume, notes)
+     VALUES (?,?,?,?,?,?,?,?,?)`
   );
   const labDeptId = deptIdByCode["LABORATORY"];
   const radDeptId = deptIdByCode["RADIOLOGY"];
 
   // ---- Lab: Biochemistry, Haematology, Clinical Pathology, Microbiology ----
-  const labManpower = loadJSON("lab_manpower.json");
   const labBuilding = loadJSON("lab_building.json");
   const labPower = loadJSON("lab_power.json");
   const labEquipment = loadJSON("lab_equipment.json");
 
-  const totalLabSalary = labManpower.reduce((s, m) => s + (typeof m.annual_salary === "number" ? m.annual_salary : 0), 0);
   // actual/standard lab-wide test volume, back-derived from the source's own power-cost-per-test figures
   // (per-year power cost / per-test power cost = test volume) — cross-validated against the embedded
   // Biochemistry manpower constant in lab_tests.json, which matches to 6 significant figures.
   const labActualVolume = 1036440 / labPower.actual;
   const labStandardVolume = 1036440 / labPower.standard;
-  const DOCTORS_PER_TEST_ACTUAL = 4.17330952645083; // embedded lab-wide constant from the source (see README caveat)
-  const doctorsAnnualTotal = DOCTORS_PER_TEST_ACTUAL * labActualVolume;
-  const manpowerAnnualTotal = totalLabSalary + doctorsAnnualTotal; // raw annual totals — divided live by the engine
 
   const LAB_DEPT_MAP = { LAB_BIOCHEM: "Biochemistry", LAB_HAEM: "Haematology", LAB_CLINPATH: "Clinical Pathology", LAB_MICRO: "Microbiology" };
   const LAB_EQUIP_LOC_MAP = { LAB_BIOCHEM: "LAB- BIOCHEMISTRY", LAB_HAEM: "LAB- HAEMATOLOGY", LAB_CLINPATH: "LAB- CLINICAL PATHOLOGY", LAB_MICRO: "LAB- MICROBIOLOGY" };
@@ -378,9 +410,9 @@ function seedLabRadiologyOverhead(hospitalId, deptIdByCode) {
 
     insOverhead.run(
       labDeptId, subDept,
-      manpowerAnnualTotal, equipAnnualTotal, buildingAnnualTotal, powerAnnualTotal, 0,
+      equipAnnualTotal, buildingAnnualTotal, powerAnnualTotal, 0,
       labActualVolume, labStandardVolume,
-      "Manpower/Doctors overhead is lab-wide (the same annual total and volume are used for every Lab sub-department), matching the source data's own structure. Equipment and Building totals are specific to this sub-department, reconstructed from the source's per-test rate × lab-wide volume. Edit the annual totals and/or actual/standard volume below to recalculate for a different hospital."
+      "Manpower is computed live from the Manpower Master roster on this sub-department's own tab, not stored here. Equipment and Building totals are specific to this sub-department, reconstructed from the source's per-test rate × lab-wide volume. Edit the annual totals and/or actual/standard volume below to recalculate for a different hospital."
     );
   }
 
@@ -389,10 +421,10 @@ function seedLabRadiologyOverhead(hospitalId, deptIdByCode) {
   const bbEquipStdRatio = bloodbank.overhead.equipment_standard ? bloodbank.overhead.equipment_actual / bloodbank.overhead.equipment_standard : 10;
   insOverhead.run(
     labDeptId, "Blood Bank",
-    bloodbank.overhead.manpower_actual, bloodbank.overhead.equipment_actual, bloodbank.overhead.building_actual,
+    bloodbank.overhead.equipment_actual, bloodbank.overhead.building_actual,
     bloodbank.overhead.power_actual, bloodbank.overhead.common_consumables_actual,
     1, bbEquipStdRatio,
-    "Volume is normalized to 1 for 'actual' since the source gives Blood Bank's overhead as direct per-test rates rather than a separate total/volume pair. 'Standard' volume approximates the actual/standard ratio observed in Blood Bank's own equipment figures, since the source doesn't give a Blood-Bank-specific standard test volume directly."
+    "Manpower is computed live from the Manpower Master roster on this sub-department's own tab, not stored here. Volume is normalized to 1 for 'actual' since the source gives Blood Bank's overhead as direct per-test rates rather than a separate total/volume pair. 'Standard' volume approximates the actual/standard ratio observed in Blood Bank's own equipment figures, since the source doesn't give a Blood-Bank-specific standard test volume directly."
   );
 
   // Radiology sub-departments have no overhead row: their "direct_cost" is the source's own
@@ -563,10 +595,14 @@ function run() {
     insertBasis.run(hospitalId, curClass, curDept, comp, basis);
   }
 
+  // ---- Procedure-level default duration/length-of-stay (entered once per procedure) ----
+  db.prepare(`INSERT OR IGNORE INTO procedure_default_driver (procedure_id, default_hours, default_days, notes) VALUES (?,?,?,?)`)
+    .run(cabgProcId, 6, 7, "CABG's standard surgery duration (6 hrs) and post-op length of stay (7 days) — every department inherits whichever applies to its own driver type, unless overridden individually.");
+
   // ---- Department input (driver defaults) — CABG procedure ----
   const insertInput = db.prepare(
     `INSERT OR IGNORE INTO department_input (department_id, procedure_id, driver_hours, driver_days, standard_working_days_year, standard_days_month, standard_hours_day, no_of_beds)
-     VALUES (?,?,?,?,?,?,?,?)`
+     VALUES (?,?,NULL,NULL,?,?,?,?)`
   );
   const stdHoursByDept = {
     OT: 7, ICU: 24, LAB: 8, RADIOLOGY: 8, PHYSIOTHERAPHY: 8, "BLOOD BANK": 8, PHARMACY: 8, WARD: 24, CSSD: 8,
@@ -574,7 +610,7 @@ function run() {
   for (const [code, name, classification, engine, driver, order] of DEPARTMENTS) {
     const deptId = deptIdByName[name];
     const stdHours = stdHoursByDept[code] || 8;
-    insertInput.run(deptId, cabgProcId, driver === "HOURS" ? 6 : null, driver === "DAYS" ? 7 : null, null, null, stdHours, null);
+    insertInput.run(deptId, cabgProcId, null, null, stdHours, null);
   }
 
   // ---- Full-template master data (manpower/materials/equipment/nonmedical/ac/power) ----

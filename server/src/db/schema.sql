@@ -132,7 +132,6 @@ CREATE TABLE IF NOT EXISTS test_overhead_master (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   department_id INTEGER NOT NULL REFERENCES departments(id),
   sub_department TEXT NOT NULL DEFAULT '',
-  manpower_annual_total REAL DEFAULT 0,
   equipment_annual_total REAL DEFAULT 0,
   building_annual_total REAL DEFAULT 0,
   power_annual_total REAL DEFAULT 0,
@@ -180,6 +179,25 @@ CREATE TABLE IF NOT EXISTS employee_master (
   contact TEXT,
   monthly_salary REAL,
   active INTEGER DEFAULT 1
+);
+
+-- Lab/Radiology's Manpower roster — department-wide (not per sub-department), since the
+-- source data treats Lab's manpower as one shared pool across Biochemistry/Haematology/
+-- Clinical Pathology/Microbiology/Blood Bank rather than department-specific. Optionally
+-- linked to employee_master, same pattern as manpower_master for surgical departments.
+-- The engine sums this live (annual = monthly_salary × 12 × no_of_persons) rather than
+-- reading a manually-entered lump total, so editing a salary here immediately updates
+-- every test's overhead — no separate "Manpower Annual Total" figure to keep in sync.
+CREATE TABLE IF NOT EXISTS test_manpower_master (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  department_id INTEGER NOT NULL REFERENCES departments(id),
+  sub_department TEXT NOT NULL DEFAULT '',
+  sl_no INTEGER,
+  designation TEXT NOT NULL,
+  no_of_persons REAL DEFAULT 1,
+  monthly_salary REAL DEFAULT 0,
+  employee_id INTEGER REFERENCES employee_master(id),
+  notes TEXT
 );
 
 CREATE TABLE IF NOT EXISTS allocation_basis_master (
@@ -328,6 +346,19 @@ CREATE TABLE IF NOT EXISTS simple_asset_master (
 );
 
 -- ---------- Department "Input" data: volume / driver values for one costing run ----------
+
+-- One row per procedure: the default surgery-duration / length-of-stay figure, entered
+-- ONCE for that procedure rather than repeated on every department's own Input screen.
+-- Departments read the one matching their own driver_type (HOURS or DAYS) and inherit it
+-- unless they set their own override in department_input — same inheritance pattern as
+-- the hospital-wide common inputs in Rate & Tariff Master.
+CREATE TABLE IF NOT EXISTS procedure_default_driver (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  procedure_id INTEGER NOT NULL REFERENCES procedures(id) UNIQUE,
+  default_hours REAL,
+  default_days REAL,
+  notes TEXT
+);
 
 CREATE TABLE IF NOT EXISTS department_input (
   id INTEGER PRIMARY KEY AUTOINCREMENT,

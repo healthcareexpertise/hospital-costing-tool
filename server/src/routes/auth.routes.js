@@ -56,7 +56,16 @@ router.get("/me/permissions", requireAuth, (req, res) => {
        ORDER BY d.display_order, m.module_type`
     )
     .all(req.user.profile_id);
-  res.json({ user: req.user, permissions: rows });
+  // The frontend always checks permissions as `${departmentCode}_${moduleType}` for
+  // department-scoped modules — but the underlying module `code` column has used a couple
+  // of different naming conventions over time (bare vs hospital-prefixed) as the app grew.
+  // Emit a normalized `code` the frontend can rely on unconditionally, so it never has to
+  // guess which convention a given module was seeded with.
+  const normalized = rows.map((r) => ({
+    ...r,
+    code: r.department_code ? `${r.department_code}_${r.module_type}` : r.code,
+  }));
+  res.json({ user: req.user, permissions: normalized });
 });
 
 // Self-service: change your own name/password

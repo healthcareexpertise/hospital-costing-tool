@@ -12,12 +12,18 @@ function getRates(hospitalId) {
 }
 
 // Merges a department_input row with the hospital's common defaults for any of the 3
-// fields left NULL (standard_working_days_year, standard_days_month, no_of_beds).
+// fields left NULL (standard_working_days_year, standard_days_month, no_of_beds), and
+// with the procedure's own default duration/length-of-stay if driver_hours/driver_days
+// are left NULL — entered once per procedure rather than repeated on every department.
 function getInput(procedureId, departmentId, rates) {
   const input = db.prepare("SELECT * FROM department_input WHERE procedure_id = ? AND department_id = ?").get(procedureId, departmentId);
   if (!input) return input;
+  const dept = db.prepare("SELECT driver_type FROM departments WHERE id = ?").get(departmentId);
+  const procDefault = db.prepare("SELECT * FROM procedure_default_driver WHERE procedure_id = ?").get(procedureId);
   return {
     ...input,
+    driver_hours: input.driver_hours ?? (dept?.driver_type === "HOURS" ? procDefault?.default_hours ?? null : null),
+    driver_days: input.driver_days ?? (dept?.driver_type === "DAYS" ? procDefault?.default_days ?? null : null),
     standard_working_days_year: input.standard_working_days_year ?? rates.STD_DAYS_YEAR ?? 300,
     standard_days_month: input.standard_days_month ?? rates.STD_DAYS_MONTH ?? 22,
     no_of_beds: input.no_of_beds ?? rates.DEFAULT_BEDS ?? 100,
@@ -306,15 +312,24 @@ function computeTestDepartmentOutput(departmentId, subDepartment) {
   const overheadBySubDept = {};
   overheadRows.forEach((o) => (overheadBySubDept[o.sub_department] = o));
 
+  // Manpower is computed live from each sub-department's own roster (test_manpower_master),
+  // not a stored lump figure — editing a salary or headcount here immediately changes
+  // every test's cost in that sub-department.
+  function manpowerAnnualTotalFor(sub) {
+    const rows = db.prepare("SELECT * FROM test_manpower_master WHERE department_id = ? AND sub_department = ?").all(departmentId, sub || "");
+    return rows.reduce((s, m) => s + (m.monthly_salary || 0) * 12 * (m.no_of_persons || 1), 0);
+  }
+
   function rateFor(sub) {
     const overhead = overheadBySubDept[sub || ""];
-    const annualTotal = overhead
-      ? (overhead.manpower_annual_total || 0) + (overhead.equipment_annual_total || 0) + (overhead.building_annual_total || 0) +
+    const manpowerAnnualTotal = manpowerAnnualTotalFor(sub);
+    const annualTotal = manpowerAnnualTotal + (overhead
+      ? (overhead.equipment_annual_total || 0) + (overhead.building_annual_total || 0) +
         (overhead.power_annual_total || 0) + (overhead.common_consumables_annual_total || 0)
-      : 0;
+      : 0);
     const actualVolume = overhead?.actual_volume || 1;
     const standardVolume = overhead?.standard_volume || 1;
-    return { actual: annualTotal / actualVolume, standard: annualTotal / standardVolume, overhead, annualTotal };
+    return { actual: annualTotal / actualVolume, standard: annualTotal / standardVolume, overhead, annualTotal, manpowerAnnualTotal };
   }
 
   const tests = testRows.map((t) => {
@@ -333,7 +348,7 @@ function computeTestDepartmentOutput(departmentId, subDepartment) {
   return {
     department_id: departmentId, department: dept.name, engine_type: "PER_TEST",
     sub_departments: subDepartments,
-    overhead: subDepartment ? { ...(overheadBySubDept[subDepartment] || {}), ...(() => { const r = rateFor(subDepartment); return { annual_total: round2(r.annualTotal), overhead_per_test_actual: round2(r.actual), overhead_per_test_standard: round2(r.standard) }; })() } : null,
+    overhead: subDepartment ? { ...(overheadBySubDept[subDepartment] || {}), ...(() => { const r = rateFor(subDepartment); return { manpower_annual_total: round2(r.manpowerAnnualTotal), annual_total: round2(r.annualTotal), overhead_per_test_actual: round2(r.actual), overhead_per_test_standard: round2(r.standard) }; })() } : null,
     test_count: tests.length, tests,
   };
 }

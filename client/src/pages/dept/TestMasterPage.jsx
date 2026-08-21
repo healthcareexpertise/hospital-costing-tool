@@ -4,11 +4,18 @@ import { api } from "../../api/client";
 import { useAuth } from "../../context/AuthContext";
 
 const OVERHEAD_FIELDS = [
-  ["manpower_annual_total", "Manpower"],
   ["equipment_annual_total", "Equipment"],
   ["building_annual_total", "Building"],
   ["power_annual_total", "Power"],
   ["common_consumables_annual_total", "Common Consumables"],
+];
+
+const VIEWS = [
+  ["tests", "Tests"],
+  ["manpower", "Manpower Master"],
+  ["reagents", "Reagent Master"],
+  ["equipment", "Equipment Master"],
+  ["overhead", "Shared Overhead"],
 ];
 
 export default function TestMasterPage() {
@@ -18,7 +25,7 @@ export default function TestMasterPage() {
 
   const [subDepts, setSubDepts] = useState([]);
   const [activeSub, setActiveSub] = useState(null);
-  const [view, setView] = useState("tests"); // tests | reagents | equipment | overhead
+  const [view, setView] = useState("tests");
 
   useEffect(() => {
     api.get(`/test-master/${deptCode}/sub-departments`).then((d) => {
@@ -35,21 +42,22 @@ export default function TestMasterPage() {
         <p className="card-title">{deptCode} — Master {canEdit ? "" : <span className="badge" style={{ marginLeft: 8 }}>View only</span>}</p>
         <p style={{ fontSize: 12.5, color: "var(--text-muted)", marginTop: -6 }}>
           Grouped by sub-department, since {deptCode === "LABORATORY" ? "Lab" : "Radiology"} covers several
-          specialties under one department. Pick a sub-department, then a screen below.
+          specialties under one department.
         </p>
-        <div className="tabs">
-          {subDepts.map((s) => (
-            <div key={s} className={`tab${activeSub === s ? " active" : ""}`} onClick={() => setActiveSub(s)}>{s}</div>
-          ))}
-        </div>
-        <div style={{ display: "flex", gap: 6, marginBottom: 16 }}>
-          {[["tests", "Tests"], ["reagents", "Reagent Master"], ["equipment", "Equipment Master"], ["overhead", "Shared Overhead"]].map(([k, label]) => (
-            <button key={k} className={view === k ? "primary" : "secondary"} onClick={() => setView(k)}>{label}</button>
-          ))}
+        <div className="tabs" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+          <div style={{ display: "flex" }}>
+            {subDepts.map((s) => (
+              <div key={s} className={`tab${activeSub === s ? " active" : ""}`} onClick={() => setActiveSub(s)}>{s}</div>
+            ))}
+          </div>
+          <select value={view} onChange={(e) => setView(e.target.value)} style={{ marginBottom: 8 }}>
+            {VIEWS.map(([k, label]) => <option key={k} value={k}>{label}</option>)}
+          </select>
         </div>
       </div>
 
       {activeSub && view === "tests" && <TestsTab deptCode={deptCode} subDept={activeSub} canEdit={canEdit} />}
+      {activeSub && view === "manpower" && <ManpowerTab deptCode={deptCode} subDept={activeSub} canEdit={canEdit} />}
       {activeSub && view === "reagents" && <ReagentsTab deptCode={deptCode} subDept={activeSub} canEdit={canEdit} />}
       {activeSub && view === "equipment" && <EquipmentTab deptCode={deptCode} subDept={activeSub} canEdit={canEdit} />}
       {activeSub && view === "overhead" && <OverheadTab deptCode={deptCode} subDept={activeSub} canEdit={canEdit} />}
@@ -169,6 +177,106 @@ function TestsTab({ deptCode, subDept, canEdit }) {
           </tbody>
         </table>
       </div>
+    </div>
+  );
+}
+
+function ManpowerTab({ deptCode, subDept, canEdit }) {
+  const [rows, setRows] = useState([]);
+  const [employees, setEmployees] = useState([]);
+  const [editingId, setEditingId] = useState(null);
+  const [draft, setDraft] = useState({});
+  const [newRow, setNewRow] = useState(null);
+
+  function load() {
+    api.get(`/test-master/${deptCode}/manpower?sub_department=${encodeURIComponent(subDept)}`).then(setRows);
+    api.get("/employees").then(setEmployees).catch(() => setEmployees([]));
+  }
+  useEffect(load, [deptCode, subDept]);
+
+  function startEdit(r) { setEditingId(r.id); setDraft({ designation: r.designation, no_of_persons: r.no_of_persons, monthly_salary: r.monthly_salary, employee_id: r.employee_id || "", notes: r.notes }); }
+  async function saveEdit() { await api.put(`/test-master/${deptCode}/manpower/${editingId}`, draft); setEditingId(null); load(); }
+  async function del(id) { if (!confirm("Delete this staff row? Remaining Sl. No values will renumber automatically.")) return; await api.del(`/test-master/${deptCode}/manpower/${id}`); load(); }
+  async function saveNew() { await api.post(`/test-master/${deptCode}/manpower`, { ...newRow, sub_department: subDept }); setNewRow(null); load(); }
+
+  function onEmployeeSelect(empId, setFn, current) {
+    const emp = employees.find((e) => String(e.id) === String(empId));
+    setFn({ ...current, employee_id: empId, designation: emp ? emp.full_name : current.designation, monthly_salary: emp?.monthly_salary || current.monthly_salary });
+  }
+
+  const totalAnnual = rows.reduce((s, r) => s + (r.monthly_salary || 0) * 12 * (r.no_of_persons || 1), 0);
+
+  return (
+    <div className="card">
+      <p className="card-title">{subDept} — Manpower Master ({rows.length})</p>
+      <p style={{ fontSize: 12.5, color: "var(--text-muted)", marginTop: -6 }}>
+        This roster drives the "Manpower" component of Shared Overhead automatically — editing a salary or
+        headcount here recalculates every test's cost live, with no separate total to keep in sync. Link a row
+        to Employee Master to auto-fill their name and salary.
+      </p>
+      {canEdit && !newRow && (
+        <button className="secondary" style={{ marginBottom: 10 }} onClick={() => setNewRow({ designation: "", no_of_persons: 1, monthly_salary: 0, employee_id: "", notes: "" })}>
+          + Add staff
+        </button>
+      )}
+      <div className="table-wrap">
+        <table>
+          <thead><tr><th>Sl No</th><th>Designation</th><th>Employee (optional)</th><th>No. of Persons</th><th>Monthly Salary (Rs.)</th>{canEdit && <th>Actions</th>}</tr></thead>
+          <tbody>
+            {newRow && (
+              <tr>
+                <td style={{ color: "var(--text-muted)" }}>(auto)</td>
+                <td><input value={newRow.designation} onChange={(e) => setNewRow({ ...newRow, designation: e.target.value })} style={{ width: "100%" }} /></td>
+                <td>
+                  <select value={newRow.employee_id} onChange={(e) => onEmployeeSelect(e.target.value, setNewRow, newRow)}>
+                    <option value="">— Not linked —</option>
+                    {employees.map((e) => <option key={e.id} value={e.id}>{e.full_name}{e.emp_code ? ` (${e.emp_code})` : ""}</option>)}
+                  </select>
+                </td>
+                <td><input type="number" value={newRow.no_of_persons} onChange={(e) => setNewRow({ ...newRow, no_of_persons: Number(e.target.value) })} style={{ width: "100%" }} /></td>
+                <td><input type="number" value={newRow.monthly_salary} onChange={(e) => setNewRow({ ...newRow, monthly_salary: Number(e.target.value) })} style={{ width: "100%" }} /></td>
+                <td><button className="primary" onClick={saveNew} style={{ marginRight: 6 }}>Save</button><button className="secondary" onClick={() => setNewRow(null)}>Cancel</button></td>
+              </tr>
+            )}
+            {rows.map((r) => (
+              <tr key={r.id}>
+                {editingId === r.id ? (
+                  <>
+                    <td style={{ color: "var(--text-muted)" }}>{r.sl_no}</td>
+                    <td><input value={draft.designation} onChange={(e) => setDraft({ ...draft, designation: e.target.value })} style={{ width: "100%" }} /></td>
+                    <td>
+                      <select value={draft.employee_id} onChange={(e) => onEmployeeSelect(e.target.value, setDraft, draft)}>
+                        <option value="">— Not linked —</option>
+                        {employees.map((e) => <option key={e.id} value={e.id}>{e.full_name}{e.emp_code ? ` (${e.emp_code})` : ""}</option>)}
+                      </select>
+                    </td>
+                    <td><input type="number" value={draft.no_of_persons} onChange={(e) => setDraft({ ...draft, no_of_persons: Number(e.target.value) })} style={{ width: "100%" }} /></td>
+                    <td><input type="number" value={draft.monthly_salary} onChange={(e) => setDraft({ ...draft, monthly_salary: Number(e.target.value) })} style={{ width: "100%" }} /></td>
+                    <td><button className="primary" onClick={saveEdit} style={{ marginRight: 6 }}>Save</button><button className="secondary" onClick={() => setEditingId(null)}>Cancel</button></td>
+                  </>
+                ) : (
+                  <>
+                    <td>{r.sl_no}</td><td>{r.designation}</td>
+                    <td>{employees.find((e) => e.id === r.employee_id)?.full_name || "—"}</td>
+                    <td>{r.no_of_persons}</td>
+                    <td>₹{r.monthly_salary.toLocaleString(undefined, { maximumFractionDigits: 2 })}</td>
+                    {canEdit && (
+                      <td style={{ whiteSpace: "nowrap" }}>
+                        <button className="secondary" onClick={() => startEdit(r)} style={{ marginRight: 6 }}>Edit</button>
+                        <button className="danger" onClick={() => del(r.id)}>Delete</button>
+                      </td>
+                    )}
+                  </>
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p style={{ fontSize: 12.5, color: "var(--text-muted)", marginTop: 8 }}>
+        Total annual manpower cost from this roster: <strong>₹{totalAnnual.toLocaleString(undefined, { maximumFractionDigits: 2 })}</strong>
+        {" "}— this feeds directly into the Shared Overhead screen.
+      </p>
     </div>
   );
 }
@@ -320,6 +428,10 @@ function OverheadTab({ deptCode, subDept, canEdit }) {
       <table>
         <thead><tr><th>Component</th><th>Annual Total (Rs.)</th></tr></thead>
         <tbody>
+          <tr>
+            <td>Manpower <span style={{ fontSize: 11, color: "var(--text-muted)" }}>(from Manpower Master tab, not editable here)</span></td>
+            <td>₹{(overhead?.manpower_annual_total || 0).toLocaleString(undefined, { maximumFractionDigits: 2 })}</td>
+          </tr>
           {OVERHEAD_FIELDS.map(([key, label]) => (
             <tr key={key}>
               <td>{label}</td>

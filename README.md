@@ -102,6 +102,34 @@ Each of the 35 departments gets 4 modules; system-level modules sit alongside th
 
 ## Known limitations / next steps
 
+- **Fixed a real permission-check bug**: the frontend's edit-permission check
+  constructed module codes as `${deptCode}_${moduleType}`, but some modules (Lab/
+  Radiology, and any hospital-provisioned via "Add new department") were seeded with
+  hospital-prefixed codes (`H1_LABORATORY_MASTER`) — so Admin correctly *had* edit
+  rights on the backend, but the UI incorrectly showed "View only". Fixed by having
+  `/api/auth/me/permissions` return a normalized code the frontend can always rely on,
+  regardless of the module's actual internal naming. Verified directly: Admin's
+  `can_edit` on `LABORATORY_MASTER` now returns `1`.
+- **Procedure-level default duration/length-of-stay** — set once per procedure on
+  Procedure Master, inherited by every department's Input screen (whichever of
+  driver_hours/driver_days matches that department's own driver_type), instead of
+  needing the same figure re-entered on every department individually. Verified live:
+  changing CABG's default from 6 to 8 hours moved OT's manpower cost from ₹58,909.09 to
+  ₹63,545.45 automatically, with no change to OT's own Input record, then reverted
+  cleanly.
+- **Lab/Radiology Manpower Master** — each sub-department now has an editable staff
+  roster (designation, headcount, monthly salary), optionally linked to Employee Master
+  the same way surgical departments' Manpower Master works. The roster feeds the
+  "Manpower" component of Shared Overhead *live* — there's no separate lump total to
+  keep in sync anymore. Caught and fixed a real bug while building this: the engine
+  initially double-counted headcount (multiplying an already-total salary figure by
+  person count again), inflating Glucose's cost 8x before being caught by testing and
+  fixed back to the validated ₹39.28.
+- **Lab/Radiology Master screen navigation simplified**: replaced the second row of 5
+  separate view-selector buttons with a single dropdown, to reduce the "multiple
+  headers" feeling of stacking sub-department tabs above a row of screen-switcher
+  buttons.
+
 - **Common inputs are now hospital-wide, not per-department.** Standard working days/year,
   standard days/month, and default bed count live once in each hospital's Rate & Tariff
   Master and are inherited by every department's Input screen unless explicitly

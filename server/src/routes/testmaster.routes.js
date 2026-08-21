@@ -125,19 +125,66 @@ router.delete("/:deptCode/equipment/:id", resolveDept, requireDeptModule("MASTER
   res.json({ ok: true });
 });
 
+// ---- Manpower Master (per sub-department roster, optionally linked to Employee Master) ----
+router.get("/:deptCode/manpower", resolveDept, requireDeptModule("MASTER", "view"), (req, res) => {
+  const sub = req.query.sub_department;
+  const rows = sub
+    ? db.prepare("SELECT * FROM test_manpower_master WHERE department_id = ? AND sub_department = ? ORDER BY sl_no").all(req.dept.id, sub)
+    : db.prepare("SELECT * FROM test_manpower_master WHERE department_id = ? ORDER BY sub_department, sl_no").all(req.dept.id);
+  res.json(rows);
+});
+
+router.post("/:deptCode/manpower", resolveDept, requireDeptModule("MASTER", "edit"), (req, res) => {
+  const { sub_department, designation, no_of_persons, monthly_salary, employee_id, notes } = req.body;
+  if (!designation) return res.status(400).json({ error: "designation is required" });
+  const sub = sub_department || "";
+  const next = (db.prepare("SELECT COALESCE(MAX(sl_no),0)+1 as n FROM test_manpower_master WHERE department_id = ? AND sub_department = ?").get(req.dept.id, sub)).n;
+  const info = db.prepare(`INSERT INTO test_manpower_master (department_id, sub_department, sl_no, designation, no_of_persons, monthly_salary, employee_id, notes) VALUES (?,?,?,?,?,?,?,?)`)
+    .run(req.dept.id, sub, next, designation, no_of_persons || 1, monthly_salary || 0, employee_id || null, notes || null);
+  res.status(201).json({ id: info.lastInsertRowid });
+});
+
+router.put("/:deptCode/manpower/:id", resolveDept, requireDeptModule("MASTER", "edit"), (req, res) => {
+  const { designation, no_of_persons, monthly_salary, employee_id, notes } = req.body;
+  const existing = db.prepare("SELECT * FROM test_manpower_master WHERE id = ? AND department_id = ?").get(req.params.id, req.dept.id);
+  if (!existing) return res.status(404).json({ error: "Not found" });
+  db.prepare(`UPDATE test_manpower_master SET designation=?, no_of_persons=?, monthly_salary=?, employee_id=?, notes=? WHERE id=?`).run(
+    designation !== undefined ? designation : existing.designation,
+    no_of_persons !== undefined ? no_of_persons : existing.no_of_persons,
+    monthly_salary !== undefined ? monthly_salary : existing.monthly_salary,
+    employee_id !== undefined ? (employee_id || null) : existing.employee_id,
+    notes !== undefined ? notes : existing.notes,
+    req.params.id
+  );
+  res.json({ ok: true });
+});
+
+router.delete("/:deptCode/manpower/:id", resolveDept, requireDeptModule("MASTER", "edit"), (req, res) => {
+  const row = db.prepare("SELECT sl_no, sub_department FROM test_manpower_master WHERE id = ? AND department_id = ?").get(req.params.id, req.dept.id);
+  const tx = db.transaction(() => {
+    db.prepare("DELETE FROM test_manpower_master WHERE id = ? AND department_id = ?").run(req.params.id, req.dept.id);
+    if (row) db.prepare("UPDATE test_manpower_master SET sl_no = sl_no - 1 WHERE department_id = ? AND sub_department = ? AND sl_no > ?").run(req.dept.id, row.sub_department, row.sl_no);
+  });
+  tx();
+  res.json({ ok: true });
+});
+
 // ---- Overhead constants, per sub-department (annual totals + test volumes — see
 // costEngine.js for how these combine into a live per-test rate) ----
 router.get("/:deptCode/overhead", resolveDept, requireDeptModule("MASTER", "view"), (req, res) => {
   const sub = req.query.sub_department;
   if (!sub) return res.status(400).json({ error: "sub_department query param is required" });
   const overhead = db.prepare("SELECT * FROM test_overhead_master WHERE department_id = ? AND sub_department = ?").get(req.dept.id, sub);
-  if (!overhead) return res.json(null);
-  const annualTotal = (overhead.manpower_annual_total || 0) + (overhead.equipment_annual_total || 0) + (overhead.building_annual_total || 0) +
+  const manpowerRows = db.prepare("SELECT * FROM test_manpower_master WHERE department_id = ? AND sub_department = ?").all(req.dept.id, sub);
+  const manpowerAnnualTotal = manpowerRows.reduce((s, m) => s + (m.monthly_salary || 0) * 12 * (m.no_of_persons || 1), 0);
+  if (!overhead) return res.json({ manpower_annual_total: Math.round(manpowerAnnualTotal * 100) / 100 });
+  const annualTotal = manpowerAnnualTotal + (overhead.equipment_annual_total || 0) + (overhead.building_annual_total || 0) +
     (overhead.power_annual_total || 0) + (overhead.common_consumables_annual_total || 0);
   const actualVolume = overhead.actual_volume || 1;
   const standardVolume = overhead.standard_volume || 1;
   res.json({
     ...overhead,
+    manpower_annual_total: Math.round(manpowerAnnualTotal * 100) / 100,
     annual_total: Math.round(annualTotal * 100) / 100,
     overhead_per_test_actual: Math.round((annualTotal / actualVolume) * 100) / 100,
     overhead_per_test_standard: Math.round((annualTotal / standardVolume) * 100) / 100,
@@ -148,7 +195,7 @@ router.put("/:deptCode/overhead", resolveDept, requireDeptModule("MASTER", "edit
   const sub = req.query.sub_department || req.body.sub_department;
   if (!sub) return res.status(400).json({ error: "sub_department is required" });
   const cols = [
-    "manpower_annual_total", "equipment_annual_total", "building_annual_total",
+    "equipment_annual_total", "building_annual_total",
     "power_annual_total", "common_consumables_annual_total", "actual_volume", "standard_volume", "notes",
   ];
   const vals = cols.map((c) => (req.body[c] !== undefined ? req.body[c] : (c === "actual_volume" || c === "standard_volume" ? 1 : 0)));

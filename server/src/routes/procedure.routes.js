@@ -60,6 +60,29 @@ router.get("/:code/output", (req, res) => {
   }
 });
 
+// The procedure-level default surgery duration / length of stay — set once per procedure,
+// inherited by every department's Input screen for the driver field matching its own
+// driver_type, unless that department overrides it individually.
+router.get("/:code/default-driver", (req, res) => {
+  const proc = db.prepare("SELECT * FROM procedures WHERE code = ? AND hospital_id = ?").get(req.params.code, req.user.hospital_id);
+  if (!proc) return res.status(404).json({ error: "Unknown procedure code" });
+  const row = db.prepare("SELECT * FROM procedure_default_driver WHERE procedure_id = ?").get(proc.id);
+  res.json(row || { procedure_id: proc.id, default_hours: null, default_days: null, notes: null });
+});
+
+router.put("/:code/default-driver", requireModule("SYS_PROCEDURE_MASTER", "edit"), (req, res) => {
+  const proc = db.prepare("SELECT * FROM procedures WHERE code = ? AND hospital_id = ?").get(req.params.code, req.user.hospital_id);
+  if (!proc) return res.status(404).json({ error: "Unknown procedure code" });
+  const { default_hours, default_days, notes } = req.body;
+  const existing = db.prepare("SELECT id FROM procedure_default_driver WHERE procedure_id = ?").get(proc.id);
+  if (existing) {
+    db.prepare("UPDATE procedure_default_driver SET default_hours=?, default_days=?, notes=? WHERE procedure_id=?").run(default_hours ?? null, default_days ?? null, notes || null, proc.id);
+  } else {
+    db.prepare("INSERT INTO procedure_default_driver (procedure_id, default_hours, default_days, notes) VALUES (?,?,?,?)").run(proc.id, default_hours ?? null, default_days ?? null, notes || null);
+  }
+  res.json({ ok: true });
+});
+
 // ---- Procedure Master (admin CRUD) ----
 router.post("/", requireModule("SYS_PROCEDURE_MASTER", "edit"), (req, res) => {
   const { specialty_code, code, name } = req.body;
@@ -85,6 +108,7 @@ router.delete("/:id", requireModule("SYS_PROCEDURE_MASTER", "edit"), (req, res) 
   const proc = db.prepare("SELECT id FROM procedures WHERE id = ? AND hospital_id = ?").get(id, req.user.hospital_id);
   if (!proc) return res.status(404).json({ error: "Not found" });
   db.prepare("DELETE FROM procedure_department_reference WHERE procedure_id = ?").run(id);
+  db.prepare("DELETE FROM procedure_default_driver WHERE procedure_id = ?").run(id);
   db.prepare("DELETE FROM department_input WHERE procedure_id = ?").run(id);
   db.prepare("DELETE FROM manpower_master WHERE procedure_id = ?").run(id);
   db.prepare("DELETE FROM materials_master WHERE procedure_id = ?").run(id);

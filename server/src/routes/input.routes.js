@@ -27,7 +27,14 @@ router.get("/:deptCode", resolveDeptAndProcedure, requireDeptModule("INPUT", "vi
     standard_days_month: rates.STD_DAYS_MONTH ?? 22,
     no_of_beds: rates.DEFAULT_BEDS ?? 100,
   };
-  res.json({ ...row, hospital_defaults: hospitalDefaults });
+  const procDefault = db.prepare("SELECT * FROM procedure_default_driver WHERE procedure_id = ?").get(req.proc.id);
+  res.json({
+    ...row,
+    department_driver_type: req.dept.driver_type,
+    procedure_default_hours: procDefault?.default_hours ?? null,
+    procedure_default_days: procDefault?.default_days ?? null,
+    hospital_defaults: hospitalDefaults,
+  });
 });
 
 router.put("/:deptCode", resolveDeptAndProcedure, requireDeptModule("INPUT", "edit"), (req, res) => {
