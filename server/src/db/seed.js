@@ -258,7 +258,7 @@ function seedNewSpecialties(hospitalId, deptIdByName, specialtyIdByCode, deptIdB
 // costing still tracks each sub-department's own overhead accurately.
 const LAB_RAD_DEPARTMENTS = [
   ["LABORATORY", "LABORATORY", "Medical Support", "PER_TEST", "DAYS", 40],
-  ["RADIOLOGY", "RADIOLOGY", "Medical Support", "PER_TEST", "DAYS", 41],
+  ["RADIOLOGY_TESTS", "RADIOLOGY (TEST PRICE LIST)", "Medical Support", "PER_TEST", "DAYS", 41],
 ];
 const LAB_SUB_DEPTS = ["Biochemistry", "Haematology", "Clinical Pathology", "Microbiology", "Blood Bank"];
 const RAD_SUB_DEPTS = ["X-Ray", "CT", "MRI", "USG / Doppler"];
@@ -299,7 +299,7 @@ function seedLabRadiology(hospitalId) {
 function seedLabRadiologyTests(hospitalId, deptIdByCode) {
   const insTest = db.prepare(`INSERT INTO test_master (department_id, sub_department, sl_no, test_name, direct_cost, doctor_fee, notes) VALUES (?,?,?,?,?,?,?)`);
   const labDeptId = deptIdByCode["LABORATORY"];
-  const radDeptId = deptIdByCode["RADIOLOGY"];
+  const radDeptId = deptIdByCode["RADIOLOGY_TESTS"];
 
   const labTests = loadJSON("lab_tests.json");
   const LAB_DEPT_MAP = { LAB_BIOCHEM: "Biochemistry", LAB_HAEM: "Haematology", LAB_CLINPATH: "Clinical Pathology", LAB_MICRO: "Microbiology" };
@@ -379,7 +379,7 @@ function seedLabRadiologyOverhead(hospitalId, deptIdByCode) {
      VALUES (?,?,?,?,?,?,?,?,?)`
   );
   const labDeptId = deptIdByCode["LABORATORY"];
-  const radDeptId = deptIdByCode["RADIOLOGY"];
+  const radDeptId = deptIdByCode["RADIOLOGY_TESTS"];
 
   // ---- Lab: Biochemistry, Haematology, Clinical Pathology, Microbiology ----
   const labBuilding = loadJSON("lab_building.json");

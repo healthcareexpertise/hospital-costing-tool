@@ -20,8 +20,6 @@ export default function Sidebar() {
   const filteredDepartments = departments.filter((d) =>
     d.name.toLowerCase().includes(deptFilter.toLowerCase())
   );
-  const procedureDepartments = filteredDepartments.filter((d) => d.engine_type !== "PER_TEST");
-  const testDepartments = filteredDepartments.filter((d) => d.engine_type === "PER_TEST");
 
   function renderDept(d) {
     const isOpen = openDept === d.code;
@@ -74,10 +72,7 @@ export default function Sidebar() {
           )}
         </>
       )}
-      {procedureDepartments.map(renderDept)}
-
-      {testDepartments.length > 0 && <div className="sidebar-section">Lab &amp; Radiology (per test)</div>}
-      {testDepartments.map(renderDept)}
+      {filteredDepartments.map(renderDept)}
 
       {systemModules.some((m) => m.code !== "SYS_GLOBAL_DASHBOARD") && <div className="sidebar-section">Administration</div>}
       {systemModules.find((m) => m.code === "SYS_HOSPITAL_PROFILE") && (

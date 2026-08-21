@@ -102,6 +102,28 @@ Each of the 35 departments gets 4 modules; system-level modules sit alongside th
 
 ## Known limitations / next steps
 
+- **⚠️ Critical fix — Radiology test data was silently invisible.** The per-test
+  `RADIOLOGY` department's code collided with the *original* CABG-era `RADIOLOGY`
+  department (a `FULL`-engine surgical department, seeded first) — `INSERT OR IGNORE`
+  silently skipped creating the per-test one, so all 403 Radiology test rows got
+  attached to the wrong department, and the UI showed the surgical-package Master screen
+  for it instead of the test price list, making the data completely inaccessible even
+  though it existed in the database. Fixed by renaming the per-test department's code to
+  `RADIOLOGY_TESTS` (display name "RADIOLOGY (TEST PRICE LIST)"), verified by confirming
+  three distinct departments now exist (`LAB`, `RADIOLOGY`, `RADIOLOGY_TESTS`) and that
+  all 254 X-ray tests are reachable again. **If you're deploying this on an existing
+  persistent-disk database, this needs a fresh reseed** — the old orphaned Radiology test
+  rows under the wrong department won't move themselves.
+- **Common inputs removed from every department's Input screen entirely** (not just
+  greyed out/marked "inherited" — actually removed from that screen). Standard working
+  days/year, standard days/month, and bed count now live *only* on Rate & Tariff Master;
+  the Input screen shows just the procedure-specific driver (hours/days, inherited from
+  Procedure Master) and the department-specific standard hours/day.
+- **Removed the non-functional "Lab & Radiology (per test)" sidebar section header** —
+  it was a static label styled to look like a section divider but had no click behavior,
+  which read as broken. Lab/Radiology departments now sit in the same flat department
+  list as everything else, no special grouping.
+
 - **Fixed a real permission-check bug**: the frontend's edit-permission check
   constructed module codes as `${deptCode}_${moduleType}`, but some modules (Lab/
   Radiology, and any hospital-provisioned via "Add new department") were seeded with
